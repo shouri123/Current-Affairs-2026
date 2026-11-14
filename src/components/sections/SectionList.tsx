@@ -48,15 +48,15 @@ export function SectionList({
       sections.forEach((sec) => {
         gsap.fromTo(
           sec,
-          { opacity: 0, y: 35 },
+          { opacity: 0, y: 25 },
           {
             opacity: 1,
             y: 0,
-            duration: 0.6,
+            duration: 0.5,
             ease: "power2.out",
             scrollTrigger: {
               trigger: sec,
-              start: "top 88%",
+              start: "top 90%",
               toggleActions: "play none none none",
             },
           }
@@ -72,7 +72,7 @@ export function SectionList({
     : magazineSections;
 
   return (
-    <div ref={containerRef} className="space-y-10">
+    <div ref={containerRef} className="space-y-6 sm:space-y-8">
       {displayedSections.map((sec) => (
         <SectionCard
           key={sec.id}
@@ -91,4 +91,3 @@ export function SectionList({
     </div>
   );
 }
-

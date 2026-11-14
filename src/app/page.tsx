@@ -71,6 +71,10 @@ export default function Home() {
     return list;
   }, []);
 
+  const mustKnowCount = useMemo(() => {
+    return allFacts.filter((f) => f.hot).length;
+  }, [allFacts]);
+
   const pinnedFactsList = useMemo(() => {
     return allFacts.filter((f) => pinnedIds.includes(f.id));
   }, [allFacts, pinnedIds]);
@@ -177,7 +181,7 @@ export default function Home() {
       />
 
       {/* Main Container */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+      <main className="max-w-7xl mx-auto px-3 sm:px-6 py-6 sm:py-8">
         {/* Hero Header */}
         <Hero
           onOpenArcade={() => {
@@ -185,6 +189,8 @@ export default function Home() {
             setIsArcadeOpen(true);
           }}
           onOpenRandomFact={handleOpenRandomFact}
+          totalFacts={allFacts.length}
+          mustKnowCount={mustKnowCount}
         />
 
         {/* 11 Magazine Sections */}
@@ -251,4 +257,3 @@ export default function Home() {
     </div>
   );
 }
-

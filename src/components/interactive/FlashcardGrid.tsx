@@ -55,20 +55,20 @@ export function FlashcardGrid({ searchQuery, onFlipSound, onChimeSound }: Flashc
   const memorizedCount = Object.values(memorizedCards).filter(Boolean).length;
 
   return (
-    <section id="section-quiz" className="print-section scroll-mt-28 mt-14 mb-14">
-      <div className="comic-card bg-popPink/10 rounded-3xl border-4 border-ink p-6 sm:p-8 shadow-brutal-lg">
+    <section id="section-quiz" className="print-section scroll-mt-28 mt-8 mb-8 sm:mt-10 sm:mb-10">
+      <div className="comic-card bg-popPink/10 rounded-3xl border-3 sm:border-4 border-ink p-5 sm:p-7 shadow-brutal-lg">
         {/* Header */}
-        <div className="flex flex-wrap items-center justify-between gap-4 pb-4 mb-6 border-b-3 border-ink">
+        <div className="flex flex-wrap items-center justify-between gap-3 pb-3.5 mb-5 border-b-3 border-ink">
           <div className="flex items-center gap-3">
-            <span className="text-3xl sm:text-4xl p-2 bg-white rounded-2xl border-2 border-ink shadow-brutal-sm">
+            <span className="text-2xl sm:text-3xl p-1.5 sm:p-2 bg-white rounded-2xl border-2 border-ink shadow-brutal-sm">
               🎯
             </span>
             <div>
               <div className="flex items-center gap-2">
-                <h2 className="font-display font-black text-2xl sm:text-3xl text-ink">
+                <h2 className="font-display font-black text-xl sm:text-2xl text-ink">
                   High-Yield Q&A Flashcard Deck
                 </h2>
-                <span className="bg-popPink text-white font-extrabold text-xs px-2.5 py-0.5 rounded-full border border-ink shadow-brutal-sm">
+                <span className="bg-popPink text-white font-extrabold text-[11px] px-2.5 py-0.5 rounded-full border border-ink shadow-brutal-sm">
                   {filteredQA.length} Cards
                 </span>
               </div>
@@ -105,7 +105,7 @@ export function FlashcardGrid({ searchQuery, onFlipSound, onChimeSound }: Flashc
         </div>
 
         {/* 3D Flashcard Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4">
           {filteredQA.map((item) => {
             const isFlipped = flippedCards[item.originalIdx] || false;
             const isMemorized = memorizedCards[item.originalIdx] || false;
@@ -113,7 +113,7 @@ export function FlashcardGrid({ searchQuery, onFlipSound, onChimeSound }: Flashc
             return (
               <div
                 key={item.originalIdx}
-                className="perspective-1000 min-h-[175px] cursor-pointer"
+                className="perspective-1000 min-h-[170px] cursor-pointer"
                 onClick={() => toggleFlip(item.originalIdx)}
               >
                 <div
@@ -122,7 +122,7 @@ export function FlashcardGrid({ searchQuery, onFlipSound, onChimeSound }: Flashc
                   }`}
                 >
                   {/* Front Side: Question */}
-                  <div className="absolute inset-0 backface-hidden bg-white border-3 border-ink rounded-2xl p-4 shadow-brutal flex flex-col justify-between hover:bg-cream">
+                  <div className="absolute inset-0 backface-hidden bg-white border-2 sm:border-3 border-ink rounded-2xl p-4 shadow-brutal flex flex-col justify-between hover:bg-cream">
                     <div>
                       <div className="flex items-center justify-between gap-2 mb-2">
                         <span className="bg-popYellow text-ink text-[10px] font-black uppercase px-2 py-0.5 rounded-md border border-ink shadow-brutal-sm">
@@ -143,7 +143,7 @@ export function FlashcardGrid({ searchQuery, onFlipSound, onChimeSound }: Flashc
                       </p>
                     </div>
 
-                    <div className="mt-3 pt-2 border-t border-ink/10 flex items-center justify-between text-[11px] font-bold text-ink/50">
+                    <div className="mt-2.5 pt-2 border-t border-ink/10 flex items-center justify-between text-[11px] font-bold text-ink/50">
                       <span className="flex items-center gap-1">
                         <RotateCw className="h-3 w-3" /> Click to reveal answer
                       </span>
@@ -152,7 +152,7 @@ export function FlashcardGrid({ searchQuery, onFlipSound, onChimeSound }: Flashc
                   </div>
 
                   {/* Back Side: Answer */}
-                  <div className="absolute inset-0 backface-hidden rotate-y-180 bg-gradient-to-br from-popMint/40 to-yellow-100 border-3 border-ink rounded-2xl p-4 shadow-brutal flex flex-col justify-between">
+                  <div className="absolute inset-0 backface-hidden rotate-y-180 bg-gradient-to-br from-popMint/40 to-yellow-100 border-2 sm:border-3 border-ink rounded-2xl p-4 shadow-brutal flex flex-col justify-between">
                     <div>
                       <div className="flex items-center justify-between gap-2 mb-2">
                         <span className="bg-popMint text-ink text-[10px] font-black uppercase px-2 py-0.5 rounded-md border border-ink shadow-brutal-sm">
@@ -173,7 +173,7 @@ export function FlashcardGrid({ searchQuery, onFlipSound, onChimeSound }: Flashc
                       </p>
                     </div>
 
-                    <div className="mt-3 pt-2 border-t border-ink/20 flex items-center justify-between text-[11px] font-bold text-ink/70">
+                    <div className="mt-2.5 pt-2 border-t border-ink/20 flex items-center justify-between text-[11px] font-bold text-ink/70">
                       <span className="flex items-center gap-1">
                         <RotateCw className="h-3 w-3" /> Click to flip back
                       </span>
@@ -189,4 +189,3 @@ export function FlashcardGrid({ searchQuery, onFlipSound, onChimeSound }: Flashc
     </section>
   );
 }
-
