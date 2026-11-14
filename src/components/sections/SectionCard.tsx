@@ -164,7 +164,7 @@ export function SectionCard({
                 {section.title}
               </h2>
             </div>
-            <div className="flex items-center gap-2 text-xs text-muted">
+            <div className="flex items-center gap-2 text-xs text-ink/75">
               <span>{allSectionItems.length} curated updates</span>
               <span>•</span>
               <span className="text-amber-800 font-semibold">{sectionMustKnowCount} Must-Know</span>
