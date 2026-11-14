@@ -132,7 +132,7 @@ export default function Home() {
       category: fact.category,
       body: fact.text,
       tip: fact.hot
-        ? "⭐ Key Exam Focus: Highly tested in competitive exams!"
+        ? "Key Exam Focus: Sourced from official notification."
         : undefined,
       factId: fact.id,
     });

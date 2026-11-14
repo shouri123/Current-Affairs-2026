@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fredoka, Plus_Jakarta_Sans } from "next/font/google";
+import { Fredoka, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
@@ -10,26 +10,17 @@ const fredoka = Fredoka({
   display: "swap",
 });
 
-const jakarta = Plus_Jakarta_Sans({
+const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-jakarta",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-serif",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "September 2026 Current Affairs — Funky Edition",
+  title: "September 2026 Current Affairs Gazette — IAS Academia of Success",
   description:
-    "Interactive Neo-Brutalist Current Affairs Magazine for Banking, SSC, UPSC, and competitive exams. Features high-yield facts, animated macro charts, 3D flashcards, and arcade quizzes.",
-  keywords: [
-    "Current Affairs",
-    "September 2026",
-    "UPSC",
-    "Banking Awareness",
-    "SSC CGL",
-    "Neo-Brutalist",
-    "Flashcards",
-  ],
+    "Official monthly documentation of September 2026 national accounts, regulatory mandates, foreign policy, and defence updates for competitive examination candidates.",
 };
 
 export default function RootLayout({
@@ -38,8 +29,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${fredoka.variable} ${jakarta.variable}`}>
-      <body className="antialiased min-h-screen">
+    <html lang="en" className={`${fredoka.variable} ${sourceSerif.variable}`}>
+      <body className="antialiased min-h-screen bg-cream text-ink font-serif selection:bg-popYellow selection:text-ink">
         <TooltipProvider delayDuration={200}>
           {children}
         </TooltipProvider>
@@ -47,4 +38,3 @@ export default function RootLayout({
     </html>
   );
 }
-

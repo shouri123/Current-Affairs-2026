@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { Bookmark, Copy, Trash2, Download, CheckCheck, X } from "lucide-react";
+import { X } from "lucide-react";
 import { FactItem } from "@/types";
 
 interface PinDrawerProps {
@@ -39,84 +39,80 @@ export function PinDrawer({
 
   const handleDownload = () => {
     if (pinnedFacts.length === 0) return;
-    const md = `# September 2026 Current Affairs - Pinned High-Yield Facts\nGenerated from Neo-Brutalist Revision Magazine\n\n` +
+    const md = `# September 2026 Current Affairs — Pinned Reference Items\nSource: IAS Academia of Success, Kolkata\n\n` +
       pinnedFacts.map((f, i) => `### ${i + 1}. ${f.category}\n${f.text}\n`).join("\n");
 
     const blob = new Blob([md], { type: "text/markdown;charset=utf-8" });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = "September-2026-Pinned-Current-Affairs.md";
+    link.download = "September-2026-Current-Affairs-Pinned.md";
     link.click();
     URL.revokeObjectURL(url);
   };
 
   return (
     <Sheet open={isOpen} onOpenChange={(open) => !open && onClose()}>
-      <SheetContent side="right" className="w-full sm:max-w-md flex flex-col justify-between overflow-hidden">
+      <SheetContent side="right" className="w-full sm:max-w-md flex flex-col justify-between overflow-hidden font-sans">
         {/* Header */}
         <div>
           <SheetHeader>
             <div className="flex items-center gap-2">
               <SheetTitle>
-                <Bookmark className="h-5 w-5 fill-ink" />
-                <span>Pinned Must-Knows</span>
+                Pinned Items
               </SheetTitle>
-              <span className="bg-popYellow text-ink text-xs font-black px-2 py-0.5 rounded-full border border-ink shadow-brutal-sm">
+              <span className="bg-zinc-100 text-ink text-xs font-semibold px-2 py-0.5 rounded border border-ink/15">
                 {pinnedFacts.length}
               </span>
             </div>
             <SheetDescription>
-              Your personal study cheat sheet. Review, copy, or export anytime!
+              Bookmarked regulatory notifications and macroeconomic data points.
             </SheetDescription>
           </SheetHeader>
 
           {/* Quick Actions Bar */}
           {pinnedFacts.length > 0 && (
-            <div className="flex items-center gap-2 py-3 border-b-2 border-ink">
+            <div className="flex items-center gap-2 py-3 border-b border-ink/15">
               <Button
                 variant="outline"
                 size="sm"
                 onClick={handleCopyAll}
-                className="gap-1 flex-1 bg-white text-xs"
+                className="flex-1 text-xs"
               >
-                {copied ? <CheckCheck className="h-3.5 w-3.5 text-emerald-600" /> : <Copy className="h-3.5 w-3.5" />}
-                <span>{copied ? "Copied!" : "Copy All"}</span>
+                {copied ? "Copied" : "Copy All"}
               </Button>
 
               <Button
-                variant="mint"
+                variant="outline"
                 size="sm"
                 onClick={handleDownload}
-                className="gap-1 flex-1 text-xs"
+                className="flex-1 text-xs"
               >
-                <Download className="h-3.5 w-3.5" />
-                <span>Export .md</span>
+                Export Markdown
               </Button>
 
               <Button
-                variant="coral"
+                variant="outline"
                 size="sm"
                 onClick={onClearAll}
-                title="Clear all pinned facts"
-                className="px-2.5 text-xs"
+                title="Clear all pinned items"
+                className="px-2.5 text-xs text-rose-700"
               >
-                <Trash2 className="h-3.5 w-3.5" />
+                Clear
               </Button>
             </div>
           )}
         </div>
 
         {/* Scrollable Pinned Items List */}
-        <div className="flex-1 overflow-y-auto py-4 space-y-3 no-scrollbar">
+        <div className="flex-1 overflow-y-auto py-4 space-y-3 no-scrollbar font-serif">
           {pinnedFacts.length === 0 ? (
             <div className="text-center py-16 px-4">
-              <div className="text-4xl mb-3">📌</div>
-              <h4 className="font-display font-black text-lg text-ink mb-1">
-                No facts pinned yet!
+              <h4 className="font-display font-semibold text-base text-ink mb-1">
+                No pinned items
               </h4>
-              <p className="text-xs font-medium text-ink/60 max-w-xs mx-auto">
-                Click the bookmark icon on any card to save it here for rapid revision.
+              <p className="text-xs text-muted max-w-xs mx-auto font-sans">
+                Select the pin icon on any notification to keep it in this revision list.
               </p>
             </div>
           ) : (
@@ -124,10 +120,10 @@ export function PinDrawer({
               <div
                 key={fact.id}
                 onClick={() => onFactClick(fact)}
-                className="bg-white border-2 border-ink rounded-xl p-3 shadow-brutal-sm hover:bg-cream transition-colors cursor-pointer relative group"
+                className="bg-white border border-ink/15 rounded-lg p-3 hover:border-ink/40 transition-colors cursor-pointer relative"
               >
-                <div className="flex items-start justify-between gap-2 mb-1.5">
-                  <span className="bg-popCyan text-ink text-[9px] font-black uppercase px-2 py-0.5 rounded border border-ink">
+                <div className="flex items-start justify-between gap-2 mb-1 font-sans">
+                  <span className="text-[10px] font-semibold text-muted uppercase">
                     {fact.category}
                   </span>
                   <button
@@ -136,12 +132,12 @@ export function PinDrawer({
                       onUnpin(fact.id);
                     }}
                     title="Remove from pinned"
-                    className="h-5 w-5 rounded bg-zinc-100 hover:bg-popCoral hover:text-white border border-ink flex items-center justify-center transition-colors"
+                    className="h-4 w-4 rounded hover:bg-zinc-100 text-muted hover:text-ink flex items-center justify-center"
                   >
                     <X className="h-3 w-3" />
                   </button>
                 </div>
-                <p className="text-xs font-bold leading-relaxed text-ink line-clamp-3">
+                <p className="text-xs leading-relaxed text-ink line-clamp-3">
                   {fact.text}
                 </p>
               </div>
@@ -150,11 +146,10 @@ export function PinDrawer({
         </div>
 
         {/* Footer */}
-        <div className="pt-3 border-t-2 border-ink text-center text-[11px] font-bold text-ink/60">
-          Saved automatically to your local browser storage 💾
+        <div className="pt-3 border-t border-ink/15 text-center text-xs text-muted font-sans">
+          Stored locally in your browser session.
         </div>
       </SheetContent>
     </Sheet>
   );
 }
-

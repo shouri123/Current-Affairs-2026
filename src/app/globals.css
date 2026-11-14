@@ -3,82 +3,53 @@
 @tailwind utilities;
 
 :root {
-  --font-fredoka: "Fredoka", cursive, sans-serif;
-  --font-jakarta: "Plus Jakarta Sans", sans-serif;
+  --font-fredoka: "Fredoka", sans-serif;
+  --font-serif: "Source Serif 4", Georgia, serif;
 }
 
 body {
   background-color: #FFFDF5;
-  background-image: radial-gradient(#18181B 1.2px, transparent 1.2px);
-  background-size: 24px 24px;
   color: #18181B;
   overflow-x: hidden;
-  font-family: var(--font-jakarta), sans-serif;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
-/* Custom Neo-Brutalist & Cartoon Comic Aesthetics */
-.comic-card {
-  border: 3px solid #18181B;
-  box-shadow: 6px 6px 0px 0px #18181B;
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+/* Editorial Card & Section Styling - Clean 1px borders, zero offset shadows */
+.gazette-card {
+  border: 1px solid rgba(24, 24, 27, 0.16);
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  transition: border-color 0.15s ease;
 }
 
-.comic-card:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 8px 8px 0px 0px #18181B;
+.gazette-card:hover {
+  border-color: rgba(24, 24, 27, 0.4);
 }
 
-.comic-btn {
-  border: 2.5px solid #18181B;
-  box-shadow: 3px 3px 0px 0px #18181B;
-  cursor: pointer;
-  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease, background-color 0.15s ease;
-}
-
-.comic-btn:hover {
-  transform: translate(-1.5px, -1.5px);
-  box-shadow: 5px 5px 0px 0px #18181B;
-}
-
-.comic-btn:active {
-  transform: translate(2px, 2px);
-  box-shadow: 0px 0px 0px 0px #18181B;
-}
-
-/* Signature Yellow Highlight Badge from Original HTML */
+/* Yellow Highlight Chips on Verified Statistics */
 .highlight-badge {
-  background: linear-gradient(120deg, #FFE600 0%, #FFF59D 100%);
-  border-bottom: 2.5px solid #18181B;
-  border-radius: 6px;
-  padding: 0 5px;
-  margin: 0 2px;
-  font-weight: 800;
-  cursor: pointer;
-  display: inline-block;
+  background-color: #FFE600;
   color: #18181B;
-  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.15s ease;
-  box-shadow: 1px 1px 0px #18181B;
-}
-
-.highlight-badge:hover {
-  background: #4ADE80 !important;
-  transform: scale(1.08);
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-weight: 600;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.88em;
+  display: inline-block;
+  white-space: nowrap;
 }
 
 .keyword-pill {
-  cursor: pointer;
-  border-radius: 5px;
-  padding: 0 4px;
-  transition: background-color 0.15s ease, transform 0.15s ease;
+  font-weight: 700;
+  color: #18181B;
+  text-decoration: underline;
+  text-decoration-color: #38BDF8;
+  text-underline-offset: 3px;
 }
 
-.keyword-pill:hover {
-  background-color: #38BDF8 !important;
-  color: #18181B !important;
-  transform: scale(1.05);
-}
-
-/* 3D Flip Card CSS */
+/* 3D Flip Card CSS for Q&A Revision */
 .perspective-1000 {
   perspective: 1000px;
 }
@@ -96,22 +67,20 @@ body {
   transform: rotateY(180deg);
 }
 
-/* Custom Neo-Brutalist Scrollbar */
+/* Minimal Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-track {
   background: #FFFDF5;
-  border-left: 2px solid #18181B;
 }
 ::-webkit-scrollbar-thumb {
-  background: #FFE600;
-  border: 2px solid #18181B;
-  border-radius: 6px;
+  background: #D4D4D8;
+  border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #FF6B9E;
+  background: #A1A1AA;
 }
 
 .no-scrollbar::-webkit-scrollbar {
@@ -125,44 +94,23 @@ body {
 /* SVG Interactive Hotspots */
 .svg-hotspot {
   cursor: pointer;
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.2s ease;
+  transition: opacity 0.15s ease;
 }
 .svg-hotspot:hover {
-  transform: scale(1.05);
-  filter: drop-shadow(0 4px 0 #18181B);
-}
-
-/* Custom Wiggle & Pulse Animations */
-@keyframes wiggleSlow {
-  0%, 100% { transform: rotate(-3deg); }
-  50% { transform: rotate(3deg); }
-}
-
-@keyframes pulseYellow {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.03); }
-}
-
-.animate-wiggle-slow {
-  animation: wiggleSlow 2s ease-in-out infinite;
-}
-
-.animate-pulse-yellow {
-  animation: pulseYellow 1.8s ease-in-out infinite;
+  opacity: 0.85;
 }
 
 @media print {
   body {
     background: #FFF !important;
-    background-image: none !important;
+    color: #000 !important;
   }
   .no-print {
     display: none !important;
   }
   .print-section {
     page-break-inside: avoid;
-    border: 1.5px solid #000 !important;
-    box-shadow: none !important;
-    margin-bottom: 20px !important;
+    border: 1px solid #CCC !important;
+    margin-bottom: 24px !important;
   }
 }

@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Check, Bookmark, Copy, CheckCheck, Lightbulb } from "lucide-react";
 
 interface FactDetailModalProps {
   isOpen: boolean;
@@ -36,7 +35,7 @@ export function FactDetailModal({
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
-    const textToCopy = `${title}\n${category}\n\n${body}${tip ? `\n\nMemory Hook: ${tip}` : ""}`;
+    const textToCopy = `${title}\n${category}\n\n${body}${tip ? `\n\nReference: ${tip}` : ""}`;
     if (navigator.clipboard) {
       navigator.clipboard.writeText(textToCopy);
       setCopied(true);
@@ -46,65 +45,55 @@ export function FactDetailModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="sm:max-w-lg bg-cream border-4 border-ink p-6 rounded-3xl">
-        <DialogHeader className="border-b-2 border-ink pb-3">
+      <DialogContent className="sm:max-w-lg bg-cream border border-ink/20 p-6 rounded-xl shadow-dropdown">
+        <DialogHeader className="border-b border-ink/15 pb-3">
           <div className="flex items-center gap-2 mb-1">
-            <Badge variant="default" className="text-[10px] uppercase">
-              Fact Spotlight
+            <Badge variant="default" className="text-[10px]">
+              {category || "Current Affairs"}
             </Badge>
-            {category && (
-              <span className="text-xs font-bold text-ink/70">
-                {category}
-              </span>
-            )}
           </div>
-          <DialogTitle className="text-xl sm:text-2xl font-black text-ink">
+          <DialogTitle className="text-xl font-bold font-display text-ink">
             {title}
           </DialogTitle>
         </DialogHeader>
 
         {/* Fact Body */}
-        <div className="bg-white border-2 border-ink rounded-2xl p-4 text-sm sm:text-base font-semibold leading-relaxed text-ink shadow-brutal-sm my-2">
+        <div className="bg-white border border-ink/15 rounded-lg p-4 text-sm sm:text-base font-serif leading-relaxed text-ink my-2">
           {body}
         </div>
 
-        {/* Memory Hook Tip */}
+        {/* Reference / Memory Hook Tip */}
         {tip && (
-          <div className="bg-popMint/30 border-2 border-ink rounded-xl p-3 text-xs sm:text-sm font-bold text-ink flex items-start gap-2 shadow-brutal-sm">
-            <Lightbulb className="h-4 w-4 text-amber-600 shrink-0 mt-0.5" />
-            <div>
-              <span className="font-extrabold uppercase text-[10px] text-emerald-800 block">
-                Exam Memory Hook:
-              </span>
-              <span>{tip}</span>
+          <div className="bg-zinc-50 border border-ink/15 rounded-lg p-3 text-xs sm:text-sm font-sans text-muted">
+            <div className="font-semibold text-ink text-xs uppercase tracking-wider mb-1">
+              Examination Relevance:
             </div>
+            <div>{tip}</div>
           </div>
         )}
 
         {/* Action Buttons */}
-        <div className="flex flex-wrap items-center justify-between gap-2 pt-3 border-t-2 border-ink mt-2">
+        <div className="flex items-center justify-between gap-2 pt-3 border-t border-ink/15 mt-2 font-sans">
           <div className="flex items-center gap-2">
             {factId && onToggleMastered && (
               <Button
-                variant={isMastered ? "mint" : "outline"}
+                variant={isMastered ? "default" : "outline"}
                 size="sm"
                 onClick={() => onToggleMastered(factId)}
-                className="gap-1.5"
+                className="text-xs"
               >
-                <Check className={`h-4 w-4 ${isMastered ? "stroke-[3]" : ""}`} />
-                <span>{isMastered ? "Mastered" : "Mark Mastered"}</span>
+                {isMastered ? "Completed" : "Mark Complete"}
               </Button>
             )}
 
             {factId && onTogglePin && (
               <Button
-                variant={isPinned ? "default" : "outline"}
+                variant={isPinned ? "brand" : "outline"}
                 size="sm"
                 onClick={() => onTogglePin(factId)}
-                className="gap-1.5"
+                className="text-xs"
               >
-                <Bookmark className={`h-4 w-4 ${isPinned ? "fill-ink" : ""}`} />
-                <span>{isPinned ? "Pinned" : "Pin Fact"}</span>
+                {isPinned ? "Pinned" : "Pin Item"}
               </Button>
             )}
           </div>
@@ -113,23 +102,12 @@ export function FactDetailModal({
             variant="outline"
             size="sm"
             onClick={handleCopy}
-            className="gap-1.5 bg-white"
+            className="text-xs"
           >
-            {copied ? (
-              <>
-                <CheckCheck className="h-4 w-4 text-emerald-600" />
-                <span>Copied!</span>
-              </>
-            ) : (
-              <>
-                <Copy className="h-4 w-4" />
-                <span>Copy</span>
-              </>
-            )}
+            {copied ? "Copied" : "Copy Text"}
           </Button>
         </div>
       </DialogContent>
     </Dialog>
   );
 }
-

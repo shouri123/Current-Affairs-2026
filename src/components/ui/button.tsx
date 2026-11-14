@@ -6,34 +6,26 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-xl font-display font-bold transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink disabled:pointer-events-none disabled:opacity-50 select-none cursor-pointer border-[2.5px] border-ink active:translate-x-[2px] active:translate-y-[2px] active:shadow-none",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ink disabled:pointer-events-none disabled:opacity-50 select-none cursor-pointer border font-sans",
   {
     variants: {
       variant: {
         default:
-          "bg-popYellow text-ink shadow-brutal hover:-translate-x-[1.5px] hover:-translate-y-[1.5px] hover:shadow-brutal-lg hover:bg-yellow-300",
-        cyan:
-          "bg-popCyan text-ink shadow-brutal hover:-translate-x-[1.5px] hover:-translate-y-[1.5px] hover:shadow-brutal-lg hover:bg-sky-400",
-        pink:
-          "bg-popPink text-ink shadow-brutal hover:-translate-x-[1.5px] hover:-translate-y-[1.5px] hover:shadow-brutal-lg hover:bg-pink-400",
-        mint:
-          "bg-popMint text-ink shadow-brutal hover:-translate-x-[1.5px] hover:-translate-y-[1.5px] hover:shadow-brutal-lg hover:bg-emerald-400",
-        purple:
-          "bg-popPurple text-ink shadow-brutal hover:-translate-x-[1.5px] hover:-translate-y-[1.5px] hover:shadow-brutal-lg hover:bg-purple-400",
-        orange:
-          "bg-popOrange text-ink shadow-brutal hover:-translate-x-[1.5px] hover:-translate-y-[1.5px] hover:shadow-brutal-lg hover:bg-orange-400",
-        coral:
-          "bg-popCoral text-white shadow-brutal hover:-translate-x-[1.5px] hover:-translate-y-[1.5px] hover:shadow-brutal-lg hover:bg-red-500",
+          "bg-ink text-white border-ink hover:bg-zinc-800",
+        brand:
+          "bg-brand text-ink border-ink/30 hover:bg-sky-400 font-bold",
+        yellow:
+          "bg-popYellow text-ink border-ink/40 hover:bg-amber-300 font-bold",
         outline:
-          "bg-white text-ink shadow-brutal hover:-translate-x-[1.5px] hover:-translate-y-[1.5px] hover:shadow-brutal-lg hover:bg-zinc-50",
+          "bg-white text-ink border-ink/20 hover:bg-zinc-50 hover:border-ink/50",
         ghost:
-          "border-transparent bg-transparent shadow-none hover:bg-ink/10 hover:border-ink hover:shadow-brutal-sm",
+          "border-transparent bg-transparent hover:bg-ink/5 text-ink",
       },
       size: {
-        default: "h-10 px-4 py-2 text-sm",
-        sm: "h-8 px-3 text-xs rounded-lg border-2 shadow-brutal-sm",
-        lg: "h-12 px-6 text-base rounded-2xl shadow-brutal",
-        icon: "h-9 w-9 p-0",
+        default: "h-9 px-3.5 py-1.5",
+        sm: "h-8 px-2.5 text-xs rounded-md",
+        lg: "h-10 px-5 text-base rounded-lg",
+        icon: "h-8 w-8 p-0",
       },
     },
     defaultVariants: {
@@ -64,4 +56,3 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 Button.displayName = "Button";
 
 export { Button, buttonVariants };
-

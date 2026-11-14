@@ -10,12 +10,15 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        display: ["var(--font-fredoka)", "Fredoka", "cursive", "sans-serif"],
-        sans: ["var(--font-jakarta)", "Plus Jakarta Sans", "sans-serif"],
+        display: ["var(--font-fredoka)", "Fredoka", "sans-serif"],
+        serif: ["var(--font-serif)", "Source Serif 4", "Georgia", "serif"],
+        sans: ["system-ui", "-apple-system", "sans-serif"],
       },
       colors: {
         cream: "#FFFDF5",
         ink: "#18181B",
+        muted: "#5D5C5C",
+        brand: "#38BDF8",
         popYellow: "#FFE600",
         popPink: "#FF6B9E",
         popCyan: "#38BDF8",
@@ -25,32 +28,12 @@ const config: Config = {
         popCoral: "#FF5A5F",
         background: "#FFFDF5",
         foreground: "#18181B",
-        border: "#18181B",
+        border: "rgba(24, 24, 27, 0.15)",
       },
       boxShadow: {
-        brutal: "5px 5px 0px 0px #18181B",
-        "brutal-lg": "8px 8px 0px 0px #18181B",
-        "brutal-sm": "3px 3px 0px 0px #18181B",
-        "brutal-hover": "2px 2px 0px 0px #18181B",
-      },
-      keyframes: {
-        float: {
-          "0%, 100%": { transform: "translateY(0px) rotate(0deg)" },
-          "50%": { transform: "translateY(-6px) rotate(1deg)" },
-        },
-        wiggle: {
-          "0%, 100%": { transform: "rotate(-3deg)" },
-          "50%": { transform: "rotate(3deg)" },
-        },
-        pulseGlow: {
-          "0%, 100%": { opacity: "1" },
-          "50%": { opacity: "0.6" },
-        },
-      },
-      animation: {
-        float: "float 4s ease-in-out infinite",
-        wiggle: "wiggle 1s ease-in-out infinite",
-        pulseGlow: "pulseGlow 2s ease-in-out infinite",
+        subtle: "0 1px 3px 0 rgba(24, 24, 27, 0.05)",
+        card: "0 2px 6px 0 rgba(24, 24, 27, 0.06)",
+        dropdown: "0 10px 25px -5px rgba(24, 24, 27, 0.1)",
       },
     },
   },
@@ -58,4 +41,3 @@ const config: Config = {
 };
 
 export default config;
-

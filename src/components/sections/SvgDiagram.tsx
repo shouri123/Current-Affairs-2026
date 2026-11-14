@@ -52,7 +52,7 @@ export function SvgDiagram({ svgContent, onHotspotClick }: SvgDiagramProps) {
   return (
     <div
       ref={containerRef}
-      className="w-full overflow-hidden rounded-2xl bg-white border-2 border-ink p-2 shadow-brutal-sm"
+      className="w-full overflow-hidden rounded-lg bg-white border border-ink/15 p-2"
       dangerouslySetInnerHTML={{ __html: svgContent }}
     />
   );
