@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight, BookOpenCheck, Dices, Newspaper, Printer, Sparkles, TrendingUp } from "lucide-react";
+import { ArrowUpRight, BookOpenCheck, Dices, Newspaper, Printer, ShieldCheck, Sparkles, TrendingUp } from "lucide-react";
 
 interface HeroProps {
   onOpenArcade: () => void;
@@ -33,7 +33,7 @@ export function Hero({
           </div>
 
           <h1 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-ink leading-[1.06] tracking-tight mb-4 max-w-3xl">
-            September 2026 <span className="relative inline-block">Current Affairs<span className="absolute left-0 -bottom-1 h-2 w-full bg-popPink/70 -z-10" /></span> Gazette
+            September 2026 <span className="relative z-0 inline-block">Current Affairs<span className="absolute left-0 -bottom-1 h-2 w-full bg-popPink/70 -z-10" /></span> Gazette
           </h1>
 
           <p className="text-sm sm:text-base text-ink/80 font-serif leading-relaxed mb-6 max-w-xl">
@@ -41,7 +41,8 @@ export function Hero({
           </p>
           <div className="flex flex-wrap gap-2 mb-6 text-[11px] font-sans font-bold">
             <span className="inline-flex items-center gap-1.5 px-2.5 py-1.5 border-2 border-ink rounded-md bg-popMint/70"><Sparkles className="h-3.5 w-3.5" /> Exam-focused intelligence</span>
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1.5 border-2 border-ink rounded-md bg-popCyan/60"><TrendingUp className="h-3.5 w-3.5" /> 11 subject areas</span>
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1.5 border-2 border-ink rounded-md bg-popCyan/60"><TrendingUp className="h-3.5 w-3.5" /> {totalFacts} curated entries</span>
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1.5 border-2 border-ink rounded-md bg-popPurple/30"><ShieldCheck className="h-3.5 w-3.5" /> {mustKnowCount} priority facts</span>
           </div>
 
           {/* Action Buttons */}
