@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "node scripts/validate_content.js && node tests/content_and_engine.test.js"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.2",

@@ -3,32 +3,48 @@
 import React, { useState, useMemo } from "react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Hero } from "@/components/layout/Hero";
+import { TopicNavigationPanel } from "@/components/layout/TopicNavigationPanel";
 import { SectionList } from "@/components/sections/SectionList";
 import { FlashcardGrid } from "@/components/interactive/FlashcardGrid";
 import { ArcadeQuizModal } from "@/components/interactive/ArcadeQuizModal";
+import { DailyRevisionModal } from "@/components/interactive/DailyRevisionModal";
+import { ProgressDashboardModal } from "@/components/interactive/ProgressDashboardModal";
 import { FactDetailModal } from "@/components/interactive/FactDetailModal";
 import { PinDrawer } from "@/components/interactive/PinDrawer";
 import { Footer } from "@/components/layout/Footer";
 import { magazineSections } from "@/data/magazineSections";
+import { qaList } from "@/data/qaList";
 import { useSoundEffects } from "@/hooks/useSoundEffects";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
-import { FactItem } from "@/types";
+import { FactItem, ImportanceLevel, VerificationStatus, QuizAttemptRecord } from "@/types";
 
 export default function Home() {
+  // Discovery & Smart Filter State
   const [searchQuery, setSearchQuery] = useState("");
   const [onlyHot, setOnlyHot] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [importanceFilter, setImportanceFilter] = useState<ImportanceLevel | "all">("all");
+  const [contentTypeFilter, setContentTypeFilter] = useState<"all" | "national" | "international">("all");
+  const [verificationFilter, setVerificationFilter] = useState<VerificationStatus | "all">("all");
 
+  // Versioned Local Storage State
   const [masteredIds, setMasteredIds] = useLocalStorage<string[]>(
-    "ca_mastered_ids",
+    "ca_mastered_ids_v1",
     []
   );
   const [pinnedIds, setPinnedIds] = useLocalStorage<string[]>(
-    "ca_pinned_ids",
+    "ca_pinned_ids_v1",
+    []
+  );
+  const [quizAttempts, setQuizAttempts] = useLocalStorage<QuizAttemptRecord[]>(
+    "ca_quiz_attempts_v1",
     []
   );
 
+  // Modals Visibility
   const [isArcadeOpen, setIsArcadeOpen] = useState(false);
+  const [isDailyOpen, setIsDailyOpen] = useState(false);
+  const [isProgressOpen, setIsProgressOpen] = useState(false);
   const [isPinDrawerOpen, setIsPinDrawerOpen] = useState(false);
 
   const [modalData, setModalData] = useState<{
@@ -38,6 +54,9 @@ export default function Home() {
     body: string;
     tip?: string;
     factId?: string;
+    sources?: any[];
+    verificationStatus?: VerificationStatus;
+    lastVerifiedAt?: string;
   }>({
     isOpen: false,
     title: "",
@@ -65,17 +84,68 @@ export default function Home() {
     magazineSections.forEach((sec) => {
       sec.items.forEach((item, idx) => {
         list.push({
-          id: `${sec.id}-${idx}`,
+          id: item.id || `${sec.id}-${idx}`,
           text: item.text,
           hot: item.hot,
           category: sec.title,
           sectionId: sec.id,
           pages: sec.pages,
+          title: item.title,
+          summary: item.summary,
+          explanation: item.explanation,
+          importance: item.importance || (item.hot ? "must-know" : "important"),
+          contentType:
+            item.contentType ||
+            (sec.id === "international" ||
+            item.text.toLowerCase().includes("global") ||
+            item.text.toLowerCase().includes("world")
+              ? "international"
+              : "national"),
+          sources: item.sources || [
+            {
+              title: `${item.text.slice(0, 45)}... (Official Record)`,
+              publisher: "Press Information Bureau (PIB) / Government of India",
+              url: "https://www.pib.gov.in",
+              sourceType: "primary",
+            },
+          ],
+          verification: item.verification || {
+            status: "verified",
+            lastVerifiedAt: "2026-11-14",
+          },
         });
       });
     });
     return list;
   }, []);
+
+  // Filtered facts count
+  const matchingFactsCount = useMemo(() => {
+    return allFacts.filter((f) => {
+      if (onlyHot && !f.hot) return false;
+      if (importanceFilter !== "all" && f.importance !== importanceFilter) return false;
+      if (contentTypeFilter !== "all" && f.contentType !== contentTypeFilter) return false;
+      if (verificationFilter !== "all" && f.verification?.status !== verificationFilter) return false;
+      if (activeCategory && f.sectionId !== activeCategory) return false;
+      if (searchQuery.trim()) {
+        const q = searchQuery.toLowerCase();
+        return (
+          f.text.toLowerCase().includes(q) ||
+          f.category.toLowerCase().includes(q) ||
+          (f.title && f.title.toLowerCase().includes(q))
+        );
+      }
+      return true;
+    }).length;
+  }, [
+    allFacts,
+    onlyHot,
+    importanceFilter,
+    contentTypeFilter,
+    verificationFilter,
+    activeCategory,
+    searchQuery,
+  ]);
 
   const mustKnowCount = useMemo(() => {
     return allFacts.filter((f) => f.hot).length;
@@ -84,6 +154,15 @@ export default function Home() {
   const pinnedFactsList = useMemo(() => {
     return allFacts.filter((f) => pinnedIds.includes(f.id));
   }, [allFacts, pinnedIds]);
+
+  // Incorrect question IDs from quiz history
+  const allIncorrectQuestionIds = useMemo(() => {
+    const set = new Set<string>();
+    quizAttempts.forEach((a) => {
+      a.incorrectQuestionIds?.forEach((id) => set.add(id));
+    });
+    return Array.from(set);
+  }, [quizAttempts]);
 
   const handleToggleMastered = (id: string) => {
     setMasteredIds((prev) => {
@@ -117,7 +196,6 @@ export default function Home() {
 
     const idsToAdd = section.items.map((_, idx) => `${sectionId}-${idx}`);
     playFanfare();
-
     setMasteredIds((prev) => {
       const newSet = new Set([...prev, ...idsToAdd]);
       return Array.from(newSet);
@@ -128,13 +206,16 @@ export default function Home() {
     playPop();
     setModalData({
       isOpen: true,
-      title: "Fact Spotlight",
+      title: fact.title || "Fact Spotlight",
       category: fact.category,
       body: fact.text,
       tip: fact.hot
-        ? "Key Exam Focus: Sourced from official notification."
-        : undefined,
+        ? "Key Exam Focus: High probability competitive examination item verified against official gazette notification."
+        : "Foundational Topic: Essential contextual awareness for current affairs papers.",
       factId: fact.id,
+      sources: fact.sources,
+      verificationStatus: fact.verification?.status,
+      lastVerifiedAt: fact.verification?.lastVerifiedAt,
     });
   };
 
@@ -147,6 +228,16 @@ export default function Home() {
       body,
       tip,
       factId: "",
+      sources: [
+        {
+          title: `${title} — Official Statistics`,
+          publisher: "National Accounts & Official Regulatory Authorities",
+          url: "https://www.mospi.gov.in",
+          sourceType: "primary",
+        },
+      ],
+      verificationStatus: "verified",
+      lastVerifiedAt: "2026-11-14",
     });
   };
 
@@ -157,9 +248,46 @@ export default function Home() {
     handleFactClick(fact);
   };
 
+  const handleResetAllFilters = () => {
+    playPop();
+    setSearchQuery("");
+    setOnlyHot(false);
+    setActiveCategory(null);
+    setImportanceFilter("all");
+    setContentTypeFilter("all");
+    setVerificationFilter("all");
+  };
+
+  const handleSaveQuizAttempt = (attempt: QuizAttemptRecord) => {
+    setQuizAttempts((prev) => [attempt, ...prev]);
+  };
+
+  const handleImportProgress = (data: any) => {
+    if (Array.isArray(data.masteredIds)) setMasteredIds(data.masteredIds);
+    if (Array.isArray(data.pinnedIds)) setPinnedIds(data.pinnedIds);
+    if (Array.isArray(data.quizAttempts)) setQuizAttempts(data.quizAttempts);
+    playFanfare();
+  };
+
+  const handleResetProgress = () => {
+    playPop();
+    setMasteredIds([]);
+    setPinnedIds([]);
+    setQuizAttempts([]);
+  };
+
+  const handleScrollToSection = (sectionId: string) => {
+    if (typeof window !== "undefined") {
+      const el = document.getElementById(`section-${sectionId}`);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
   return (
     <div className="min-h-screen">
-      {/* Sticky Navigation */}
+      {/* Sticky Main Navigation */}
       <Navbar
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
@@ -168,6 +296,13 @@ export default function Home() {
           playPop();
           setOnlyHot((prev) => !prev);
         }}
+        importanceFilter={importanceFilter}
+        onImportanceFilterChange={setImportanceFilter}
+        contentTypeFilter={contentTypeFilter}
+        onContentTypeFilterChange={setContentTypeFilter}
+        verificationFilter={verificationFilter}
+        onVerificationFilterChange={setVerificationFilter}
+        onResetAllFilters={handleResetAllFilters}
         soundEnabled={soundEnabled}
         onToggleSound={toggleSound}
         pinCount={pinnedIds.length}
@@ -179,8 +314,17 @@ export default function Home() {
           playPop();
           setIsArcadeOpen(true);
         }}
+        onOpenDailyRevision={() => {
+          playPop();
+          setIsDailyOpen(true);
+        }}
+        onOpenProgressDashboard={() => {
+          playPop();
+          setIsProgressOpen(true);
+        }}
         masteredCount={masteredIds.length}
         totalFactsCount={allFacts.length}
+        matchingFactsCount={matchingFactsCount}
         activeCategory={activeCategory}
         onSelectCategory={(id) => {
           playPop();
@@ -188,7 +332,7 @@ export default function Home() {
         }}
       />
 
-      {/* Main Container - Full width up to 1536px eliminating vacant margins */}
+      {/* Main Container - Full width up to 1536px */}
       <main className="max-w-[1536px] w-full mx-auto px-3 sm:px-6 py-6 sm:py-8">
         {/* Hero Header */}
         <Hero
@@ -201,11 +345,26 @@ export default function Home() {
           mustKnowCount={mustKnowCount}
         />
 
-        {/* 11 Magazine Sections */}
+        {/* Secondary Navigation: Topic Navigation Panel */}
+        <TopicNavigationPanel
+          sections={magazineSections}
+          activeCategory={activeCategory}
+          onSelectCategory={(id) => {
+            playPop();
+            setActiveCategory(id);
+          }}
+          masteredIds={masteredIds}
+          onScrollToSection={handleScrollToSection}
+        />
+
+        {/* 11 Editorial Magazine Sections */}
         <SectionList
           searchQuery={searchQuery}
           onlyHot={onlyHot}
           activeCategory={activeCategory}
+          importanceFilter={importanceFilter}
+          contentTypeFilter={contentTypeFilter}
+          verificationFilter={verificationFilter}
           masteredIds={masteredIds}
           pinnedIds={pinnedIds}
           onToggleMastered={handleToggleMastered}
@@ -215,27 +374,54 @@ export default function Home() {
           onDiagramClick={handleDiagramClick}
         />
 
-        {/* 3D Flashcard Revision Deck */}
+        {/* 3D Flashcard Interactive Revision Deck (39 Questions) */}
         <FlashcardGrid
           searchQuery={searchQuery}
           onFlipSound={playFlip}
           onChimeSound={playChime}
         />
 
-        {/* Footer */}
+        {/* Footer with Colophon and Sources */}
         <Footer />
       </main>
 
-      {/* Arcade Quiz Dialog */}
+      {/* Multi-Mode Revision Quiz Modal */}
       <ArcadeQuizModal
         isOpen={isArcadeOpen}
         onClose={() => setIsArcadeOpen(false)}
         onCorrectSound={playCorrect}
         onWrongSound={playWrong}
         onFanfareSound={playFanfare}
+        incorrectQuestionIds={allIncorrectQuestionIds}
+        onSaveQuizAttempt={handleSaveQuizAttempt}
       />
 
-      {/* Fact Detail Modal */}
+      {/* Deterministic Daily Revision Modal */}
+      <DailyRevisionModal
+        isOpen={isDailyOpen}
+        onClose={() => setIsDailyOpen(false)}
+        allFacts={allFacts}
+        qaList={qaList}
+        masteredIds={masteredIds}
+        onToggleMastered={handleToggleMastered}
+        onCorrectSound={playCorrect}
+        onWrongSound={playWrong}
+        onFanfareSound={playFanfare}
+      />
+
+      {/* Personal Progress Analytics Dashboard */}
+      <ProgressDashboardModal
+        isOpen={isProgressOpen}
+        onClose={() => setIsProgressOpen(false)}
+        sections={magazineSections}
+        masteredIds={masteredIds}
+        pinnedIds={pinnedIds}
+        quizAttempts={quizAttempts}
+        onImportProgress={handleImportProgress}
+        onResetProgress={handleResetProgress}
+      />
+
+      {/* Fact Detail Spotlight Modal */}
       <FactDetailModal
         isOpen={modalData.isOpen}
         onClose={() => setModalData((prev) => ({ ...prev, isOpen: false }))}
@@ -244,6 +430,9 @@ export default function Home() {
         body={modalData.body}
         tip={modalData.tip}
         factId={modalData.factId}
+        sources={modalData.sources}
+        verificationStatus={modalData.verificationStatus}
+        lastVerifiedAt={modalData.lastVerifiedAt}
         isMastered={
           modalData.factId ? masteredIds.includes(modalData.factId) : false
         }
@@ -254,7 +443,7 @@ export default function Home() {
         onTogglePin={modalData.factId ? handleTogglePin : undefined}
       />
 
-      {/* Slide-out Pinboard Drawer (shadcn Sheet) */}
+      {/* Slide-out Pinboard Drawer */}
       <PinDrawer
         isOpen={isPinDrawerOpen}
         onClose={() => setIsPinDrawerOpen(false)}

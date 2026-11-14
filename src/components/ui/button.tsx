@@ -16,6 +16,10 @@ const buttonVariants = cva(
           "bg-brand text-ink border-ink/30 hover:bg-sky-400 font-bold",
         yellow:
           "bg-popYellow text-ink border-ink/40 hover:bg-amber-300 font-bold",
+        secondary:
+          "bg-zinc-100 text-ink border-ink/20 hover:bg-zinc-200",
+        destructive:
+          "bg-rose-600 text-white border-rose-700 hover:bg-rose-700",
         outline:
           "bg-white text-ink border-ink/20 hover:bg-zinc-50 hover:border-ink/50",
         ghost:

@@ -1,24 +1,49 @@
 "use client";
 
-import React, { useRef } from "react";
-import { Search, Volume2, VolumeX, Bookmark, X, ChevronLeft, ChevronRight } from "lucide-react";
+import React, { useRef, useState } from "react";
+import {
+  Search,
+  Volume2,
+  VolumeX,
+  Bookmark,
+  X,
+  ChevronLeft,
+  ChevronRight,
+  Filter,
+  Layers,
+  Award,
+  Calendar,
+  Sparkles,
+  BookOpen,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { magazineSections } from "@/data/magazineSections";
+import { ImportanceLevel, VerificationStatus } from "@/types";
 
 interface NavbarProps {
   searchQuery: string;
   onSearchChange: (q: string) => void;
   onlyHot: boolean;
   onToggleOnlyHot: () => void;
+  importanceFilter: ImportanceLevel | "all";
+  onImportanceFilterChange: (lvl: ImportanceLevel | "all") => void;
+  contentTypeFilter: "all" | "national" | "international";
+  onContentTypeFilterChange: (type: "all" | "national" | "international") => void;
+  verificationFilter: VerificationStatus | "all";
+  onVerificationFilterChange: (status: VerificationStatus | "all") => void;
+  onResetAllFilters: () => void;
   soundEnabled: boolean;
   onToggleSound: () => void;
   pinCount: number;
   onOpenPinDrawer: () => void;
   onOpenArcade: () => void;
+  onOpenDailyRevision: () => void;
+  onOpenProgressDashboard: () => void;
   masteredCount: number;
   totalFactsCount: number;
+  matchingFactsCount: number;
   activeCategory: string | null;
   onSelectCategory: (id: string | null) => void;
 }
@@ -28,16 +53,27 @@ export function Navbar({
   onSearchChange,
   onlyHot,
   onToggleOnlyHot,
+  importanceFilter,
+  onImportanceFilterChange,
+  contentTypeFilter,
+  onContentTypeFilterChange,
+  verificationFilter,
+  onVerificationFilterChange,
+  onResetAllFilters,
   soundEnabled,
   onToggleSound,
   pinCount,
   onOpenPinDrawer,
   onOpenArcade,
+  onOpenDailyRevision,
+  onOpenProgressDashboard,
   masteredCount,
   totalFactsCount,
+  matchingFactsCount,
   activeCategory,
   onSelectCategory,
 }: NavbarProps) {
+  const [showFiltersMenu, setShowFiltersMenu] = useState(false);
   const masteryPercentage =
     totalFactsCount > 0 ? Math.round((masteredCount / totalFactsCount) * 100) : 0;
   const pillsScrollRef = useRef<HTMLDivElement>(null);
@@ -49,168 +85,176 @@ export function Navbar({
     }
   };
 
+  const hasActiveFilters =
+    Boolean(searchQuery.trim()) ||
+    onlyHot ||
+    importanceFilter !== "all" ||
+    contentTypeFilter !== "all" ||
+    verificationFilter !== "all" ||
+    activeCategory !== null;
+
   return (
-    <nav className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-ink/15 px-4 sm:px-6 py-2.5 no-print">
-      <div className="max-w-[1536px] w-full mx-auto flex flex-wrap items-center justify-between gap-3">
-        {/* Brand - No emoji */}
-        <div className="flex items-center gap-2">
-          <a
-            href="#"
-            className="flex items-baseline gap-2 cursor-pointer no-underline"
-          >
-            <span className="font-display font-bold text-lg sm:text-xl text-ink tracking-tight">
-              Current Affairs Gazette
-            </span>
-            <span className="text-xs font-sans font-semibold text-muted">
-              September 2026
-            </span>
-          </a>
-        </div>
-
-        {/* Search Bar */}
-        <div className="flex-1 max-w-md min-w-[200px] relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted" />
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => onSearchChange(e.target.value)}
-            placeholder="Search GDP, BRICS, UPI, appointments..."
-            className="w-full bg-cream border border-ink/20 rounded-md pl-8 pr-7 py-1.5 text-xs sm:text-sm font-sans text-ink placeholder:text-muted focus:outline-none focus:border-brand"
-          />
-          {searchQuery && (
-            <button
-              onClick={() => onSearchChange("")}
-              className="absolute right-2 top-1/2 -translate-y-1/2 p-0.5 rounded text-muted hover:text-ink"
+    <nav className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-ink/15 px-3 sm:px-6 py-2.5 no-print">
+      <div className="max-w-[1536px] w-full mx-auto space-y-2">
+        {/* Row 1: Brand Logo, Global Search & Primary Action Modules */}
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          {/* Brand - Crisp typography */}
+          <div className="flex items-center gap-2">
+            <a
+              href="#"
+              className="flex items-baseline gap-2 cursor-pointer no-underline"
             >
-              <X className="h-3 w-3" />
-            </button>
-          )}
-        </div>
+              <span className="font-display font-bold text-lg sm:text-xl text-ink tracking-tight">
+                Current Affairs Gazette
+              </span>
+              <span className="text-xs font-sans font-semibold text-muted">
+                September 2026
+              </span>
+            </a>
+          </div>
 
-        {/* Action Controls - Plain buttons without tiles */}
-        <div className="flex items-center gap-2 font-sans">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={onToggleSound}
-            title={soundEnabled ? "Mute audio cues" : "Enable audio cues"}
-            className="gap-1 text-xs"
-          >
-            {soundEnabled ? (
-              <>
-                <Volume2 className="h-3.5 w-3.5" />
-                <span className="hidden sm:inline">Audio</span>
-              </>
-            ) : (
-              <>
-                <VolumeX className="h-3.5 w-3.5 text-muted" />
-                <span className="hidden sm:inline text-muted">Muted</span>
-              </>
+          {/* Search Bar */}
+          <div className="flex-1 max-w-md min-w-[200px] relative">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => onSearchChange(e.target.value)}
+              placeholder="Search GDP, BRICS, UPI, appointments, dates..."
+              className="w-full bg-cream border border-ink/20 rounded-md pl-8 pr-7 py-1.5 text-xs sm:text-sm font-sans text-ink placeholder:text-muted focus:outline-none focus:border-brand"
+            />
+            {searchQuery && (
+              <button
+                onClick={() => onSearchChange("")}
+                className="absolute right-2 top-1/2 -translate-y-1/2 p-0.5 rounded text-muted hover:text-ink"
+              >
+                <X className="h-3 w-3" />
+              </button>
             )}
-          </Button>
+          </div>
 
-          <Button
-            variant={onlyHot ? "yellow" : "outline"}
-            size="sm"
-            onClick={onToggleOnlyHot}
-            className="text-xs"
-          >
-            <span>Must-Know</span>
-          </Button>
-
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={onOpenArcade}
-            className="text-xs"
-          >
-            <span>Quiz</span>
-          </Button>
-
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={onOpenPinDrawer}
-            className="gap-1.5 text-xs"
-          >
-            <Bookmark className="h-3.5 w-3.5" />
-            <span>Pinned</span>
-            <Badge variant="default" className="h-4 px-1 text-[10px]">
-              {pinCount}
-            </Badge>
-          </Button>
-        </div>
-      </div>
-
-      {/* Mastery Progress Bar */}
-      <div className="max-w-[1536px] w-full mx-auto mt-2 flex items-center gap-3 font-sans">
-        <Progress value={masteryPercentage} className="h-1.5 flex-1" />
-        <span className="text-[11px] font-medium text-muted shrink-0">
-          {masteredCount} of {totalFactsCount} recorded ({masteryPercentage}%)
-        </span>
-      </div>
-
-      {/* Category Navigation - No emoji */}
-      <div className="max-w-[1536px] w-full mx-auto mt-2 relative flex items-center font-sans">
-        <button
-          onClick={() => scrollPills("left")}
-          className="hidden sm:flex shrink-0 h-6 w-6 rounded border border-ink/20 bg-white items-center justify-center mr-1 text-muted hover:text-ink hover:bg-zinc-50"
-          title="Scroll Left"
-        >
-          <ChevronLeft className="h-3.5 w-3.5" />
-        </button>
-
-        <div
-          ref={pillsScrollRef}
-          className="flex-1 flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar scroll-smooth"
-        >
-          <button
-            onClick={() => onSelectCategory(null)}
-            className={`shrink-0 px-2.5 py-1 rounded text-xs font-semibold border transition-colors ${
-              activeCategory === null
-                ? "bg-ink text-white border-ink"
-                : "bg-white text-ink border-ink/20 hover:bg-zinc-50"
-            }`}
-          >
-            All Sections
-          </button>
-
-          {magazineSections.map((sec) => (
-            <button
-              key={sec.id}
-              onClick={() => {
-                onSelectCategory(sec.id);
-                const el = document.getElementById(`section-${sec.id}`);
-                if (el) el.scrollIntoView({ behavior: "smooth" });
-              }}
-              className={`shrink-0 px-2.5 py-1 rounded text-xs font-semibold border transition-colors ${
-                activeCategory === sec.id
-                  ? "bg-brand text-ink border-ink/40 font-bold"
-                  : "bg-white text-ink border-ink/20 hover:bg-zinc-50"
-              }`}
+          {/* Action Modules */}
+          <div className="flex items-center gap-1.5 sm:gap-2 font-sans flex-wrap">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={onOpenDailyRevision}
+              className="text-xs gap-1.5 border-brand/40 bg-sky-50/50 hover:bg-sky-100/50 text-ink"
             >
-              {sec.title}
-            </button>
-          ))}
+              <Calendar className="h-3.5 w-3.5 text-brand" />
+              <span className="hidden sm:inline">Daily Revision</span>
+              <span className="sm:hidden">Daily</span>
+            </Button>
 
-          <button
-            onClick={() => {
-              const el = document.getElementById("section-quiz");
-              if (el) el.scrollIntoView({ behavior: "smooth" });
-            }}
-            className="shrink-0 px-2.5 py-1 rounded text-xs font-semibold border border-ink/20 bg-zinc-100 text-ink hover:bg-zinc-200 transition-colors"
-          >
-            Revision Q&A Deck
-          </button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={onOpenArcade}
+              className="text-xs gap-1.5 border-popPink/40 bg-pink-50/50 hover:bg-pink-100/50 text-ink"
+            >
+              <BookOpen className="h-3.5 w-3.5 text-popPink" />
+              <span>Quiz</span>
+            </Button>
+
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={onOpenProgressDashboard}
+              className="text-xs gap-1.5"
+            >
+              <Award className="h-3.5 w-3.5 text-emerald-600" />
+              <span className="hidden md:inline">Progress ({masteryPercentage}%)</span>
+              <span className="md:hidden">{masteryPercentage}%</span>
+            </Button>
+
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={onOpenPinDrawer}
+              className="text-xs gap-1.5"
+            >
+              <Bookmark className="h-3.5 w-3.5 fill-brand text-brand" />
+              <span className="font-semibold">{pinCount}</span>
+            </Button>
+
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={onToggleSound}
+              title={soundEnabled ? "Mute audio cues" : "Enable audio cues"}
+              className="text-xs px-2"
+            >
+              {soundEnabled ? (
+                <Volume2 className="h-3.5 w-3.5 text-muted" />
+              ) : (
+                <VolumeX className="h-3.5 w-3.5 text-zinc-400" />
+              )}
+            </Button>
+          </div>
         </div>
 
-        <button
-          onClick={() => scrollPills("right")}
-          className="hidden sm:flex shrink-0 h-6 w-6 rounded border border-ink/20 bg-white items-center justify-center ml-1 text-muted hover:text-ink hover:bg-zinc-50"
-          title="Scroll Right"
-        >
-          <ChevronRight className="h-3.5 w-3.5" />
-        </button>
+        {/* Row 2: Smart Filter Toolbar */}
+        <div className="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-ink/10 text-xs font-sans">
+          <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+            <Button
+              variant={onlyHot ? "yellow" : "outline"}
+              size="sm"
+              onClick={onToggleOnlyHot}
+              className="text-xs py-1 h-7"
+            >
+              Must-Know Only
+            </Button>
+
+            {/* Importance filter */}
+            <select
+              value={importanceFilter}
+              onChange={(e) => onImportanceFilterChange(e.target.value as any)}
+              className="bg-cream border border-ink/20 rounded px-2 py-1 text-xs text-ink focus:outline-none focus:border-brand"
+            >
+              <option value="all">Importance: All</option>
+              <option value="must-know">Must-Know (High)</option>
+              <option value="important">Important</option>
+            </select>
+
+            {/* Content Type filter */}
+            <select
+              value={contentTypeFilter}
+              onChange={(e) => onContentTypeFilterChange(e.target.value as any)}
+              className="bg-cream border border-ink/20 rounded px-2 py-1 text-xs text-ink focus:outline-none focus:border-brand"
+            >
+              <option value="all">Region: All</option>
+              <option value="national">National</option>
+              <option value="international">International</option>
+            </select>
+
+            {/* Verification Status filter */}
+            <select
+              value={verificationFilter}
+              onChange={(e) => onVerificationFilterChange(e.target.value as any)}
+              className="bg-cream border border-ink/20 rounded px-2 py-1 text-xs text-ink focus:outline-none focus:border-brand"
+            >
+              <option value="all">Status: All</option>
+              <option value="verified">Verified Official</option>
+              <option value="needs-review">Needs Review</option>
+            </select>
+
+            {hasActiveFilters && (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={onResetAllFilters}
+                className="text-xs h-7 py-0 text-muted hover:text-ink gap-1"
+              >
+                <X className="h-3 w-3" />
+                Clear Filters
+              </Button>
+            )}
+          </div>
+
+          <div className="text-muted text-[11px] font-medium">
+            Showing <strong className="text-ink">{matchingFactsCount}</strong> of {totalFactsCount} facts
+          </div>
+        </div>
       </div>
     </nav>
   );

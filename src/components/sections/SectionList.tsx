@@ -15,6 +15,9 @@ interface SectionListProps {
   searchQuery: string;
   onlyHot: boolean;
   activeCategory: string | null;
+  importanceFilter?: string;
+  contentTypeFilter?: string;
+  verificationFilter?: string;
   masteredIds: string[];
   pinnedIds: string[];
   onToggleMastered: (id: string) => void;
@@ -28,6 +31,9 @@ export function SectionList({
   searchQuery,
   onlyHot,
   activeCategory,
+  importanceFilter = "all",
+  contentTypeFilter = "all",
+  verificationFilter = "all",
   masteredIds,
   pinnedIds,
   onToggleMastered,
@@ -65,7 +71,7 @@ export function SectionList({
     }, containerRef);
 
     return () => ctx.revert();
-  }, [activeCategory, onlyHot, searchQuery]);
+  }, [activeCategory, onlyHot, searchQuery, importanceFilter, contentTypeFilter, verificationFilter]);
 
   const displayedSections = activeCategory
     ? magazineSections.filter((s) => s.id === activeCategory)
@@ -79,6 +85,9 @@ export function SectionList({
           section={sec}
           searchQuery={searchQuery}
           onlyHot={onlyHot}
+          importanceFilter={importanceFilter}
+          contentTypeFilter={contentTypeFilter}
+          verificationFilter={verificationFilter}
           masteredIds={masteredIds}
           pinnedIds={pinnedIds}
           onToggleMastered={onToggleMastered}

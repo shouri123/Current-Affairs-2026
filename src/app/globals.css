@@ -96,16 +96,42 @@ body {
 }
 
 @media print {
-  body {
-    background: #FFF !important;
-    color: #000 !important;
+  @page {
+    margin: 1.5cm;
+    size: A4 portrait;
   }
-  .no-print {
+  body {
+    background: #FFFFFF !important;
+    color: #18181B !important;
+    font-size: 11pt !important;
+    line-height: 1.45 !important;
+  }
+  .no-print,
+  nav,
+  button,
+  [role="dialog"],
+  .dialog-overlay,
+  aside {
     display: none !important;
   }
   .print-section {
     page-break-inside: avoid;
-    border: 1px solid #CCC !important;
-    margin-bottom: 24px !important;
+    break-inside: avoid;
+    border: 1px solid rgba(24, 24, 27, 0.2) !important;
+    margin-bottom: 2rem !important;
+    box-shadow: none !important;
+  }
+  .gazette-card {
+    border: 1px solid rgba(24, 24, 27, 0.2) !important;
+    box-shadow: none !important;
+  }
+  .highlight-badge {
+    border-bottom: 1px solid #18181B !important;
+    background-color: #FFF !important;
+    font-weight: 700 !important;
+  }
+  a {
+    text-decoration: none !important;
+    color: #18181B !important;
   }
 }

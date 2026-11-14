@@ -70,7 +70,7 @@ export const magazineSections: MagazineSection[] = [
           { text: "The RBI introduced UPI Tap-to-Pay using NFC technology; transactions below ₹5,000 can be made without a PIN at compatible PoS terminals.", hot: true },
           { text: "The RBI allowed LIC to acquire up to 9.99% of ICICI Bank's paid-up share capital or voting rights; the approval is valid for one year.", hot: false },
           { text: "The Union Cabinet raised the EPFO wage ceiling from ₹15,000 to ₹25,000 per month, potentially bringing 51 lakh+ additional employees under coverage.", hot: true },
-          { text: "Sagarmala Finance Corporation announced India's maiden blue bond of ₹600 crore with a ₹500-crore greenshoe option, a 10-year maturity and AA+ ratings from ICRA and CARE.", hot: true },
+          { text: "Sagarmala Finance Corporation announced India's maiden blue bond of ₹600 crore with a ₹500-crore greenshoe option; the proposed issue was subsequently withdrawn on 28 September 2026 after bids quoted higher coupons than acceptable.", hot: true },
           { text: "The US Federal Reserve raised its benchmark rate by 25 basis points to 3.75%–4%, its first increase since July 2023.", hot: true }
         ]
       },
@@ -509,7 +509,7 @@ export const magazineSections: MagazineSection[] = [
           { text: "At the 78th Primetime Emmy Awards: The Pitt won Best Drama Series, Widow's Bay won Best Comedy Series, DTF St Louis won Best Limited or Anthology Series, and Rebel Ridge won Best Television Movie.", hot: true },
           { text: "Nagaland filmmaker Theja Rio's Angh won the Platform Prize at TIFF 2026 and a C$20,000 cash prize, becoming the first film under TIFF's new International Feature Film Oscar pathway.", hot: true },
           { text: "Composer Shantanu Moitra was selected for the National Lata Mangeshkar Award 2026, carrying a ₹5 lakh tax-free cash prize and citation.", hot: true },
-          { text: "The Booker Prize 2026 shortlist of six novels was selected from 163 submissions (winner scheduled for 9 November 2026).", hot: false },
+          { text: "The Booker Prize 2026 shortlist of six novels was selected from 163 submissions; M. John Harrison won the prize for 'The End of Everything' on 9 November 2026.", hot: false },
           { text: "Joheirry Mola of the Dominican Republic was crowned Miss World 2026, the country's second title after 1982.", hot: false },
           { text: "Veteran Kannada actor Anant Nag was selected for the Dadasaheb Phalke Award 2024.", hot: true },
           { text: "Kishor Makwana was selected for the Dr APJ Abdul Kalam Jan Seva Puraskar, to be presented at the 16th Sansad Ratna Awards.", hot: false },
@@ -597,7 +597,7 @@ export const magazineSections: MagazineSection[] = [
             <g class="svg-hotspot" onclick="jumpAndSearch('kabaddi')">
               <circle cx="75" cy="112" r="34" fill="#FFE600" stroke="#18181B" stroke-width="3"/>
               <circle cx="75" cy="102" r="12" fill="#FFE600" stroke="#18181B" stroke-width="1.5"/><text x="75" y="106" text-anchor="middle" font-family="Fredoka" font-size="10" font-weight="700">Gold</text>
-              <text x="75" y="125" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="9">Kabaddi 37-33</text>
+              <text x="75" y="125" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="9">Kabaddi 37-34</text>
             </g>
 
             <g class="svg-hotspot" onclick="jumpAndSearch('Mirabai')">
@@ -623,7 +623,7 @@ export const magazineSections: MagazineSection[] = [
           { text: "The 20th Asian Games began in Aichi-Nagoya, Japan, on 19 September 2026 (to 4 October); the mascot is Honohon (meaning 'flame'), the opening-ceremony theme is \"Harmonic Heart Beat\" and the slogan is \"Imagine One Asia.\"", hot: true },
           { text: "Manu Bhaker (shooting) and Pawan Sehrawat (kabaddi) carried the Indian flag at the Asian Games opening ceremony, with Pawan replacing Tajinderpal Singh Toor; India sent a 503-member contingent.", hot: true },
           { text: "India won a record eighth Women's Asia Cup title and also completed a golden double at the Junior Asia Cup 2026.", hot: false },
-          { text: "India won the Asian Games 2026 women's kabaddi gold (37–33 over Iran), its fourth gold in the event after 2010, 2014 and 2022.", hot: true },
+          { text: "India won the Asian Games 2026 women's kabaddi gold (37–34 over Iran), its fourth gold in the event after 2010, 2014 and 2022.", hot: true },
           { text: "Mirabai Chanu won silver in the women's 49 kg weightlifting event at the Asian Games with a combined lift of 198 kg.", hot: true },
           { text: "Sawan Barwal won the Asian Games men's marathon silver in 2:11:37, ending India's 44-year wait for a marathon medal.", hot: true },
           { text: "Elena Rybakina won the US Open 2026 women's singles title.", hot: true },
@@ -706,7 +706,7 @@ export const magazineSections: MagazineSection[] = [
           { text: "[Aviation • National] Modified UDAN enters a new 10-year phase to develop 100 new airports and ~200 helipads with an outlay of ₹28,840 crore; VGF support for airlines extended from 3 to 5 years.", hot: true },
           { text: "[Aviation • National] India's domestic air passenger traffic contracted 7.5% YoY in August 2026 (IATA).", hot: false },
           { text: "[Aviation • International] Global air passenger demand (RPK) fell 0.8% YoY in August 2026 as Middle Eastern carriers dropped 14.6% (load factor 85.1%); global air cargo demand rose 4.4%.", hot: false },
-          { text: "[Aviation • International] Ryanair carried a record 22.2 million passengers in August 2026 (96% load factor) but cut FY27 forecast to 214M after 400+ flights cancelled due to Mount Etna eruptions.", hot: false },
+          { text: "[Aviation • International] Ryanair carried a record 22.2 million passengers in August 2026 (96% load factor). Separately, the airline adjusted its FY27 traffic target from 216m to 214m to mitigate unhedged winter oil exposure; over 400 flights were cancelled in August due to Mount Etna eruptions.", hot: false },
           { text: "[Aviation • International] Airbus delivered 57 aircraft in August 2026 (475 YTD) vs Boeing's 51 (418 YTD), and booked 67 gross orders vs Boeing's 15.", hot: false },
           { text: "[Aviation • International] Air China resumed daily nonstop Guangzhou–New Delhi flights on 21 September 2026 (suspended since Feb 2020).", hot: true }
         ]
