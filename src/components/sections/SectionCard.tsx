@@ -1,12 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
-import { Bookmark, Check, ExternalLink, ChevronDown, ChevronUp } from "lucide-react";
+import { Bookmark, Check, ExternalLink, ChevronDown, ChevronUp, Star } from "lucide-react";
 import { MagazineSection, FactItem } from "@/types";
 import { SvgDiagram } from "./SvgDiagram";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { VerificationBadge } from "@/components/interactive/VerificationBadge";
+import { motion } from "framer-motion";
 
 interface SectionCardProps {
   section: MagazineSection;
@@ -192,23 +193,55 @@ export function SectionCard({
               const isExpanded = expandedItems[item.id] || false;
 
               return (
-                <div
+                <motion.div
                   key={item.id}
+                  whileHover={{ scale: 1.008, y: -1 }}
+                  whileTap={{ scale: 0.995 }}
                   onClick={() => onFactClick(item)}
-                  className={`p-3.5 sm:p-4 rounded-xl border transition-all cursor-pointer relative group ${
+                  className={`p-3.5 sm:p-4 rounded-xl border-2 transition-all cursor-pointer relative group ${
                     isMastered
                       ? "bg-zinc-50/80 border-emerald-500/40 opacity-80"
-                      : "bg-white border-ink/15 hover:border-ink/40 hover:shadow-subtle"
+                      : item.hot
+                      ? "bg-amber-50/50 border-ink shadow-brutal-sm hover:bg-amber-50/80"
+                      : "bg-white border-ink/20 hover:border-ink/50 hover:shadow-subtle"
                   }`}
                 >
                   {/* Top Bar inside item */}
                   <div className="flex items-center justify-between gap-2 mb-2 font-sans">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className="text-[11px] font-bold text-muted">
-                        #{index + 1}
-                      </span>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onToggleMastered(item.id);
+                        }}
+                        title={
+                          isMastered
+                            ? "Mark as unstudied"
+                            : item.hot
+                            ? "Must-Know Event! Click to master"
+                            : "Click to master"
+                        }
+                        className={`shrink-0 w-7 h-7 rounded-xl border-2 border-ink flex items-center justify-center font-display font-black text-xs shadow-brutal-sm transition-transform hover:scale-110 ${
+                          isMastered
+                            ? "bg-popMint text-ink"
+                            : item.hot
+                            ? "bg-popYellow text-ink ring-1 ring-ink"
+                            : "bg-zinc-100 text-ink"
+                        }`}
+                      >
+                        {isMastered ? (
+                          <Check className="h-4 w-4 stroke-[3]" />
+                        ) : item.hot ? (
+                          <Star className="h-3.5 w-3.5 fill-ink" />
+                        ) : (
+                          index + 1
+                        )}
+                      </button>
+
                       {item.hot && (
-                        <Badge variant="mustKnow">Must-Know</Badge>
+                        <Badge variant="mustKnow" className="gap-1">
+                          <Star className="h-2.5 w-2.5 fill-ink" /> Must-Know Event
+                        </Badge>
                       )}
                       <VerificationBadge
                         status={item.verification?.status}
@@ -285,7 +318,7 @@ export function SectionCard({
                       )}
                     </div>
                   )}
-                </div>
+                </motion.div>
               );
             })}
           </div>

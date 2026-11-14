@@ -10,7 +10,7 @@ const badgeVariants = cva(
     variants: {
       variant: {
         default: "bg-zinc-100 text-ink border-ink/15",
-        mustKnow: "bg-popYellow/80 text-ink border-ink/30 font-bold",
+        mustKnow: "bg-popYellow text-ink border-2 border-ink shadow-brutal-sm font-black tracking-wide",
         mastered: "bg-popMint/40 text-emerald-950 border-emerald-800/30",
         pinned: "bg-popCyan/30 text-sky-950 border-sky-800/30",
         outline: "bg-transparent text-ink border-ink/20",
