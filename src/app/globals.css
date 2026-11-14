@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --font-fredoka: "Fredoka", sans-serif;
-  --font-serif: "Source Serif 4", Georgia, serif;
-}
-
 body {
   background-color: #FFFDF5;
   color: #18181B;

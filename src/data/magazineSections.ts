@@ -10,7 +10,7 @@ export const magazineSections: MagazineSection[] = [
         bgTint: 'bg-yellow-50/90',
         badgeColor: 'bg-popCyan',
         cartoonTitle: 'Money Machine & Rupee Rockets!',
-        cartoonCaption: '👆 Click any bar or the ₹ coin in the doodle to inspect live stats!',
+        cartoonCaption: ' Click any bar or the ₹ coin in the doodle to inspect live stats!',
         svgDiagram: `
           <svg viewBox="0 0 360 230" class="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
             <rect x="6" y="6" width="348" height="218" rx="18" fill="#FFF" stroke="#18181B" stroke-width="3"/>
@@ -52,7 +52,7 @@ export const magazineSections: MagazineSection[] = [
               <circle cx="301" cy="103" r="3" fill="#18181B"/>
               <circle cx="319" cy="103" r="3" fill="#18181B"/>
               <text x="310" y="168" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11" fill="#18181B">UPI: ₹29.82T</text>
-              <text x="310" y="182" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9" fill="#52525B">Tap Me! 👆</text>
+              <text x="310" y="182" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9" fill="#52525B">Tap Me! </text>
             </g>
           </svg>
         `,
@@ -190,7 +190,7 @@ export const magazineSections: MagazineSection[] = [
             </g>
 
             <rect x="40" y="172" width="280" height="26" rx="8" fill="#FFFDF5" stroke="#18181B" stroke-width="2"/>
-            <text x="180" y="189" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="10">Tap any date circle above to inspect! 👆</text>
+            <text x="180" y="189" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="10">Tap any date circle above to inspect! </text>
           </svg>
         `,
         items: [
@@ -589,7 +589,7 @@ export const magazineSections: MagazineSection[] = [
             <!-- Asian Games Banner -->
             <g class="svg-hotspot" onclick="jumpAndSearch('Asian Games')">
               <rect x="20" y="16" width="320" height="44" rx="12" fill="#FF6B9E" stroke="#18181B" stroke-width="2.5"/>
-              <text x="180" y="36" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="13">🔥 20th ASIAN GAMES • AICHI-NAGOYA</text>
+              <text x="180" y="36" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="13">20th ASIAN GAMES • AICHI-NAGOYA</text>
               <text x="180" y="52" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="800" font-size="9">Mascot: HONOHON • Flag Bearers: Manu Bhaker & Pawan Sehrawat (503 Athletes)</text>
             </g>
 
