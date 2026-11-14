@@ -15,10 +15,13 @@ import {
   Star,
   Printer,
   SlidersHorizontal,
+  Newspaper,
+  BookOpenCheck,
 } from "lucide-react";
 import { magazineSections } from "@/data/magazineSections";
 import { ImportanceLevel, VerificationStatus } from "@/types";
 import { motion, AnimatePresence } from "framer-motion";
+import { sectionIconMap, defaultSectionIcon } from "@/lib/sectionIcons";
 
 interface NavbarProps {
   searchQuery: string;
@@ -45,20 +48,6 @@ interface NavbarProps {
   activeCategory: string | null;
   onSelectCategory: (id: string | null) => void;
 }
-
-const sectionEmojiMap: Record<string, string> = {
-  banking: "💰",
-  mous: "🤝",
-  days: "📅",
-  appointments: "👔",
-  national: "🏛️",
-  international: "🌐",
-  defence: "🛡️",
-  awards: "🏆",
-  books: "📚",
-  sports: "🏅",
-  travel: "✈️",
-};
 
 const sectionShortTitleMap: Record<string, string> = {
   banking: "Banking",
@@ -124,7 +113,7 @@ export function Navbar({
       <div className="max-w-[1536px] w-full mx-auto space-y-2">
         {/* ROW 1: Brand Logo, Global Search & Action Controls */}
         <div className="flex flex-wrap items-center justify-between gap-2.5 sm:gap-3">
-          {/* Funky Brand Logo with Lightning Bolt & Pink Badge */}
+          {/* Editorial brand mark with a consistent symbol system */}
           <div className="flex items-center gap-2 shrink-0">
             <motion.a
               href="#"
@@ -136,8 +125,8 @@ export function Navbar({
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
             >
-              <span className="text-2xl sm:text-3xl group-hover:rotate-12 transition-transform select-none">
-                ⚡
+              <span className="icon-stamp h-10 w-10 rounded-xl bg-popYellow text-ink group-hover:-rotate-6 transition-transform">
+                <Newspaper className="h-5 w-5 stroke-[2.4]" aria-hidden="true" />
               </span>
               <div className="flex items-center gap-1.5">
                 <span className="font-display font-extrabold text-lg sm:text-xl text-ink tracking-tight">
@@ -333,13 +322,13 @@ export function Navbar({
                   : "bg-white/80 text-ink hover:bg-cream"
               }`}
             >
-              <span>🌟</span>
+              <Star className="h-3.5 w-3.5" aria-hidden="true" />
               <span>All Sections</span>
             </motion.button>
 
             {/* Section Category Pills */}
             {magazineSections.map((sec) => {
-              const emoji = sec.emoji || sectionEmojiMap[sec.id] || "📌";
+              const SectionIcon = sectionIconMap[sec.id] || defaultSectionIcon;
               const shortTitle =
                 sectionShortTitleMap[sec.id] || sec.title.split("&")[0].trim();
               const isActive = activeCategory === sec.id;
@@ -360,7 +349,7 @@ export function Navbar({
                       : "bg-white text-ink hover:bg-cream"
                   }`}
                 >
-                  <span>{emoji}</span>
+                  <SectionIcon className="h-3.5 w-3.5" strokeWidth={2.3} aria-hidden="true" />
                   <span>{shortTitle}</span>
                 </motion.button>
               );
@@ -376,8 +365,8 @@ export function Navbar({
               }}
               className="shrink-0 px-3 py-1 rounded-xl text-xs font-display font-extrabold border-2 border-ink bg-popPink text-white hover:bg-pink-400 transition-all flex items-center gap-1.5 shadow-brutal-sm"
             >
-              <span>🔥</span>
-              <span>39 Q&A Quiz</span>
+              <BookOpenCheck className="h-3.5 w-3.5" aria-hidden="true" />
+              <span>39 Q&amp;A Quiz</span>
             </motion.button>
           </div>
 
