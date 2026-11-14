@@ -43,10 +43,19 @@ if (!magContent.includes('subsequently withdrawn on 28 September 2026')) {
 }
 
 // Check 5: Count 149 facts
-const factRegex = /\{\s*text:\s*("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')\s*,\s*hot:\s*(true|false)/g;
 let factCount = 0;
-while (factRegex.exec(magContent) !== null) {
-  factCount++;
+const jsonMatch = magContent.match(/export const magazineSections: MagazineSection\[\] = ([\s\S]*?);/);
+if (jsonMatch) {
+  try {
+    const parsed = JSON.parse(jsonMatch[1]);
+    factCount = parsed.reduce((acc, s) => acc + s.items.length, 0);
+  } catch (e) {
+    const matches = magContent.match(/"id":\s*"[a-z0-9_-]+-\d+"/g) || [];
+    factCount = matches.length;
+  }
+} else {
+  const matches = magContent.match(/"id":\s*"[a-z0-9_-]+-\d+"/g) || [];
+  factCount = matches.length;
 }
 console.log(`PASS: Verified ${factCount} total facts across sections.`);
 if (factCount !== 149) {

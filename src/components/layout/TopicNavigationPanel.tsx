@@ -47,7 +47,7 @@ export function TopicNavigationPanel({
     totalAllFacts > 0 ? Math.round((totalMasteredAll / totalAllFacts) * 100) : 0;
 
   return (
-    <aside className="w-full bg-white border border-ink/15 rounded-xl p-4 mb-6 shadow-subtle no-print">
+    <aside id="topic-navigation" className="w-full bg-white border border-ink/15 rounded-xl p-4 mb-6 shadow-subtle no-print scroll-mt-24">
       {/* Header with toggle for mobile */}
       <div className="flex items-center justify-between gap-3">
         <div className="flex items-center gap-2">

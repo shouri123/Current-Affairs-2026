@@ -9,6 +9,7 @@ import { FlashcardGrid } from "@/components/interactive/FlashcardGrid";
 import { ArcadeQuizModal } from "@/components/interactive/ArcadeQuizModal";
 import { DailyRevisionModal } from "@/components/interactive/DailyRevisionModal";
 import { ProgressDashboardModal } from "@/components/interactive/ProgressDashboardModal";
+import { RandomFactModal } from "@/components/interactive/RandomFactModal";
 import { FactDetailModal } from "@/components/interactive/FactDetailModal";
 import { PinDrawer } from "@/components/interactive/PinDrawer";
 import { Footer } from "@/components/layout/Footer";
@@ -46,6 +47,7 @@ export default function Home() {
   const [isDailyOpen, setIsDailyOpen] = useState(false);
   const [isProgressOpen, setIsProgressOpen] = useState(false);
   const [isPinDrawerOpen, setIsPinDrawerOpen] = useState(false);
+  const [isRandomFactOpen, setIsRandomFactOpen] = useState(false);
 
   const [modalData, setModalData] = useState<{
     isOpen: boolean;
@@ -242,10 +244,8 @@ export default function Home() {
   };
 
   const handleOpenRandomFact = () => {
-    if (allFacts.length === 0) return;
-    const randomIndex = Math.floor(Math.random() * allFacts.length);
-    const fact = allFacts[randomIndex];
-    handleFactClick(fact);
+    playPop();
+    setIsRandomFactOpen(true);
   };
 
   const handleResetAllFilters = () => {
@@ -454,6 +454,19 @@ export default function Home() {
           setPinnedIds([]);
         }}
         onFactClick={handleFactClick}
+      />
+
+      {/* Random Fact Spotlight Modal */}
+      <RandomFactModal
+        isOpen={isRandomFactOpen}
+        onClose={() => setIsRandomFactOpen(false)}
+        allFacts={allFacts}
+        sections={magazineSections}
+        masteredIds={masteredIds}
+        pinnedIds={pinnedIds}
+        onToggleMastered={handleToggleMastered}
+        onTogglePin={handleTogglePin}
+        onScrollToSection={handleScrollToSection}
       />
     </div>
   );

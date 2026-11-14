@@ -15,6 +15,7 @@ import {
   Calendar,
   Sparkles,
   BookOpen,
+  Printer,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -98,8 +99,8 @@ export function Navbar({
       <div className="max-w-[1536px] w-full mx-auto space-y-2">
         {/* Row 1: Brand Logo, Global Search & Primary Action Modules */}
         <div className="flex flex-wrap items-center justify-between gap-3">
-          {/* Brand - Crisp typography */}
-          <div className="flex items-center gap-2">
+          {/* Brand - Crisp typography & Navigation Links */}
+          <div className="flex items-center gap-4">
             <a
               href="#"
               className="flex items-baseline gap-2 cursor-pointer no-underline"
@@ -111,6 +112,28 @@ export function Navbar({
                 September 2026
               </span>
             </a>
+
+            {/* Quick Section Jump Links */}
+            <div className="hidden lg:flex items-center gap-1 font-sans text-xs">
+              <a
+                href="#topic-navigation"
+                className="px-2 py-1 rounded text-ink/80 hover:text-ink hover:bg-zinc-100 transition-colors font-medium"
+              >
+                Overview
+              </a>
+              <a
+                href="#section-banking"
+                className="px-2 py-1 rounded text-ink/80 hover:text-ink hover:bg-zinc-100 transition-colors font-medium"
+              >
+                Current Affairs
+              </a>
+              <a
+                href="#section-quiz"
+                className="px-2 py-1 rounded text-ink/80 hover:text-ink hover:bg-zinc-100 transition-colors font-medium"
+              >
+                Revision Deck
+              </a>
+            </div>
           </div>
 
           {/* Search Bar */}
@@ -175,6 +198,17 @@ export function Navbar({
             >
               <Bookmark className="h-3.5 w-3.5 fill-brand text-brand" />
               <span className="font-semibold">{pinCount}</span>
+            </Button>
+
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => window.print()}
+              title="Print Gazette Dossier (PDF)"
+              className="text-xs px-2 gap-1 hidden sm:inline-flex"
+            >
+              <Printer className="h-3.5 w-3.5 text-muted" />
+              <span className="hidden xl:inline">Print</span>
             </Button>
 
             <Button
