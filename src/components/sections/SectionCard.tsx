@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { VerificationBadge } from "@/components/interactive/VerificationBadge";
 import { motion } from "framer-motion";
+import { sectionIconMap, defaultSectionIcon } from "@/lib/sectionIcons";
 
 interface SectionCardProps {
   section: MagazineSection;
@@ -114,6 +115,7 @@ export function SectionCard({
     return null;
   }
 
+  const SectionIcon = sectionIconMap[section.id] || defaultSectionIcon;
   const sectionMasteredCount = allSectionItems.filter((i) =>
     masteredIds.includes(i.id)
   ).length;
@@ -150,16 +152,19 @@ export function SectionCard({
       id={`section-${section.id}`}
       className="print-section scroll-mt-28 mb-10 font-sans"
     >
-      <div className="gazette-card overflow-hidden border border-ink/15 rounded-xl bg-white shadow-subtle">
+      <div className="gazette-card section-shell overflow-hidden rounded-2xl bg-white">
         {/* Section Header */}
-        <div className="border-b border-ink/15 p-4 sm:p-6 bg-cream/40 flex flex-wrap items-center justify-between gap-3">
+        <div className={`section-heading p-4 sm:p-6 ${section.bgHeader || "bg-popCyan"} flex flex-wrap items-center justify-between gap-3`}>
           <div className="flex-1 min-w-[260px]">
-            <div className="flex flex-wrap items-center gap-2 mb-1">
+            <div className="flex flex-wrap items-center gap-3 mb-1">
+              <span className="icon-stamp h-10 w-10 rounded-xl bg-white/75 text-ink">
+                <SectionIcon className="h-5 w-5" strokeWidth={2.25} />
+              </span>
               <h2 className="font-display font-bold text-xl sm:text-2xl text-ink tracking-tight">
                 {section.title}
               </h2>
             </div>
-            <div className="flex items-center gap-2 text-xs text-muted">
+            <div className="flex items-center gap-2 text-xs text-ink/75">
               <span>{allSectionItems.length} curated updates</span>
               <span>•</span>
               <span className="text-amber-800 font-semibold">{sectionMustKnowCount} Must-Know</span>
@@ -198,7 +203,7 @@ export function SectionCard({
                   whileHover={{ scale: 1.008, y: -1 }}
                   whileTap={{ scale: 0.995 }}
                   onClick={() => onFactClick(item)}
-                  className={`p-3.5 sm:p-4 rounded-xl border-2 transition-all cursor-pointer relative group ${
+                  className={`fact-entry p-3.5 sm:p-4 rounded-xl border-2 transition-all cursor-pointer relative group ${
                     isMastered
                       ? "bg-zinc-50/80 border-emerald-500/40 opacity-80"
                       : item.hot

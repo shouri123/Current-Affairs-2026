@@ -5,6 +5,7 @@ import { ChevronDown, ChevronRight, CheckCircle2, Bookmark, BarChart2, Layers } 
 import { MagazineSection } from "@/types";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
+import { sectionIconMap, defaultSectionIcon, sectionAccentClassMap } from "@/lib/sectionIcons";
 
 interface TopicNavigationPanelProps {
   sections: MagazineSection[];
@@ -47,11 +48,11 @@ export function TopicNavigationPanel({
     totalAllFacts > 0 ? Math.round((totalMasteredAll / totalAllFacts) * 100) : 0;
 
   return (
-    <aside id="topic-navigation" className="w-full bg-white border border-ink/15 rounded-xl p-4 mb-6 shadow-subtle no-print scroll-mt-24">
+    <aside id="topic-navigation" className="w-full bg-white/95 border-2 border-ink rounded-xl p-4 sm:p-5 mb-7 shadow-brutal-md no-print scroll-mt-24">
       {/* Header with toggle for mobile */}
       <div className="flex items-center justify-between gap-3">
         <div className="flex items-center gap-2">
-          <Layers className="h-4 w-4 text-brand" />
+          <span className="icon-stamp h-8 w-8 rounded-lg bg-popPurple text-ink"><Layers className="h-4 w-4" /></span>
           <h2 className="font-display font-bold text-base sm:text-lg text-ink">
             Subject Navigation & Syllabus Coverage
           </h2>
@@ -91,14 +92,14 @@ export function TopicNavigationPanel({
             onSelectCategory(null);
             setIsOpenMobile(false);
           }}
-          className={`text-left p-2.5 rounded-lg border transition-all text-xs font-sans ${
+          className={`topic-tile text-left p-2.5 rounded-lg border transition-all text-xs font-sans ${
             activeCategory === null
               ? "border-brand bg-sky-50 text-brand font-semibold shadow-subtle"
               : "border-ink/15 hover:border-ink/30 bg-cream/50 text-ink"
           }`}
         >
           <div className="flex items-center justify-between">
-            <span className="font-bold">All 11 Subjects</span>
+            <span className="inline-flex items-center gap-2 font-bold"><span className="icon-stamp h-7 w-7 rounded-md bg-popYellow"><Layers className="h-3.5 w-3.5" /></span>All 11 Subjects</span>
             <span className="text-muted">{totalAllFacts} facts</span>
           </div>
           <div className="flex items-center justify-between text-[11px] text-muted mt-1">
@@ -110,20 +111,27 @@ export function TopicNavigationPanel({
         {sections.map((sec) => {
           const { total, mastered, mustKnow, pct } = getSectionStats(sec);
           const isSelected = activeCategory === sec.id;
+          const SectionIcon = sectionIconMap[sec.id] || defaultSectionIcon;
+          const accentClass = sectionAccentClassMap[sec.id] || "bg-popCyan";
 
           return (
             <button
               key={sec.id}
               onClick={() => handleTopicClick(sec.id)}
-              className={`text-left p-2.5 rounded-lg border transition-all text-xs font-sans ${
+              className={`topic-tile text-left p-2.5 rounded-lg border transition-all text-xs font-sans ${
                 isSelected
                   ? "border-brand bg-sky-50 text-ink font-semibold shadow-subtle ring-1 ring-brand"
                   : "border-ink/15 hover:border-ink/30 bg-white text-ink"
               }`}
             >
               <div className="flex items-start justify-between gap-1">
-                <span className="font-semibold truncate max-w-[170px]" title={sec.title}>
-                  {sec.title}
+                <span className="flex min-w-0 items-center gap-2">
+                  <span className={`icon-stamp h-7 w-7 shrink-0 rounded-md ${accentClass} text-ink`}>
+                    <SectionIcon className="h-3.5 w-3.5" strokeWidth={2.3} />
+                  </span>
+                  <span className="font-semibold truncate max-w-[170px]" title={sec.title}>
+                    {sec.title}
+                  </span>
                 </span>
                 <span className="text-[10px] bg-amber-100 text-amber-900 px-1 py-0.2 rounded font-bold shrink-0">
                   {mustKnow} MK
