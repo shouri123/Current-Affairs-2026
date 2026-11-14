@@ -45,19 +45,24 @@ body {
   box-shadow: 0px 0px 0px 0px #18181B;
 }
 
+/* Signature Yellow Highlight Badge from Original HTML */
 .highlight-badge {
   background: linear-gradient(120deg, #FFE600 0%, #FFF59D 100%);
   border-bottom: 2.5px solid #18181B;
   border-radius: 6px;
+  padding: 0 5px;
+  margin: 0 2px;
   font-weight: 800;
   cursor: pointer;
   display: inline-block;
-  transition: transform 0.15s ease, background-color 0.15s ease;
+  color: #18181B;
+  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.15s ease;
+  box-shadow: 1px 1px 0px #18181B;
 }
 
 .highlight-badge:hover {
-  background: #4ADE80;
-  transform: scale(1.06);
+  background: #4ADE80 !important;
+  transform: scale(1.08);
 }
 
 .keyword-pill {
@@ -70,7 +75,7 @@ body {
 .keyword-pill:hover {
   background-color: #38BDF8 !important;
   color: #18181B !important;
-  transform: scale(1.04);
+  transform: scale(1.05);
 }
 
 /* 3D Flip Card CSS */
@@ -91,7 +96,7 @@ body {
   transform: rotateY(180deg);
 }
 
-/* Custom Scrollbar */
+/* Custom Neo-Brutalist Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -123,8 +128,27 @@ body {
   transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.2s ease;
 }
 .svg-hotspot:hover {
-  transform: scale(1.04);
+  transform: scale(1.05);
   filter: drop-shadow(0 4px 0 #18181B);
+}
+
+/* Custom Wiggle & Pulse Animations */
+@keyframes wiggleSlow {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+@keyframes pulseYellow {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+.animate-wiggle-slow {
+  animation: wiggleSlow 2s ease-in-out infinite;
+}
+
+.animate-pulse-yellow {
+  animation: pulseYellow 1.8s ease-in-out infinite;
 }
 
 @media print {
@@ -142,4 +166,3 @@ body {
     margin-bottom: 20px !important;
   }
 }
-

@@ -19,8 +19,14 @@ export default function Home() {
   const [onlyHot, setOnlyHot] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
-  const [masteredIds, setMasteredIds] = useLocalStorage<string[]>("ca_mastered_ids", []);
-  const [pinnedIds, setPinnedIds] = useLocalStorage<string[]>("ca_pinned_ids", []);
+  const [masteredIds, setMasteredIds] = useLocalStorage<string[]>(
+    "ca_mastered_ids",
+    []
+  );
+  const [pinnedIds, setPinnedIds] = useLocalStorage<string[]>(
+    "ca_pinned_ids",
+    []
+  );
 
   const [isArcadeOpen, setIsArcadeOpen] = useState(false);
   const [isPinDrawerOpen, setIsPinDrawerOpen] = useState(false);
@@ -125,7 +131,9 @@ export default function Home() {
       title: "Fact Spotlight",
       category: fact.category,
       body: fact.text,
-      tip: fact.hot ? "⭐ Key Exam Focus: Highly tested in competitive exams!" : undefined,
+      tip: fact.hot
+        ? "⭐ Key Exam Focus: Highly tested in competitive exams!"
+        : undefined,
       factId: fact.id,
     });
   };
@@ -180,8 +188,8 @@ export default function Home() {
         }}
       />
 
-      {/* Main Container */}
-      <main className="max-w-7xl mx-auto px-3 sm:px-6 py-6 sm:py-8">
+      {/* Main Container - Full width up to 1536px eliminating vacant margins */}
+      <main className="max-w-[1536px] w-full mx-auto px-3 sm:px-6 py-6 sm:py-8">
         {/* Hero Header */}
         <Hero
           onOpenArcade={() => {
@@ -236,8 +244,12 @@ export default function Home() {
         body={modalData.body}
         tip={modalData.tip}
         factId={modalData.factId}
-        isMastered={modalData.factId ? masteredIds.includes(modalData.factId) : false}
-        isPinned={modalData.factId ? pinnedIds.includes(modalData.factId) : false}
+        isMastered={
+          modalData.factId ? masteredIds.includes(modalData.factId) : false
+        }
+        isPinned={
+          modalData.factId ? pinnedIds.includes(modalData.factId) : false
+        }
         onToggleMastered={modalData.factId ? handleToggleMastered : undefined}
         onTogglePin={modalData.factId ? handleTogglePin : undefined}
       />
