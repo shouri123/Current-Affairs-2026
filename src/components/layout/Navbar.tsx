@@ -57,7 +57,21 @@ const sectionEmojiMap: Record<string, string> = {
   awards: "🏆",
   books: "📚",
   sports: "🏅",
-  schemes: "✈️",
+  travel: "✈️",
+};
+
+const sectionShortTitleMap: Record<string, string> = {
+  banking: "Banking",
+  mous: "MoUs",
+  days: "Important Days",
+  appointments: "Key Appointments",
+  national: "National News",
+  international: "International News",
+  defence: "Defence Exercises",
+  awards: "Honours, Awards",
+  books: "Books",
+  sports: "Sports",
+  travel: "Aviation & Travel",
 };
 
 export function Navbar({
@@ -326,7 +340,8 @@ export function Navbar({
             {/* Section Category Pills */}
             {magazineSections.map((sec) => {
               const emoji = sec.emoji || sectionEmojiMap[sec.id] || "📌";
-              const shortTitle = sec.title.split("&")[0].trim();
+              const shortTitle =
+                sectionShortTitleMap[sec.id] || sec.title.split("&")[0].trim();
               const isActive = activeCategory === sec.id;
 
               return (
