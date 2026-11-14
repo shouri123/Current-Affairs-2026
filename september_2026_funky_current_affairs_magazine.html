@@ -1,0 +1,1790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>September 2026 Current Affairs — Funky Edition</title>
+  <!-- Load Google Fonts: Fredoka (funky display) & Plus Jakarta Sans (clean readable body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Load Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Load Tone.js for funky interactive click & celebration sounds -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Fredoka"', 'cursive', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            cream: '#FFFDF5',
+            ink: '#18181B',
+            popYellow: '#FFE600',
+            popPink: '#FF6B9E',
+            popCyan: '#38BDF8',
+            popMint: '#4ADE80',
+            popPurple: '#C084FC',
+            popOrange: '#FB923C',
+            popCoral: '#FF5A5F',
+          },
+          boxShadow: {
+            brutal: '5px 5px 0px 0px #18181B',
+            'brutal-lg': '8px 8px 0px 0px #18181B',
+            'brutal-sm': '3px 3px 0px 0px #18181B',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Custom Neo-Brutalist & Cartoon Comic Aesthetics */
+    body {
+      background-color: #FFFDF5;
+      background-image: radial-gradient(#18181B 1px, transparent 1px);
+      background-size: 24px 24px;
+      color: #18181B;
+      overflow-x: hidden;
+    }
+
+    .comic-card {
+      border: 3px solid #18181B;
+      box-shadow: 6px 6px 0px 0px #18181B;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+    }
+
+    .comic-card:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 8px 8px 0px 0px #18181B;
+    }
+
+    .comic-btn {
+      border: 2.5px solid #18181B;
+      box-shadow: 3px 3px 0px 0px #18181B;
+      cursor: pointer;
+      transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease, background-color 0.15s ease;
+    }
+
+    .comic-btn:hover {
+      transform: translate(-1.5px, -1.5px);
+      box-shadow: 5px 5px 0px 0px #18181B;
+    }
+
+    .comic-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 0px 0px 0px 0px #18181B;
+    }
+
+    .highlight-badge {
+      background: linear-gradient(120deg, #FFE600 0%, #FFF59D 100%);
+      border-bottom: 2.5px solid #18181B;
+      border-radius: 6px;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-block;
+      transition: transform 0.15s ease, background-color 0.15s ease;
+    }
+
+    .highlight-badge:hover {
+      background: #4ADE80;
+      transform: scale(1.06);
+    }
+
+    .keyword-pill {
+      cursor: pointer;
+      border-radius: 5px;
+      padding: 0 3px;
+      transition: background-color 0.15s ease, transform 0.15s ease;
+    }
+
+    .keyword-pill:hover {
+      background-color: #FFE600;
+    }
+
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-6px) rotate(2deg); }
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.85); opacity: 0; }
+      70% { transform: scale(1.03); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .animate-float {
+      animation: floatSlow 4s ease-in-out infinite;
+    }
+
+    .animate-pop {
+      animation: popIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    .svg-hotspot {
+      cursor: pointer;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.2s ease;
+    }
+
+    .svg-hotspot:hover {
+      filter: brightness(1.06) drop-shadow(0px 3px 0px #18181B);
+    }
+
+    /* Print / PDF Stylesheet so "Download PDF" creates a crisp, vibrant magazine PDF */
+    @media print {
+      body {
+        background: #FFFDF5 !important;
+        background-image: none !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .comic-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: 3px 3px 0px 0px #18181B !important;
+        margin-bottom: 16px !important;
+      }
+      .print-section {
+        break-before: auto;
+        margin-bottom: 24px;
+      }
+      header {
+        box-shadow: 4px 4px 0px 0px #18181B !important;
+      }
+    }
+  </style>
+</head>
+<body class="font-sans antialiased selection:bg-popYellow selection:text-ink">
+
+  <!-- Toast Notification Box (Replaces alert()) -->
+  <div id="toastBox" class="fixed bottom-5 right-5 z-50 hidden transform transition-all duration-300 no-print">
+    <div class="bg-popYellow border-3 border-ink rounded-2xl px-5 py-3 shadow-brutal flex items-center gap-3 font-bold text-sm md:text-base animate-pop">
+      <span id="toastEmoji" class="text-2xl">🚀</span>
+      <span id="toastMsg">Ready to print your PDF magazine!</span>
+    </div>
+  </div>
+
+  <!-- Interactive Fact Deep-Dive & Diagram Inspector Modal -->
+  <div id="detailModal" class="fixed inset-0 z-50 hidden bg-ink/60 backdrop-blur-xs flex items-center justify-center p-4 no-print" onclick="if(event.target===this) closeModal()">
+    <div class="comic-card bg-cream rounded-3xl max-w-lg w-full p-6 sm:p-7 animate-pop relative">
+      <button onclick="closeModal()" class="comic-btn bg-popCoral text-white w-9 h-9 rounded-xl font-display font-bold text-lg flex items-center justify-center absolute top-4 right-4">✕</button>
+      <div class="flex items-center gap-2 mb-3">
+        <span id="modalBadge" class="bg-popYellow border-2 border-ink text-xs font-extrabold uppercase px-3 py-1 rounded-full">FACT SPOTLIGHT</span>
+        <span id="modalCategory" class="text-xs font-bold text-ink/70"></span>
+      </div>
+      <h3 id="modalTitle" class="font-display font-bold text-2xl text-ink mb-3 leading-snug">Fact Spotlight</h3>
+      <div id="modalBody" class="bg-white border-2 border-ink rounded-2xl p-4 text-sm sm:text-base font-medium leading-relaxed mb-4"></div>
+      <div id="modalTip" class="bg-popMint/40 border-2 border-ink rounded-xl p-3 text-xs sm:text-sm font-bold mb-5"></div>
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <div class="flex gap-2">
+          <button id="modalMarkReadBtn" class="comic-btn bg-popCyan px-3.5 py-2 rounded-xl font-display font-bold text-xs sm:text-sm flex items-center gap-1.5">
+            <span>✅</span> <span>Mark Mastered</span>
+          </button>
+          <button id="modalBookmarkBtn" class="comic-btn bg-popYellow px-3.5 py-2 rounded-xl font-display font-bold text-xs sm:text-sm flex items-center gap-1.5">
+            <span>📌</span> <span>Pin Note</span>
+          </button>
+        </div>
+        <button id="modalCopyBtn" class="comic-btn bg-white px-3.5 py-2 rounded-xl font-display font-bold text-xs sm:text-sm flex items-center gap-1.5">
+          <span>📋</span> <span>Copy</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide-Over Revision Pinboard Drawer -->
+  <div id="pinDrawer" class="fixed inset-0 z-50 hidden bg-ink/50 backdrop-blur-xs flex justify-end no-print" onclick="if(event.target===this) togglePinDrawer(false)">
+    <div class="bg-cream border-l-4 border-ink w-full max-w-md h-full p-6 flex flex-col justify-between overflow-y-auto animate-pop">
+      <div>
+        <div class="flex items-center justify-between pb-4 border-b-3 border-ink mb-4">
+          <div class="flex items-center gap-2">
+            <span class="text-2xl">📌</span>
+            <h3 class="font-display font-bold text-2xl">My Revision Pinboard</h3>
+          </div>
+          <button onclick="togglePinDrawer(false)" class="comic-btn bg-popCoral text-white w-9 h-9 rounded-xl font-display font-bold">✕</button>
+        </div>
+        <p class="text-xs font-bold text-ink/75 mb-4">Click the 📌 icon on any fact across the magazine to pin it here for last-minute revision!</p>
+        <div id="pinnedListContainer" class="space-y-3">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+      <div class="pt-4 border-t-3 border-ink mt-6 flex gap-2">
+        <button onclick="copyAllPinned()" class="comic-btn bg-popYellow flex-1 py-2.5 rounded-xl font-display font-bold text-sm">📋 Copy All Notes</button>
+        <button onclick="clearAllPinned()" class="comic-btn bg-white px-4 py-2.5 rounded-xl font-display font-bold text-sm">🗑️ Clear</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Multiple-Choice Arcade Game Modal -->
+  <div id="arcadeModal" class="fixed inset-0 z-50 hidden bg-ink/70 backdrop-blur-xs flex items-center justify-center p-4 no-print" onclick="if(event.target===this) closeArcade()">
+    <div class="comic-card bg-gradient-to-br from-popYellow via-amber-100 to-popCyan rounded-3xl max-w-xl w-full p-6 sm:p-8 animate-pop relative">
+      <button onclick="closeArcade()" class="comic-btn bg-popCoral text-white w-9 h-9 rounded-xl font-display font-bold text-lg flex items-center justify-center absolute top-4 right-4">✕</button>
+      <div class="flex flex-wrap items-center gap-2 mb-3">
+        <span class="bg-ink text-popYellow font-display font-bold text-xs uppercase px-3 py-1 rounded-full">🎮 GK ARCADE CHALLENGE</span>
+        <span id="arcadeScoreBadge" class="bg-popMint border-2 border-ink font-display font-bold text-xs px-3 py-1 rounded-full">Score: 0 / 0 • Streak: 0🔥</span>
+      </div>
+      <h3 id="arcadeQuestion" class="font-display font-bold text-xl sm:text-2xl text-ink bg-white border-3 border-ink rounded-2xl p-4 shadow-brutal-sm mb-4">
+        Loading question...
+      </h3>
+      <div id="arcadeOptions" class="grid grid-cols-1 gap-3 mb-5">
+        <!-- 4 clickable MCQ options -->
+      </div>
+      <div class="flex items-center justify-between">
+        <span id="arcadeFeedback" class="font-display font-bold text-sm text-ink">Pick the right answer!</span>
+        <button onclick="nextArcadeQuestion()" class="comic-btn bg-popPink px-5 py-2 rounded-xl font-display font-bold text-sm">Next Question ➡️</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sticky Top Action Bar -->
+  <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b-4 border-ink px-4 py-3 no-print">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2.5">
+      <div class="flex items-center gap-2.5 cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+        <div class="w-10 h-10 rounded-xl bg-popYellow border-2 border-ink flex items-center justify-center font-display font-bold text-xl shadow-brutal-sm hover:rotate-12 transition-transform">
+          ⚡
+        </div>
+        <div>
+          <span class="font-display font-bold text-lg sm:text-xl tracking-tight">IAS SEPT '26</span>
+          <span class="hidden xl:inline-block ml-2 text-xs font-extrabold uppercase px-2 py-0.5 bg-popMint border-2 border-ink rounded-full">Interactive Zine</span>
+        </div>
+      </div>
+
+      <!-- Search & Filter Controls -->
+      <div class="flex flex-wrap items-center gap-2 flex-1 max-w-xs sm:max-w-sm mx-1">
+        <div class="relative w-full">
+          <input id="searchInput" type="text" placeholder="🔍 Search GDP, BRICS, Messi, ISRO..." 
+            class="w-full pl-4 pr-9 py-2 rounded-xl border-2 border-ink bg-cream text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-popPink" />
+          <button id="clearSearch" class="hidden absolute right-2.5 top-2 text-xs font-bold bg-popCoral text-white px-1.5 py-0.5 rounded-md border border-ink">✕</button>
+        </div>
+      </div>
+
+      <!-- Interactive Action Buttons -->
+      <div class="flex flex-wrap items-center gap-2">
+        <button id="soundToggleBtn" onclick="toggleSound()" title="Toggle Comic Sound Effects" class="comic-btn bg-cream hover:bg-gray-100 px-2.5 py-2 rounded-xl font-display font-bold text-xs sm:text-sm">
+          🔊
+        </button>
+        <button id="toggleStarOnly" class="comic-btn bg-popYellow hover:bg-yellow-300 px-3 py-2 rounded-xl font-display font-bold text-xs sm:text-sm flex items-center gap-1">
+          <span>⭐</span> <span id="starBtnText">Must-Know</span>
+        </button>
+        <button onclick="openArcade()" class="comic-btn bg-popMint hover:bg-emerald-300 px-3 py-2 rounded-xl font-display font-bold text-xs sm:text-sm flex items-center gap-1">
+          <span>🎮</span> <span class="hidden sm:inline">Play Quiz</span>
+        </button>
+        <button onclick="togglePinDrawer(true)" class="comic-btn bg-popCyan hover:bg-sky-300 px-3 py-2 rounded-xl font-display font-bold text-xs sm:text-sm flex items-center gap-1">
+          <span>📌</span> <span id="pinCountBadge">0</span>
+        </button>
+        <button onclick="triggerPDFPrint()" class="comic-btn bg-popPink hover:bg-pink-400 text-ink px-3.5 py-2 rounded-xl font-display font-bold text-xs sm:text-sm flex items-center gap-1">
+          <span>🖨️</span> <span class="hidden md:inline">Save PDF</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Live Study Mastery Progress Bar -->
+    <div class="max-w-7xl mx-auto mt-2.5 flex items-center gap-3">
+      <span class="text-[11px] font-extrabold uppercase tracking-wider shrink-0">🎯 Study Mastery:</span>
+      <div class="flex-1 h-3 bg-cream border-2 border-ink rounded-full overflow-hidden">
+        <div id="masteryProgressBar" class="h-full bg-gradient-to-r from-popMint via-popYellow to-popPink transition-all duration-300" style="width: 0%"></div>
+      </div>
+      <span id="masteryCounter" class="text-xs font-extrabold shrink-0">0 / 123 Mastered (0%)</span>
+    </div>
+
+    <!-- Category Jump Pills -->
+    <div id="categoryNav" class="max-w-7xl mx-auto mt-2.5 flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar">
+      <!-- Populated dynamically via JS -->
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+    <!-- HERO BANNER -->
+    <header class="comic-card bg-gradient-to-br from-popYellow via-amber-200 to-popOrange rounded-3xl p-6 sm:p-10 mb-10 relative overflow-hidden">
+      <!-- Decorative Comic Halftone Dots -->
+      <div class="absolute -right-8 -top-8 w-44 h-44 rounded-full bg-popPink/40 border-4 border-ink"></div>
+      <div class="absolute right-24 -bottom-10 w-32 h-32 rounded-full bg-popCyan/50 border-4 border-ink"></div>
+
+      <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+        <div class="lg:col-span-8">
+          <div class="inline-flex flex-wrap items-center gap-2 bg-white border-2 border-ink rounded-full px-4 py-1.5 shadow-brutal-sm mb-4">
+            <span class="text-base">🎓</span>
+            <span class="font-extrabold text-xs sm:text-sm uppercase tracking-wider">IEM's Academia of Success (I.A.S) • UEM Kolkata</span>
+          </div>
+          <h1 class="font-display font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight text-ink mb-4">
+            SEPTEMBER 2026 <br/>
+            <span onclick="openRandomFactModal()" title="Click for a surprise exam fact!" class="cursor-pointer inline-block bg-white border-3 border-ink px-3 py-1 rounded-2xl shadow-brutal-sm transform -rotate-1 hover:rotate-0 transition-transform mt-1 text-popCoral">
+              CURRENT AFFAIRS ZINE!
+            </span>
+          </h1>
+          <p class="text-base sm:text-lg font-semibold text-ink/90 max-w-2xl mb-6">
+            Every single point from all 30 pages—decoded into punchy bullet points! Click any <button onclick="filterByMode('hot')" class="comic-btn bg-white px-2.5 py-0.5 rounded-lg font-extrabold text-sm align-middle">⭐ TOP EXAM EVENT</button>, highlighted number, or cartoon diagram to explore!
+          </p>
+
+          <!-- Quick Stats Pills (Clickable!) -->
+          <div class="flex flex-wrap gap-3">
+            <button onclick="filterByMode('all')" class="comic-btn text-left bg-popCyan border-2 border-ink rounded-2xl px-4 py-2">
+              <div class="font-display font-bold text-xl">123+ Facts</div>
+              <div class="text-xs font-bold uppercase">Click to View All 👆</div>
+            </button>
+            <button onclick="filterByMode('hot')" class="comic-btn text-left bg-popMint border-2 border-ink rounded-2xl px-4 py-2">
+              <div class="font-display font-bold text-xl">⭐ Top Events</div>
+              <div class="text-xs font-bold uppercase">Filter Must-Knows 👆</div>
+            </button>
+            <button onclick="openArcade()" class="comic-btn text-left bg-popPurple border-2 border-ink rounded-2xl px-4 py-2">
+              <div class="font-display font-bold text-xl">🎮 MCQ Arcade</div>
+              <div class="text-xs font-bold uppercase">Test Your Brain 👆</div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Funky Hero Mascot SVG (Clickable for Random Fact!) -->
+        <div class="lg:col-span-4 flex justify-center">
+          <div onclick="openRandomFactModal()" title="Click Captain GK for a surprise exam fact!" class="cursor-pointer bg-white border-4 border-ink rounded-3xl p-4 shadow-brutal-lg animate-float max-w-xs w-full text-center hover:scale-105 transition-transform">
+            <svg viewBox="0 0 260 220" class="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+              <!-- Sunburst rays -->
+              <circle cx="130" cy="110" r="88" fill="#FFE600" stroke="#18181B" stroke-width="4" stroke-dasharray="12 8"/>
+              <!-- Cartoon Rocket Globe -->
+              <circle cx="130" cy="115" r="56" fill="#38BDF8" stroke="#18181B" stroke-width="4"/>
+              <!-- Continents -->
+              <path d="M100 85 Q118 78 126 95 T112 125 Q95 120 100 85 Z" fill="#4ADE80" stroke="#18181B" stroke-width="3"/>
+              <path d="M142 90 Q165 88 168 112 T148 138 Q135 125 142 90 Z" fill="#4ADE80" stroke="#18181B" stroke-width="3"/>
+              <!-- Cool Sunglasses -->
+              <rect x="92" y="102" width="32" height="18" rx="5" fill="#18181B"/>
+              <rect x="136" y="102" width="32" height="18" rx="5" fill="#18181B"/>
+              <line x1="124" y1="108" x2="136" y2="108" stroke="#18181B" stroke-width="4"/>
+              <line x1="97" y1="107" x2="105" y2="115" stroke="#FFF" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="141" y1="107" x2="149" y2="115" stroke="#FFF" stroke-width="2.5" stroke-linecap="round"/>
+              <!-- Happy Smile -->
+              <path d="M116 132 Q130 148 144 132" fill="none" stroke="#18181B" stroke-width="4" stroke-linecap="round"/>
+              <!-- Graduation Cap -->
+              <polygon points="130,36 184,56 130,74 76,56" fill="#FF6B9E" stroke="#18181B" stroke-width="4" stroke-linejoin="round"/>
+              <rect x="104" y="63" width="52" height="14" rx="4" fill="#C084FC" stroke="#18181B" stroke-width="3"/>
+              <line x1="178" y1="58" x2="188" y2="85" stroke="#FB923C" stroke-width="4" stroke-linecap="round"/>
+              <circle cx="188" cy="88" r="5" fill="#FFE600" stroke="#18181B" stroke-width="2.5"/>
+              <!-- Comic Speech Bubble -->
+              <rect x="12" y="12" width="96" height="32" rx="12" fill="#FFF" stroke="#18181B" stroke-width="3"/>
+              <text x="60" y="33" text-anchor="middle" font-family="Fredoka, sans-serif" font-weight="700" font-size="13" fill="#18181B">CLICK ME! 🎲</text>
+            </svg>
+            <div class="mt-2 font-display font-bold text-sm bg-popMint border-2 border-ink rounded-xl py-1 px-3 inline-block">
+              Tap Captain GK for Random Fact! 🎲
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- TOP MEGA HIGHLIGHTS STRIP (CLICKABLE BLOCKBUSTERS) -->
+    <section class="mb-12 print-section">
+      <div class="flex flex-wrap items-center justify-between gap-2 mb-5">
+        <div class="flex items-center gap-3">
+          <span class="text-3xl">🔥</span>
+          <h2 class="font-display font-bold text-2xl sm:text-3xl">SEPTEMBER 2026 BLOCKBUSTER HEADLINES</h2>
+        </div>
+        <span class="text-xs font-extrabold uppercase bg-white border-2 border-ink px-3 py-1 rounded-full no-print">👆 Click any card to jump & highlight</span>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div onclick="jumpAndSearch('BRICS')" class="cursor-pointer comic-card bg-popPink/30 rounded-2xl p-5">
+          <div class="flex justify-between items-start mb-2">
+            <span class="bg-popYellow border-2 border-ink text-xs font-extrabold px-2.5 py-0.5 rounded-full">SUMMIT</span>
+            <span class="text-2xl">🇮🇳</span>
+          </div>
+          <h3 class="font-display font-bold text-lg mb-1">18th BRICS Summit in New Delhi</h3>
+          <p class="text-sm font-medium">Hosted at Bharat Mandapam (12–13 Sept); 45-page, 140-point <strong>New Delhi Declaration 2026</strong> adopted unanimously.</p>
+        </div>
+
+        <div onclick="jumpAndSearch('GDP')" class="cursor-pointer comic-card bg-popCyan/30 rounded-2xl p-5">
+          <div class="flex justify-between items-start mb-2">
+            <span class="bg-popYellow border-2 border-ink text-xs font-extrabold px-2.5 py-0.5 rounded-full">ECONOMY</span>
+            <span class="text-2xl">📈</span>
+          </div>
+          <h3 class="font-display font-bold text-lg mb-1">7.8% Q1 GDP & ₹29.82T UPI</h3>
+          <p class="text-sm font-medium">India's real GDP grew <strong>7.8%</strong> (GVA 8.2%); UPI hit a record <strong>24.51B</strong> txns; EPFO ceiling raised to <strong>₹25,000</strong>.</p>
+        </div>
+
+        <div onclick="jumpAndSearch('Asian Games')" class="cursor-pointer comic-card bg-popMint/35 rounded-2xl p-5">
+          <div class="flex justify-between items-start mb-2">
+            <span class="bg-popYellow border-2 border-ink text-xs font-extrabold px-2.5 py-0.5 rounded-full">SPORTS</span>
+            <span class="text-2xl">🏅</span>
+          </div>
+          <h3 class="font-display font-bold text-lg mb-1">20th Asian Games & Messi Retires</h3>
+          <p class="text-sm font-medium">Aichi-Nagoya mascot <strong>Honohon</strong>; India wins Women's Kabaddi Gold; <strong>Lionel Messi</strong> retires (207 caps, 125 goals).</p>
+        </div>
+
+        <div onclick="jumpAndSearch('Gondhal')" class="cursor-pointer comic-card bg-popPurple/30 rounded-2xl p-5">
+          <div class="flex justify-between items-start mb-2">
+            <span class="bg-popYellow border-2 border-ink text-xs font-extrabold px-2.5 py-0.5 rounded-full">CINEMA & AWARDS</span>
+            <span class="text-2xl">🎬</span>
+          </div>
+          <h3 class="font-display font-bold text-lg mb-1">Gondhal to Oscars & Ig Nobel!</h3>
+          <p class="text-sm font-medium">Marathi film <strong>Gondhal</strong> is India's 99th Oscar entry; Bengaluru's <strong>inStem</strong> wins Ig Nobel for cockroach milk crystals!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DYNAMIC CONTENT SECTIONS CONTAINER -->
+    <div id="sectionsContainer" class="space-y-12">
+      <!-- All 10 Magazine Sections + Cartoon SVG Diagrams injected here -->
+    </div>
+
+    <!-- INTERACTIVE 39 ONE-LINER Q&A ARENA -->
+    <section id="section-quiz" class="mt-14 print-section">
+      <div class="comic-card bg-gradient-to-r from-popPurple/30 via-popPink/25 to-popYellow/40 rounded-3xl p-6 sm:p-8">
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+          <div>
+            <span class="bg-ink text-popYellow font-display font-bold text-xs uppercase px-3 py-1 rounded-full">Pages 27–30 • Rapid Fire</span>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl mt-2">🧠 39 EXAM-READY Q&A FLASHCARDS</h2>
+            <p class="text-sm sm:text-base font-semibold text-ink/80 mt-1">Click any card to flip/reveal the answer—or reveal all at once for print!</p>
+          </div>
+          <div class="flex gap-2 no-print">
+            <button onclick="toggleAllAnswers(true)" class="comic-btn bg-popMint px-4 py-2 rounded-xl font-display font-bold text-sm">👀 Show All Answers</button>
+            <button onclick="toggleAllAnswers(false)" class="comic-btn bg-white px-4 py-2 rounded-xl font-display font-bold text-sm">🙈 Quiz Mode (Hide)</button>
+          </div>
+        </div>
+
+        <div id="qaGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- 39 Q&As populated via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="mt-14 mb-6 text-center">
+      <div class="comic-card bg-ink text-cream rounded-3xl p-6 sm:p-8">
+        <div class="font-display font-bold text-2xl text-popYellow mb-2">✨ IEM's Academia of Success (I.A.S) • UEM Kolkata ✨</div>
+        <p class="text-sm text-gray-300 max-w-xl mx-auto mb-4">
+          Compiled from the September 2026 Monthly Current Affairs One-Liner Magazine (All 30 Pages). Styled for effortless visual memory & print-ready PDF export.
+        </p>
+        <button onclick="triggerPDFPrint()" class="no-print comic-btn bg-popYellow text-ink px-6 py-2.5 rounded-xl font-display font-bold text-base">
+          📥 Download / Print Full PDF Magazine
+        </button>
+      </div>
+    </footer>
+
+  </main>
+
+  <script>
+    // =========================================================================
+    // COMPLETE DATASET FROM ALL 30 PAGES OF SEPTEMBER 2026 MAGAZINE
+    // =========================================================================
+    const magazineSections = [
+      {
+        id: 'banking',
+        title: 'Banking & Financial Awareness',
+        emoji: '💰',
+        pages: 'Pages 2–3',
+        bgHeader: 'bg-popYellow',
+        bgTint: 'bg-yellow-50/90',
+        badgeColor: 'bg-popCyan',
+        cartoonTitle: 'Money Machine & Rupee Rockets!',
+        cartoonCaption: '👆 Click any bar or the ₹ coin in the doodle to inspect live stats!',
+        svgDiagram: `
+          <svg viewBox="0 0 360 230" class="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="6" width="348" height="218" rx="18" fill="#FFF" stroke="#18181B" stroke-width="3"/>
+            <rect x="20" y="16" width="320" height="28" rx="8" fill="#FFE600" stroke="#18181B" stroke-width="2.5"/>
+            <text x="180" y="35" text-anchor="middle" font-family="Fredoka, sans-serif" font-weight="700" font-size="13" fill="#18181B">INDIA MACRO SCORECARD (TAP BARS!)</text>
+            
+            <!-- Interactive Bar 1: GDP -->
+            <g class="svg-hotspot" onclick="openDiagramPop('Q1 FY2026-27 Real GDP: 7.8%', 'India\\'s real GDP expanded by 7.8% in Q1 FY2026-27, making it the fastest-growing major economy!', 'Memory Hook: 7-8 = Great!')">
+              <rect x="28" y="122" width="46" height="68" rx="8" fill="#4ADE80" stroke="#18181B" stroke-width="2.5"/>
+              <text x="51" y="114" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="13" fill="#18181B">7.8%</text>
+              <text x="51" y="206" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="800" font-size="10" fill="#18181B">Q1 GDP</text>
+            </g>
+
+            <!-- Interactive Bar 2: GVA -->
+            <g class="svg-hotspot" onclick="openDiagramPop('Q1 FY2026-27 Real GVA: 8.2%', 'Gross Value Added (GVA) grew 8.2% in Q1 FY2026-27—0.4 percentage points higher than real GDP growth!', 'Compare: GDP 7.8% vs GVA 8.2%')">
+              <rect x="92" y="112" width="46" height="78" rx="8" fill="#38BDF8" stroke="#18181B" stroke-width="2.5"/>
+              <text x="115" y="104" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="13" fill="#18181B">8.2%</text>
+              <text x="115" y="206" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="800" font-size="10" fill="#18181B">Q1 GVA</text>
+            </g>
+
+            <!-- Interactive Bar 3: WPI -->
+            <g class="svg-hotspot" onclick="openDiagramPop('August 2026 WPI Inflation: 9.92%', 'Wholesale Price Index (WPI) inflation edged up to 9.92% in August 2026 compared to 9.78% in July 2026.', 'Nearly touching double digits (10%)!')">
+              <rect x="156" y="96" width="46" height="94" rx="8" fill="#FF6B9E" stroke="#18181B" stroke-width="2.5"/>
+              <text x="179" y="88" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="13" fill="#18181B">9.92%</text>
+              <text x="179" y="206" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="800" font-size="10" fill="#18181B">WPI Infl.</text>
+            </g>
+
+            <!-- Interactive Bar 4: CPI Retail -->
+            <g class="svg-hotspot" onclick="openDiagramPop('August 2026 Retail CPI: 4.82%', 'Retail CPI inflation stood at 4.82% in August 2026, while Food Inflation was 5.95%.', 'Comfortably inside RBI\\'s 2%–6% tolerance band!')">
+              <rect x="220" y="142" width="46" height="48" rx="8" fill="#C084FC" stroke="#18181B" stroke-width="2.5"/>
+              <text x="243" y="134" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="13" fill="#18181B">4.82%</text>
+              <text x="243" y="206" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="800" font-size="10" fill="#18181B">CPI Retail</text>
+            </g>
+
+            <!-- Interactive Cartoon Rupee Coin -->
+            <g class="svg-hotspot" onclick="openDiagramPop('UPI Record & Tap-to-Pay!', 'UPI hit 24.51 Billion transactions worth ₹29.82 Trillion in August 2026! Plus, RBI launched NFC UPI Tap-to-Pay without PIN for payments below ₹5,000.', 'PIN-free limit = Below ₹5,000!')">
+              <circle cx="310" cy="118" r="32" fill="#FB923C" stroke="#18181B" stroke-width="3"/>
+              <text x="310" y="126" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="24" fill="#FFF">₹</text>
+              <circle cx="301" cy="103" r="3" fill="#18181B"/>
+              <circle cx="319" cy="103" r="3" fill="#18181B"/>
+              <text x="310" y="168" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11" fill="#18181B">UPI: ₹29.82T</text>
+              <text x="310" y="182" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9" fill="#52525B">Tap Me! 👆</text>
+            </g>
+          </svg>
+        `,
+        items: [
+          { text: "The RBI issued the Commercial Banks – Minimum Capital Requirements for Market Risk Directions, 2026, effective 1 April 2027, adopting the Simplified Standardised Approach (SSA).", hot: true },
+          { text: "India's real GDP grew 7.8% in Q1 FY2026-27, while real GVA expanded 8.2%.", hot: true },
+          { text: "India's WPI inflation rose to 9.92% in August 2026 from 9.78% in July.", hot: false },
+          { text: "India's retail inflation rose to 4.82% in August 2026, with food inflation at 5.95%.", hot: false },
+          { text: "India's unemployment rate declined to 5.0% in August 2026, while the Labour Force Participation Rate (LFPR) rose to 55.6%.", hot: false },
+          { text: "UPI processed a record 24.51 billion transactions worth ₹29.82 trillion in August 2026.", hot: true },
+          { text: "India's forex reserves declined by $4.9 billion to $780.8 billion in the week ended 11 September 2026.", hot: false },
+          { text: "India's gross GST collection rose 14.8% year-on-year to nearly ₹2 trillion in August 2026.", hot: true },
+          { text: "India's merchandise exports rose about 26% year-on-year to $43.81 billion in August 2026, while the trade deficit narrowed to $26.86 billion.", hot: false },
+          { text: "The Bankers' Books Evidence Act, 2026 will take effect on 1 October 2026, replacing the 1891 law and recognising electronic, digital, virtual and cloud-based banking records.", hot: true },
+          { text: "The RBI introduced UPI Tap-to-Pay using NFC technology; transactions below ₹5,000 can be made without a PIN at compatible PoS terminals.", hot: true },
+          { text: "The RBI allowed LIC to acquire up to 9.99% of ICICI Bank's paid-up share capital or voting rights; the approval is valid for one year.", hot: false },
+          { text: "The Union Cabinet raised the EPFO wage ceiling from ₹15,000 to ₹25,000 per month, potentially bringing 51 lakh+ additional employees under coverage.", hot: true },
+          { text: "Sagarmala Finance Corporation announced India's maiden blue bond of ₹600 crore with a ₹500-crore greenshoe option, a 10-year maturity and AA+ ratings from ICRA and CARE.", hot: true },
+          { text: "The US Federal Reserve raised its benchmark rate by 25 basis points to 3.75%–4%, its first increase since July 2023.", hot: true }
+        ]
+      },
+      {
+        id: 'mous',
+        title: 'MoUs & Strategic Partnerships Signed',
+        emoji: '🤝',
+        pages: 'Pages 4–5',
+        bgHeader: 'bg-popCyan',
+        bgTint: 'bg-sky-50/90',
+        badgeColor: 'bg-popYellow',
+        cartoonTitle: 'Handshake Across Earth & Orbit!',
+        cartoonCaption: 'From Kishau Dam & Uzbekistan Uranium to ISRO-ESA 2032 & Quantum Tech!',
+        svgDiagram: `
+          <svg viewBox="0 0 360 220" class="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="6" width="348" height="208" rx="18" fill="#FFF" stroke="#18181B" stroke-width="3"/>
+            <!-- Orbit Ring -->
+            <ellipse cx="180" cy="110" rx="145" ry="70" fill="none" stroke="#38BDF8" stroke-width="3" stroke-dasharray="8 6"/>
+            <!-- Center Handshake Badge -->
+            <g class="svg-hotspot" onclick="openDiagramPop('10 Mega MoUs & Partnerships', 'September 2026 featured 10 strategic agreements spanning Space (ISRO-ESA, Dhruva-Safran, Australia), Water & Energy (Kalpasar, Kishau Dam, Uzbekistan Uranium), and Quantum/AI!', 'Tap the 4 surrounding badges to inspect each deal!')">
+              <circle cx="180" cy="110" r="44" fill="#FFE600" stroke="#18181B" stroke-width="3"/>
+              <text x="180" y="106" text-anchor="middle" font-size="26">🤝</text>
+              <text x="180" y="128" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11" fill="#18181B">10 BIG DEALS</text>
+            </g>
+
+            <!-- Node 1: Space -->
+            <g class="svg-hotspot" onclick="openDiagramPop('ISRO & ESA Extend Pact to 2032', 'ISRO and the European Space Agency (ESA) extended their Cooperative Agreement until 8 January 2032. Dhruva Space also signed €5M+ satellite contracts with France\\'s Safran Space.', 'Space-Based Surveillance Phase-III!')">
+              <rect x="20" y="22" width="112" height="36" rx="10" fill="#FF6B9E" stroke="#18181B" stroke-width="2.5"/>
+              <text x="76" y="44" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11" fill="#18181B">🛰️ ISRO + ESA (2032)</text>
+            </g>
+
+            <!-- Node 2: Uranium -->
+            <g class="svg-hotspot" onclick="openDiagramPop('India–Uzbekistan Uranium & Strategic Pact', 'During PM Modi\\'s Tashkent visit, India and Uzbekistan elevated ties to a Comprehensive Strategic Partnership and agreed on long-term uranium supply to India.', 'Clean nuclear fuel boost!')">
+              <rect x="224" y="22" width="118" height="36" rx="10" fill="#4ADE80" stroke="#18181B" stroke-width="2.5"/>
+              <text x="283" y="44" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11" fill="#18181B">☢️ UZB Uranium</text>
+            </g>
+
+            <!-- Node 3: Dam -->
+            <g class="svg-hotspot" onclick="openDiagramPop('₹15,624-Crore Kishau Dam MoU', 'Six states signed an MoU with the Centre for the ₹15,624-crore Kishau Dam Project on the Tons River. India & Netherlands also signed MoUs for Gujarat\\'s Kalpasar Project.', 'Tons River = Tributary of Yamuna!')">
+              <rect x="20" y="160" width="122" height="36" rx="10" fill="#FB923C" stroke="#18181B" stroke-width="2.5"/>
+              <text x="81" y="182" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11" fill="#18181B">💧 ₹15,624Cr Dam</text>
+            </g>
+
+            <!-- Node 4: Quantum & AI -->
+            <g class="svg-hotspot" onclick="openDiagramPop('Quantum Tech & AI Education MoUs', 'IITM-C-DOT Samgya and QClairvoyance partnered on quantum technologies, while IIT Madras and UNESCO MGIEP teamed up on open-source AI & immersive learning.', 'Double tech boost from IIT Madras!')">
+              <rect x="218" y="160" width="124" height="36" rx="10" fill="#C084FC" stroke="#18181B" stroke-width="2.5"/>
+              <text x="280" y="182" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11" fill="#18181B">⚛️ Quantum & AI</text>
+            </g>
+          </svg>
+        `,
+        items: [
+          { text: "India and the Netherlands signed two tripartite MoUs to strengthen cooperation on Gujarat's Kalpasar Project.", hot: true },
+          { text: "During PM Modi's Tashkent visit, India and Uzbekistan elevated ties to a Comprehensive Strategic Partnership and agreed on long-term uranium supply to India.", hot: true },
+          { text: "Six states signed an MoU with the Centre for the ₹15,624-crore Kishau Dam Project on the Tons River.", hot: true },
+          { text: "APEDA signed an MoU with the organiser of Gulfood, making India the Official Partner Country for Gulfood 2027.", hot: false },
+          { text: "ISRO and the European Space Agency (ESA) extended their Cooperative Agreement until 8 January 2032.", hot: true },
+          { text: "India and Australia announced five space-sector partnerships at the 9th Bengaluru Space Expo.", hot: false },
+          { text: "DRDO signed its first high-value deep-tech agreement under the Technology Development Fund (TDF) with Zero MK India.", hot: false },
+          { text: "IIT Madras and UNESCO MGIEP partnered to develop low-cost, open-source AI and immersive learning technologies incorporating Social and Emotional Learning.", hot: false },
+          { text: "IITM-C-DOT Samgya and QClairvoyance signed an MoU to advance quantum technologies.", hot: false },
+          { text: "Dhruva Space and France's Safran Space signed satellite contracts worth over €5 million, linked to Space-Based Surveillance Phase-III.", hot: true }
+        ]
+      },
+      {
+        id: 'days',
+        title: 'Important Days & Themes (September)',
+        emoji: '📅',
+        pages: 'Pages 6–8',
+        bgHeader: 'bg-popMint',
+        bgTint: 'bg-emerald-50/90',
+        badgeColor: 'bg-popPink',
+        cartoonTitle: 'September Calendar Fiesta!',
+        cartoonCaption: '21 special dates from World Coconut Day (2 Sept) to AI-powered World Tourism Day (27 Sept)!',
+        svgDiagram: `
+          <svg viewBox="0 0 360 220" class="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="6" width="348" height="208" rx="18" fill="#FFF" stroke="#18181B" stroke-width="3"/>
+            <!-- Calendar Top Spiral Binding -->
+            <rect x="22" y="18" width="316" height="32" rx="8" fill="#FF6B9E" stroke="#18181B" stroke-width="2.5"/>
+            <text x="180" y="39" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="14" fill="#18181B">🗓️ SEPTEMBER HIGHLIGHTS TIMELINE</text>
+            
+            <!-- Timeline Line -->
+            <line x1="36" y1="115" x2="324" y2="115" stroke="#18181B" stroke-width="4" stroke-linecap="round"/>
+            
+            <!-- Pin 1: 5 Sept -->
+            <g class="svg-hotspot" onclick="openDiagramPop('5 September: Teachers\\' Day', 'Marks the birth anniversary of Dr Sarvepalli Radhakrishnan, India\\'s first Vice-President and second President.', 'Dahi Handi was also observed on 5 Sept 2026!')">
+              <circle cx="55" cy="115" r="14" fill="#FFE600" stroke="#18181B" stroke-width="2.5"/>
+              <text x="55" y="119" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="10">5</text>
+              <text x="55" y="86" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="10">👩‍🏫 Teachers'</text>
+            </g>
+
+            <!-- Pin 2: 8 Sept -->
+            <g class="svg-hotspot" onclick="openDiagramPop('8 September: International Literacy Day', 'Completed 60 years of global literacy action in 2026!', '60th Diamond Jubilee milestone!')">
+              <circle cx="118" cy="115" r="14" fill="#38BDF8" stroke="#18181B" stroke-width="2.5"/>
+              <text x="118" y="119" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="10">8</text>
+              <text x="118" y="148" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="10">📚 Literacy 60Y</text>
+            </g>
+
+            <!-- Pin 3: 15-16 Sept -->
+            <g class="svg-hotspot" onclick="openDiagramPop('16 September: World Ozone Day', 'Observed with a focus on sustainable cooling and climate action. (15 Sept is National Engineers\\' Day — Sir M. Visvesvaraya).', 'Montreal Protocol milestone!')">
+              <circle cx="180" cy="115" r="14" fill="#4ADE80" stroke="#18181B" stroke-width="2.5"/>
+              <text x="180" y="119" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="10">16</text>
+              <text x="180" y="86" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="10">🌍 Ozone Day</text>
+            </g>
+
+            <!-- Pin 4: 21-22 Sept -->
+            <g class="svg-hotspot" onclick="openDiagramPop('22 September: World Rhino Day', 'Observed under the theme \"Keep the Five Alive\" (protecting all 5 rhino species). 21 Sept is World Alzheimer\\'s Day & International Day of Peace.', 'Keep the Five Alive!')">
+              <circle cx="242" cy="115" r="14" fill="#FB923C" stroke="#18181B" stroke-width="2.5"/>
+              <text x="242" y="119" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="10">22</text>
+              <text x="242" y="148" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="10">🦏 Rhino Day</text>
+            </g>
+
+            <!-- Pin 5: 27 Sept -->
+            <g class="svg-hotspot" onclick="openDiagramPop('27 September: World Tourism Day', 'Theme: \"Digital Agenda and Artificial Intelligence to Redesign Tourism\" — hosted by El Salvador!', 'Host Country: El Salvador!')">
+              <circle cx="305" cy="115" r="14" fill="#C084FC" stroke="#18181B" stroke-width="2.5"/>
+              <text x="305" y="119" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="10">27</text>
+              <text x="305" y="86" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="10">✈️ Tourism AI</text>
+            </g>
+
+            <rect x="40" y="172" width="280" height="26" rx="8" fill="#FFFDF5" stroke="#18181B" stroke-width="2"/>
+            <text x="180" y="189" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="10">Tap any date circle above to inspect! 👆</text>
+          </svg>
+        `,
+        items: [
+          { text: "2 September: World Coconut Day.", hot: false },
+          { text: "4 September: National Wildlife Day (promoting wildlife conservation & endangered species protection); Krishna Janmashtami also observed (Dahi Handi on 5 September).", hot: false },
+          { text: "5 September: Teachers' Day, marking the birth anniversary of Dr Sarvepalli Radhakrishnan.", hot: true },
+          { text: "8 September: International Literacy Day, which completed 60 years of global literacy action in 2026.", hot: true },
+          { text: "9 September: Himalaya Diwas, promoting awareness and conservation of the Himalayan ecosystem.", hot: false },
+          { text: "11 September: National Forest Martyrs Day (linked with the 1730 Khejarli sacrifice led by Amrita Devi Bishnoi) & Digvijay Diwas (commemorating Swami Vivekananda's 1893 Chicago address).", hot: true },
+          { text: "12 September: International Day for South-South Cooperation, highlighting cooperation among developing countries.", hot: false },
+          { text: "Second Saturday of September: World First Aid Day, promoting awareness of the importance of first aid.", hot: false },
+          { text: "14 September: Hindi Diwas (commemorating adoption of Hindi in Devanagari script as Official Language of the Union); Ganesh Chaturthi also observed.", hot: true },
+          { text: "15 September: National Engineers' Day, marking the birth anniversary of Bharat Ratna Sir M. Visvesvaraya.", hot: true },
+          { text: "16 September: World Ozone Day, with a focus on sustainable cooling and climate action.", hot: true },
+          { text: "17 September: Hyderabad Liberation Day (marking Hyderabad State's 1948 integration into the Indian Union); World Patient Safety Day (Theme: \"Safe Care for Noncommunicable Diseases (NCDs)\"); Vishwakarma Jayanti.", hot: true },
+          { text: "18 September: World Bamboo Day (promoting bamboo & sustainable uses); International Equal Pay Day (equal remuneration for work of equal value).", hot: false },
+          { text: "19 September: International Red Panda Day, raising awareness about the endangered red panda and habitat conservation.", hot: false },
+          { text: "21 September: World Alzheimer's Day (Theme: \"The Earlier You Know, The More You Can Do: A Dementia Diagnosis Matters\"); International Day of Peace (Theme: \"Invest in Peace For Everyone, Everywhere, Every Day\").", hot: true },
+          { text: "22 September: World Rhino Day, observed under the theme \"Keep the Five Alive.\"", hot: false },
+          { text: "23 September: 11th Ayurveda Day (Theme: \"Ayurveda for a Healthier Tomorrow\"); International Day of Sign Languages (Theme: \"Declaring Deaf People's Human Rights\").", hot: true },
+          { text: "24 September: World Maritime Day (Theme: \"From Policy to Practice: Powering Maritime Excellence\"); Bhikaji Cama's 165th birth anniversary.", hot: false },
+          { text: "25 September: World Lung Day (Theme: \"A Lifetime of Lung Health\"); Antyodaya Diwas (birth anniversary of Pandit Deendayal Upadhyaya).", hot: false },
+          { text: "26 September: Birth anniversary of Ishwar Chandra Vidyasagar.", hot: false },
+          { text: "27 September: World Tourism Day, observed under the theme \"Digital Agenda and Artificial Intelligence to Redesign Tourism,\" with El Salvador as the host country.", hot: true }
+        ]
+      },
+      {
+        id: 'appointments',
+        title: 'Key Appointments & Leadership',
+        emoji: '👔',
+        pages: 'Page 9',
+        bgHeader: 'bg-popPurple',
+        bgTint: 'bg-purple-50/90',
+        badgeColor: 'bg-popMint',
+        cartoonTitle: 'Boss Chairs & New Captains!',
+        cartoonCaption: 'From CBSE & Adobe to Tata Sons & Berkshire Hathaway succession!',
+        svgDiagram: `
+          <svg viewBox="0 0 360 220" class="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="6" width="348" height="208" rx="18" fill="#FFF" stroke="#18181B" stroke-width="3"/>
+            <!-- Cartoon Boss Character -->
+            <circle cx="90" cy="95" r="38" fill="#FFE600" stroke="#18181B" stroke-width="3"/>
+            <circle cx="78" cy="88" r="4" fill="#18181B"/>
+            <circle cx="102" cy="88" r="4" fill="#18181B"/>
+            <path d="M78 106 Q90 118 102 106" fill="none" stroke="#18181B" stroke-width="3" stroke-linecap="round"/>
+            <!-- Crown -->
+            <polygon points="66,62 76,45 90,58 104,45 114,62" fill="#FF6B9E" stroke="#18181B" stroke-width="2.5"/>
+            <rect x="44" y="142" width="92" height="50" rx="10" fill="#38BDF8" stroke="#18181B" stroke-width="2.5"/>
+            <text x="90" y="164" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">NEW CHIEFS</text>
+            <text x="90" y="180" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="800" font-size="10">10 Big Roles</text>
+
+            <!-- Org Cards on Right -->
+            <g class="svg-hotspot" onclick="jumpAndSearch('CBSE')">
+              <rect x="154" y="22" width="186" height="36" rx="9" fill="#4ADE80" stroke="#18181B" stroke-width="2.5"/>
+              <text x="247" y="44" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">CBSE: Mandeep K Bhandari</text>
+            </g>
+
+            <g class="svg-hotspot" onclick="jumpAndSearch('Adobe')">
+              <rect x="154" y="68" width="186" height="36" rx="9" fill="#FF6B9E" stroke="#18181B" stroke-width="2.5"/>
+              <text x="247" y="90" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">Adobe CEO: Anil Chakravarthy</text>
+            </g>
+
+            <g class="svg-hotspot" onclick="jumpAndSearch('Tata Sons')">
+              <rect x="154" y="114" width="186" height="36" rx="9" fill="#FFE600" stroke="#18181B" stroke-width="2.5"/>
+              <text x="247" y="136" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">Tata Sons: N. Chandrasekaran</text>
+            </g>
+
+            <g class="svg-hotspot" onclick="jumpAndSearch('Berkshire')">
+              <rect x="154" y="160" width="186" height="36" rx="9" fill="#FB923C" stroke="#18181B" stroke-width="2.5"/>
+              <text x="247" y="182" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">Berkshire: Howard Buffett</text>
+            </g>
+          </svg>
+        `,
+        items: [
+          { text: "Jayanti Prasad was given additional charge as Chairperson of the Insolvency and Bankruptcy Board of India (IBBI).", hot: false },
+          { text: "Mandeep K Bhandari, a 2001-batch AGMUT cadre IAS officer, was appointed the new CBSE Chairperson.", hot: true },
+          { text: "Karan Yadav was appointed the first Chief Executive Officer of the Indian Super League (ISL).", hot: true },
+          { text: "Gina Uika, a 2006-batch IFS officer, was appointed India's next High Commissioner to Botswana.", hot: false },
+          { text: "Hansraj Singh Verma was appointed India's next Ambassador to Cuba.", hot: false },
+          { text: "The RBI appointed Suman Ray as Executive Director, effective 1 September 2026.", hot: false },
+          { text: "Anil Chakravarthy was appointed Adobe's next President and CEO, with the transition scheduled for 1 December 2026.", hot: true },
+          { text: "N. Chandrasekaran was reappointed Chairman of Tata Sons for another five-year term.", hot: true },
+          { text: "Warren Buffett stepped down as Berkshire Hathaway Chairman and became Chairman Emeritus; Howard Buffett took over as Chairman.", hot: true },
+          { text: "Retired Air Marshal Jeetendra Mishra was appointed the first CEO of the Shri Ram Janmabhoomi Teerth Kshetra Trust.", hot: true }
+        ]
+      },
+      {
+        id: 'national',
+        title: 'National News & Governance',
+        emoji: '🇮🇳',
+        pages: 'Pages 10–11',
+        bgHeader: 'bg-popOrange',
+        bgTint: 'bg-orange-50/90',
+        badgeColor: 'bg-popCyan',
+        cartoonTitle: 'Desh Ki Raftar — Bullet Speed!',
+        cartoonCaption: 'Kavach 4.0 goes live, 4 Mega Ports notified, & Make in India hits ₹1.78 Lakh Cr defence output!',
+        svgDiagram: `
+          <svg viewBox="0 0 360 220" class="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="6" width="348" height="208" rx="18" fill="#FFF" stroke="#18181B" stroke-width="3"/>
+            <!-- Cartoon Train (Kavach 4.0) -->
+            <g class="svg-hotspot" onclick="openDiagramPop('Kavach 4.0 Commissioned on SCR', 'Kavach 4.0 was commissioned for the first time on South Central Railway, covering 108 route km between Malkajgiri and Kamareddi.', '108 route km automatic train protection!')">
+              <rect x="24" y="34" width="190" height="58" rx="16" fill="#38BDF8" stroke="#18181B" stroke-width="3"/>
+              <polygon points="214,34 252,65 252,92 214,92" fill="#FFE600" stroke="#18181B" stroke-width="3"/>
+              <rect x="42" y="48" width="32" height="20" rx="4" fill="#FFF" stroke="#18181B" stroke-width="2"/>
+              <rect x="86" y="48" width="32" height="20" rx="4" fill="#FFF" stroke="#18181B" stroke-width="2"/>
+              <rect x="130" y="48" width="32" height="20" rx="4" fill="#FFF" stroke="#18181B" stroke-width="2"/>
+              <circle cx="56" cy="94" r="10" fill="#18181B"/>
+              <circle cx="120" cy="94" r="10" fill="#18181B"/>
+              <circle cx="215" cy="94" r="10" fill="#18181B"/>
+              <text x="122" y="83" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11" fill="#18181B">🚄 KAVACH 4.0 (108 KM)</text>
+              <path d="M298 30 L332 42 L332 72 Q332 95 298 106 Q264 95 264 72 L264 42 Z" fill="#4ADE80" stroke="#18181B" stroke-width="3"/>
+              <text x="298" y="73" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="12">SAFE!</text>
+            </g>
+
+            <!-- Bottom Badges -->
+            <g class="svg-hotspot" onclick="jumpAndSearch('mega ports')">
+              <rect x="24" y="126" width="150" height="70" rx="12" fill="#FF6B9E" stroke="#18181B" stroke-width="2.5"/>
+              <text x="99" y="152" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="13">⚓ 4 MEGA PORTS</text>
+              <text x="99" y="170" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">Deendayal • JNPA</text>
+              <text x="99" y="183" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">Paradip • Mundra</text>
+            </g>
+
+            <g class="svg-hotspot" onclick="jumpAndSearch('Make in India')">
+              <rect x="186" y="126" width="150" height="70" rx="12" fill="#FFE600" stroke="#18181B" stroke-width="2.5"/>
+              <text x="261" y="152" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="13">🦁 MAKE IN INDIA</text>
+              <text x="261" y="170" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="800" font-size="10">12 Years Completed!</text>
+              <text x="261" y="184" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">₹1.78L Cr Defence Prod.</text>
+            </g>
+          </svg>
+        `,
+        items: [
+          { text: "India reaffirmed its goal to eliminate Hepatitis B and C as public-health threats by 2030; Union Health Secretary Punya Salila Srivastava highlighted the strategy at an 81st UNGA side event.", hot: false },
+          { text: "Kavach 4.0 was commissioned for the first time on South Central Railway, covering 108 route km between Malkajgiri and Kamareddi.", hot: true },
+          { text: "BIS certification for smartphone screen protectors will become mandatory from 1 April 2027 under IS 19348:2025.", hot: false },
+          { text: "India International Water Week 2026 was held at Bharat Mandapam, New Delhi, under the theme \"Climate Resilient Water Management,\" with the Netherlands and Germany as partner countries.", hot: true },
+          { text: "President Droupadi Murmu amended the Inter-State Council Order, 1990 through the Inter-State Council (Amendment) Order, 2026; the Council is constituted under Article 263.", hot: true },
+          { text: "The government dissolved the Digital Communications Commission, originally established as the Telecom Commission in 1989.", hot: false },
+          { text: "Anupriya Patel launched the National Formulary of India 2026 in New Delhi; it is published by the Indian Pharmacopoeia Commission.", hot: false },
+          { text: "MY Bharat crossed 3 crore registered youth in September 2026.", hot: false },
+          { text: "Deendayal, Jawaharlal Nehru, Paradip and Mundra were notified as mega ports under the Indian Ports Act, 2025.", hot: true },
+          { text: "The Make in India initiative completed 12 years on 25 September 2026; India recorded indigenous defence production worth ₹1.78 lakh crore in FY2025-26.", hot: true }
+        ]
+      },
+      {
+        id: 'international',
+        title: 'International News & Summits',
+        emoji: '🌍',
+        pages: 'Pages 12–13',
+        bgHeader: 'bg-popPink',
+        bgTint: 'bg-pink-50/90',
+        badgeColor: 'bg-popYellow',
+        cartoonTitle: 'Global Stage & Mega Summits!',
+        cartoonCaption: '18th BRICS in Delhi, India–NZ 100% Duty-Free FTA, and ByteDance founder hits $105B!',
+        svgDiagram: `
+          <svg viewBox="0 0 360 220" class="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="6" width="348" height="208" rx="18" fill="#FFF" stroke="#18181B" stroke-width="3"/>
+            <!-- BRICS Crown Box -->
+            <g class="svg-hotspot" onclick="jumpAndSearch('BRICS')">
+              <rect x="20" y="18" width="320" height="62" rx="14" fill="#FFE600" stroke="#18181B" stroke-width="3"/>
+              <text x="180" y="42" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="15">🏛️ 18th BRICS SUMMIT • NEW DELHI</text>
+              <text x="180" y="63" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="10">140-Point New Delhi Declaration • 2027 Host: CHINA</text>
+            </g>
+
+            <!-- 3 Mini Cards -->
+            <g class="svg-hotspot" onclick="jumpAndSearch('New Zealand')">
+              <rect x="20" y="94" width="100" height="104" rx="12" fill="#4ADE80" stroke="#18181B" stroke-width="2.5"/>
+              <text x="70" y="122" text-anchor="middle" font-size="22">🥝</text>
+              <text x="70" y="144" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">INDIA–NZ FTA</text>
+              <text x="70" y="160" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">100% Duty-Free</text>
+              <text x="70" y="174" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">20 Oct 2026</text>
+            </g>
+
+            <g class="svg-hotspot" onclick="jumpAndSearch('Bank of Japan')">
+              <rect x="130" y="94" width="100" height="104" rx="12" fill="#38BDF8" stroke="#18181B" stroke-width="2.5"/>
+              <text x="180" y="122" text-anchor="middle" font-size="22">💹</text>
+              <text x="180" y="144" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">BoJ Rate 1.25%</text>
+              <text x="180" y="160" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">Highest since</text>
+              <text x="180" y="174" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">1995!</text>
+            </g>
+
+            <g class="svg-hotspot" onclick="jumpAndSearch('Zhang Yiming')">
+              <rect x="240" y="94" width="100" height="104" rx="12" fill="#C084FC" stroke="#18181B" stroke-width="2.5"/>
+              <text x="290" y="122" text-anchor="middle" font-size="22">🤑</text>
+              <text x="290" y="144" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">Zhang Yiming</text>
+              <text x="290" y="160" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">Asia's Richest</text>
+              <text x="290" y="174" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">~$105 Billion</text>
+            </g>
+          </svg>
+        `,
+        items: [
+          { text: "India hosted the 18th BRICS Summit at Bharat Mandapam, New Delhi, on 12–13 September 2026 under the theme \"Building for Resilience, Innovation, Cooperation and Sustainability.\"", hot: true },
+          { text: "The New Delhi Declaration 2026, a 45-page document containing 140 points, was unanimously adopted at the 18th BRICS Summit.", hot: true },
+          { text: "China will chair BRICS and host the 19th BRICS Summit in 2027.", hot: true },
+          { text: "The New Zealand Parliament passed the India-New Zealand Free Trade Agreement Bill by 93 votes to 29; the FTA takes effect on 20 October 2026, with duty-free access on 100% of tariff lines for Indian exports.", hot: true },
+          { text: "India, Australia, Japan and the US conducted a Quad tabletop exercise in Tokyo to strengthen the Quad Indo-Pacific Logistics Network.", hot: false },
+          { text: "The Bank of Japan raised its benchmark interest rate to 1.25%, the highest level since 1995.", hot: true },
+          { text: "Zhang Yiming, founder of ByteDance, became Asia's richest person with an estimated net worth of around $105 billion, according to the Bloomberg Billionaires Index.", hot: true },
+          { text: "UNCCD COP17 was held in Ulaanbaatar, Mongolia, under the theme \"Restoring Land. Restoring Hope.\"", hot: true },
+          { text: "PM Modi attended the 26th SCO Summit in Bishkek and met Russian President Vladimir Putin on its sidelines.", hot: true },
+          { text: "The European Commission proposed restrictions on social media, online games and chatbot access for children below 13.", hot: false },
+          { text: "Fiji declared its HIV outbreak a national health crisis amid a sharp increase in infections.", hot: false },
+          { text: "The UN General Assembly endorsed the \"Correct the Map\" resolution; the theme of the 81st UNGA is \"Restoring Trust, Managing Transformation.\"", hot: true }
+        ]
+      },
+      {
+        id: 'defence',
+        title: 'Defence Exercises & Military Tech',
+        emoji: '🛡️',
+        pages: 'Pages 14–15',
+        bgHeader: 'bg-popMint',
+        bgTint: 'bg-lime-50/90',
+        badgeColor: 'bg-popOrange',
+        cartoonTitle: 'Jets, Lasers & COBRA Commandos!',
+        cartoonCaption: '6 major war games, 30-kW anti-drone laser, Zorawar tanks, & Sanjukta Parashar leads COBRA!',
+        svgDiagram: `
+          <svg viewBox="0 0 360 220" class="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="6" width="348" height="208" rx="18" fill="#FFF" stroke="#18181B" stroke-width="3"/>
+            <rect x="20" y="16" width="320" height="28" rx="8" fill="#4ADE80" stroke="#18181B" stroke-width="2.5"/>
+            <text x="180" y="35" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="13">⚔️ EXERCISE MATCH-UP BOARD</text>
+
+            <!-- Grid of Exercises -->
+            <g class="svg-hotspot" onclick="jumpAndSearch('Veer Guardian')">
+              <rect x="20" y="54" width="154" height="44" rx="10" fill="#FFE600" stroke="#18181B" stroke-width="2"/>
+              <text x="97" y="73" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">✈️ Veer Guardian</text>
+              <text x="97" y="89" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">India + Japan (Jodhpur)</text>
+            </g>
+
+            <g class="svg-hotspot" onclick="jumpAndSearch('Nomadic Elephant')">
+              <rect x="186" y="54" width="154" height="44" rx="10" fill="#38BDF8" stroke="#18181B" stroke-width="2"/>
+              <text x="263" y="73" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">🐘 Nomadic Elephant</text>
+              <text x="263" y="89" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">India + Mongolia (18th)</text>
+            </g>
+
+            <g class="svg-hotspot" onclick="jumpAndSearch('SLINEX')">
+              <rect x="20" y="106" width="154" height="44" rx="10" fill="#FF6B9E" stroke="#18181B" stroke-width="2"/>
+              <text x="97" y="125" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">🚢 SLINEX-26 & VARUNA</text>
+              <text x="97" y="141" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">Sri Lanka & France</text>
+            </g>
+
+            <g class="svg-hotspot" onclick="jumpAndSearch('Yudh Abhyas')">
+              <rect x="186" y="106" width="154" height="44" rx="10" fill="#C084FC" stroke="#18181B" stroke-width="2"/>
+              <text x="263" y="125" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">🦅 Yudh Abhyas 2026</text>
+              <text x="263" y="141" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">India + US (MLIDS Drone)</text>
+            </g>
+
+            <!-- Laser & Zorawar Strip -->
+            <g class="svg-hotspot" onclick="jumpAndSearch('Zorawar')">
+              <rect x="20" y="160" width="320" height="40" rx="10" fill="#FB923C" stroke="#18181B" stroke-width="2.5"/>
+              <text x="180" y="184" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="12">🔦 30-kW Laser Weapon • 🚜 ₹20K Cr Zorawar Tank (Tata)</text>
+            </g>
+          </svg>
+        `,
+        items: [
+          { text: "India and Japan held the 14-day bilateral air exercise Veer Guardian 2026 at Air Force Station Jodhpur, with India fielding Su-30 MKI, Rafale and LCA Tejas and Japan fielding F-2A fighters.", hot: true },
+          { text: "The 18th edition of Exercise Nomadic Elephant between India and Mongolia began at Pithoragarh, Uttarakhand.", hot: true },
+          { text: "The 13th edition of the India-Sri Lanka bilateral maritime exercise SLINEX-26 was held at Visakhapatnam.", hot: false },
+          { text: "The 22nd edition of India-US Exercise Yudh Abhyas 2026 used a two-theatre format (Mahajan, Rajasthan and Auli, Uttarakhand) and saw the first Indian deployment of the MLIDS counter-drone system.", hot: true },
+          { text: "INS Trishul participated in the India-France naval exercise VARUNA 2026 at Toulon, France.", hot: false },
+          { text: "The fourth edition of the India-Malaysia exercise Samudra Laksamana was held at Lumut, with INS Mysore, a Delhi-class guided-missile destroyer, participating.", hot: false },
+          { text: "DRDO planned an industry partnership for a 30-kW class directed-energy laser weapon for counter-drone operations.", hot: true },
+          { text: "The Defence Acquisition Council (DAC) cleared proposals worth around ₹1.10 lakh crore through Acceptance of Necessity (AoN).", hot: false },
+          { text: "Tata emerged as the lowest bidder for the roughly ₹20,000 crore Zorawar light-tank programme; the tank is named after General Zorawar Singh.", hot: true },
+          { text: "The Indian Navy commissioned INS Nipun, the second Nistar-class Diving Support Vessel, built by Hindustan Shipyard Limited (HSL).", hot: false },
+          { text: "Sanjukta Parashar became the first woman officer to lead CRPF's COBRA force.", hot: true },
+          { text: "Tata Boeing Aerospace delivered its 400th Made-in-India Apache fuselage at Hyderabad.", hot: false }
+        ]
+      },
+      {
+        id: 'awards',
+        title: 'Honours, Awards & Cinema',
+        emoji: '🏆',
+        pages: 'Pages 16–17',
+        bgHeader: 'bg-popYellow',
+        bgTint: 'bg-amber-50/90',
+        badgeColor: 'bg-popPurple',
+        cartoonTitle: 'Trophies, Oscars & Cockroach Milk?!',
+        cartoonCaption: 'Ramon Magsaysay 2026, Gondhal at Oscars, Dadasaheb Phalke for Anant Nag & Ig Nobel Chemistry!',
+        svgDiagram: `
+          <svg viewBox="0 0 360 220" class="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="6" width="348" height="208" rx="18" fill="#FFF" stroke="#18181B" stroke-width="3"/>
+            <!-- Cartoon Trophy -->
+            <path d="M55 45 L115 45 L105 95 Q85 115 65 95 Z" fill="#FFE600" stroke="#18181B" stroke-width="3"/>
+            <path d="M55 55 Q35 55 38 75 Q42 88 60 85" fill="none" stroke="#18181B" stroke-width="3"/>
+            <path d="M115 55 Q135 55 132 75 Q128 88 110 85" fill="none" stroke="#18181B" stroke-width="3"/>
+            <rect x="78" y="102" width="14" height="26" fill="#FB923C" stroke="#18181B" stroke-width="2.5"/>
+            <rect x="58" y="128" width="54" height="16" rx="5" fill="#18181B"/>
+            <text x="85" y="76" text-anchor="middle" font-size="22">⭐</text>
+            <text x="85" y="164" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">HALL OF FAME</text>
+            <text x="85" y="180" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">Sept 2026 Winners</text>
+
+            <!-- Award Pills -->
+            <g class="svg-hotspot" onclick="jumpAndSearch('Gondhal')">
+              <rect x="148" y="20" width="194" height="36" rx="9" fill="#FF6B9E" stroke="#18181B" stroke-width="2"/>
+              <text x="245" y="42" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">🎬 Oscar Entry: Gondhal</text>
+            </g>
+
+            <g class="svg-hotspot" onclick="jumpAndSearch('Ig Nobel')">
+              <rect x="148" y="64" width="194" height="36" rx="9" fill="#4ADE80" stroke="#18181B" stroke-width="2"/>
+              <text x="245" y="86" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">🪳 Ig Nobel: inStem (Blr)</text>
+            </g>
+
+            <g class="svg-hotspot" onclick="jumpAndSearch('Anant Nag')">
+              <rect x="148" y="108" width="194" height="36" rx="9" fill="#38BDF8" stroke="#18181B" stroke-width="2"/>
+              <text x="245" y="130" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">🎥 Phalke Award: Anant Nag</text>
+            </g>
+
+            <g class="svg-hotspot" onclick="jumpAndSearch('Miss World')">
+              <rect x="148" y="152" width="194" height="36" rx="9" fill="#C084FC" stroke="#18181B" stroke-width="2"/>
+              <text x="245" y="174" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">👑 Miss World: Joheirry Mola</text>
+            </g>
+          </svg>
+        `,
+        items: [
+          { text: "Tommy Koh (Singapore), Runa Khan (Bangladesh) and Bo Kyi (Myanmar) were named Ramon Magsaysay Award 2026 winners on 31 August (award started in 1958).", hot: true },
+          { text: "PM Narendra Modi received Uzbekistan's highest honour, the Oliy Darajali Do'stlik Order (Order of Supreme Friendship), in Tashkent on 30 August 2026.", hot: true },
+          { text: "At the 36th Ig Nobel Prize ceremony on 3 September 2026, Sanchari Banerjee, Subrahmanyan Ramaswamy and colleagues from inStem, Bengaluru won the Chemistry prize for research on protein crystals in cockroach milk.", hot: true },
+          { text: "At the 78th Primetime Emmy Awards: The Pitt won Best Drama Series, Widow's Bay won Best Comedy Series, DTF St Louis won Best Limited or Anthology Series, and Rebel Ridge won Best Television Movie.", hot: true },
+          { text: "Nagaland filmmaker Theja Rio's Angh won the Platform Prize at TIFF 2026 and a C$20,000 cash prize, becoming the first film under TIFF's new International Feature Film Oscar pathway.", hot: true },
+          { text: "Composer Shantanu Moitra was selected for the National Lata Mangeshkar Award 2026, carrying a ₹5 lakh tax-free cash prize and citation.", hot: true },
+          { text: "The Booker Prize 2026 shortlist of six novels was selected from 163 submissions (winner scheduled for 9 November 2026).", hot: false },
+          { text: "Joheirry Mola of the Dominican Republic was crowned Miss World 2026, the country's second title after 1982.", hot: false },
+          { text: "Veteran Kannada actor Anant Nag was selected for the Dadasaheb Phalke Award 2024.", hot: true },
+          { text: "Kishor Makwana was selected for the Dr APJ Abdul Kalam Jan Seva Puraskar, to be presented at the 16th Sansad Ratna Awards.", hot: false },
+          { text: "The Marathi thriller Gondhal, directed by Santosh Davakhar, was selected as India's official entry for Best International Feature Film at the 99th Academy Awards.", hot: true },
+          { text: "Former Chief Justice of India Dipak Misra received the Kalinga Ratna Award in Cuttack.", hot: false }
+        ]
+      },
+      {
+        id: 'books',
+        title: 'Books & Authors Corner',
+        emoji: '📚',
+        pages: 'Pages 18–19',
+        bgHeader: 'bg-popCyan',
+        bgTint: 'bg-cyan-50/90',
+        badgeColor: 'bg-popPink',
+        cartoonTitle: 'Hot Off The Printing Press!',
+        cartoonCaption: '9 notable releases & translations including Thirukkural in Russian!',
+        svgDiagram: `
+          <svg viewBox="0 0 360 210" class="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="6" width="348" height="198" rx="18" fill="#FFF" stroke="#18181B" stroke-width="3"/>
+            <!-- Stack of Cartoon Books -->
+            <g class="svg-hotspot" onclick="jumpAndSearch('Modi Katha')">
+              <rect x="34" y="142" width="126" height="28" rx="6" fill="#FF6B9E" stroke="#18181B" stroke-width="2.5"/>
+              <text x="97" y="160" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="10">MODI KATHA</text>
+            </g>
+
+            <g class="svg-hotspot" onclick="jumpAndSearch('Century of Service')">
+              <rect x="28" y="112" width="136" height="28" rx="6" fill="#FFE600" stroke="#18181B" stroke-width="2.5"/>
+              <text x="96" y="130" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="10">A CENTURY OF SERVICE</text>
+            </g>
+
+            <g class="svg-hotspot" onclick="jumpAndSearch('Bhupen Hazarika')">
+              <rect x="38" y="82" width="118" height="28" rx="6" fill="#4ADE80" stroke="#18181B" stroke-width="2.5"/>
+              <text x="97" y="100" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="10">BHUPEN HAZARIKA</text>
+            </g>
+
+            <g class="svg-hotspot" onclick="jumpAndSearch('Thirukkural')">
+              <rect x="44" y="52" width="106" height="28" rx="6" fill="#38BDF8" stroke="#18181B" stroke-width="2.5"/>
+              <text x="97" y="70" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="10">THIRUKKURAL (RU)</text>
+            </g>
+
+            <!-- Right Callout -->
+            <rect x="182" y="34" width="154" height="142" rx="14" fill="#FFFDF5" stroke="#18181B" stroke-width="2.5"/>
+            <text x="259" y="62" text-anchor="middle" font-size="24">📖</text>
+            <text x="259" y="88" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="13">9 BOOK LAUNCHES</text>
+            <text x="259" y="110" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="10">• VP C.P. Radhakrishnan</text>
+            <text x="259" y="126" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="10">• Dr. Tamilisai</text>
+            <text x="259" y="142" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="10">• Justice Nagamohan Das</text>
+            <text x="259" y="158" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="10">• Russian Thirukkural</text>
+          </svg>
+        `,
+        items: [
+          { text: "\"A Century of Service: The RSS in 100 Acts of Seva\" by Dr. Tamilisai Soundararajan was released by Vice-President C. P. Radhakrishnan on 15 September 2026 at Uprashtrapati Bhavan, New Delhi.", hot: true },
+          { text: "\"Bhupen Hazarika: Hundred Years of a Wandering Song,\" edited by Ankuran Dutta and Nani Gopal Mahanta, was published by Gauhati University Press.", hot: false },
+          { text: "\"Modi Katha\" by Dr. Harish Chandra Burnwal was launched on 17 September 2026 by Union Minister Arjun Ram Meghwal at IGNCA, New Delhi (published by Prabhat Prakashan).", hot: true },
+          { text: "\"SAARATHI,\" a business novel by Hirav Shah, was launched in Gujarat on 23 September 2026.", hot: false },
+          { text: "\"Memorable Trials, Unforgettable Cases\" by Justice H. N. Nagamohan Das was launched in Kannada and English editions in September 2026.", hot: false },
+          { text: "\"Yatra: From Sorrow to Joy\" by Dr. Krishna Avtar was launched by Uttarakhand Governor Lt Gen Gurmit Singh (Retd.) on 14 September 2026.", hot: false },
+          { text: "\"Vishwasanchar Hindutva Ka,\" published by Saptahik Vivek, was released by Vice-President C. P. Radhakrishnan at Uprashtrapati Bhavan, New Delhi.", hot: false },
+          { text: "\"Life-Changing Maha Mantras: The Art of Living the Gita\" by Sadguru Sakshi Shree was launched on 27 September 2026 at Bharat Mandapam, New Delhi (published by Penguin Ananda).", hot: false },
+          { text: "Thirukkural by Thiruvalluvar came into the news in connection with its Russian translation.", hot: true }
+        ]
+      },
+      {
+        id: 'sports',
+        title: 'Sports Spectacular',
+        emoji: '🏅',
+        pages: 'Pages 20–21',
+        bgHeader: 'bg-popPink',
+        bgTint: 'bg-rose-50/90',
+        badgeColor: 'bg-popYellow',
+        cartoonTitle: 'Medals, Sixes & Standing Ovations!',
+        cartoonCaption: '20th Asian Games in Japan, Smriti & Abhishek smash records, & Lionel Messi bids adieu!',
+        svgDiagram: `
+          <svg viewBox="0 0 360 220" class="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="6" width="348" height="208" rx="18" fill="#FFF" stroke="#18181B" stroke-width="3"/>
+            <!-- Asian Games Banner -->
+            <g class="svg-hotspot" onclick="jumpAndSearch('Asian Games')">
+              <rect x="20" y="16" width="320" height="44" rx="12" fill="#FF6B9E" stroke="#18181B" stroke-width="2.5"/>
+              <text x="180" y="36" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="13">🔥 20th ASIAN GAMES • AICHI-NAGOYA</text>
+              <text x="180" y="52" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="800" font-size="9">Mascot: HONOHON • Flag Bearers: Manu Bhaker & Pawan Sehrawat (503 Athletes)</text>
+            </g>
+
+            <!-- Medal Trio -->
+            <g class="svg-hotspot" onclick="jumpAndSearch('kabaddi')">
+              <circle cx="75" cy="112" r="34" fill="#FFE600" stroke="#18181B" stroke-width="3"/>
+              <text x="75" y="108" text-anchor="middle" font-size="18">🥇</text>
+              <text x="75" y="125" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="9">Kabaddi 37-33</text>
+            </g>
+
+            <g class="svg-hotspot" onclick="jumpAndSearch('Mirabai')">
+              <circle cx="180" cy="112" r="34" fill="#E2E8F0" stroke="#18181B" stroke-width="3"/>
+              <text x="180" y="108" text-anchor="middle" font-size="18">🥈</text>
+              <text x="180" y="125" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="9">Mirabai 198kg</text>
+            </g>
+
+            <g class="svg-hotspot" onclick="jumpAndSearch('Sawan Barwal')">
+              <circle cx="285" cy="112" r="34" fill="#38BDF8" stroke="#18181B" stroke-width="3"/>
+              <text x="285" y="108" text-anchor="middle" font-size="18">🥈</text>
+              <text x="285" y="125" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="9">Marathon 44Y!</text>
+            </g>
+
+            <!-- Bottom Cricket & Football Strip -->
+            <g class="svg-hotspot" onclick="jumpAndSearch('Messi')">
+              <rect x="20" y="160" width="320" height="40" rx="10" fill="#4ADE80" stroke="#18181B" stroke-width="2.5"/>
+              <text x="180" y="184" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">🏏 Smriti #1 • Abhishek 30-ball 100 • ⚽ Messi Retires (125 Goals)</text>
+            </g>
+          </svg>
+        `,
+        items: [
+          { text: "The 20th Asian Games began in Aichi-Nagoya, Japan, on 19 September 2026 (to 4 October); the mascot is Honohon (meaning 'flame'), the opening-ceremony theme is \"Harmonic Heart Beat\" and the slogan is \"Imagine One Asia.\"", hot: true },
+          { text: "Manu Bhaker (shooting) and Pawan Sehrawat (kabaddi) carried the Indian flag at the Asian Games opening ceremony, with Pawan replacing Tajinderpal Singh Toor; India sent a 503-member contingent.", hot: true },
+          { text: "India won a record eighth Women's Asia Cup title and also completed a golden double at the Junior Asia Cup 2026.", hot: false },
+          { text: "India won the Asian Games 2026 women's kabaddi gold (37–33 over Iran), its fourth gold in the event after 2010, 2014 and 2022.", hot: true },
+          { text: "Mirabai Chanu won silver in the women's 49 kg weightlifting event at the Asian Games with a combined lift of 198 kg.", hot: true },
+          { text: "Sawan Barwal won the Asian Games men's marathon silver in 2:11:37, ending India's 44-year wait for a marathon medal.", hot: true },
+          { text: "Elena Rybakina won the US Open 2026 women's singles title.", hot: true },
+          { text: "Ganges Grandmasters defeated Alpine APL Pipers 7–5 to win the maiden Global Chess League title.", hot: false },
+          { text: "Smriti Mandhana became the highest run-scorer in women's international cricket, surpassing Mithali Raj, and the highest in women's T20Is, surpassing Suzie Bates.", hot: true },
+          { text: "Abhishek Sharma smashed a 30-ball T20I century against Afghanistan, a new Indian record.", hot: true },
+          { text: "Ishan Kishan scored a record 270 for East Zone in the Duleep Trophy final; Vaibhav Sooryavanshi became the youngest Duleep Trophy half-centurion at 15 years and 157 days.", hot: true },
+          { text: "Lionel Messi announced his retirement from international football, ending his Argentina career with 207 appearances and 125 goals.", hot: true },
+          { text: "Kimi Antonelli won the Italian Grand Prix after starting 19th.", hot: false },
+          { text: "Germany defeated Spain 1–0 to retain the FIH Men's Hockey World Cup and claim a fourth title; India will host the inaugural ICC Women's Champions Trophy on 14–28 February 2027.", hot: true }
+        ]
+      },
+      {
+        id: 'travel',
+        title: 'Hotel, Travel & Aviation',
+        emoji: '✈️',
+        pages: 'Pages 22–26',
+        bgHeader: 'bg-popPurple',
+        bgTint: 'bg-violet-50/90',
+        badgeColor: 'bg-popMint',
+        cartoonTitle: 'Sky-High Routes & Pink E-Autos!',
+        cartoonCaption: 'India hits 31st in WEF Tourism Index, UDAN gets ₹28,840 Cr, & UPI works in Uzbekistan!',
+        svgDiagram: `
+          <svg viewBox="0 0 360 220" class="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="6" width="348" height="208" rx="18" fill="#FFF" stroke="#18181B" stroke-width="3"/>
+            <!-- Cartoon Airplane -->
+            <g class="svg-hotspot" onclick="jumpAndSearch('UDAN')">
+              <path d="M40 66 L125 56 L160 32 L175 36 L152 60 L215 62 L230 48 L240 52 L228 72 L150 78 L165 100 L150 102 L122 76 L45 78 Z" fill="#38BDF8" stroke="#18181B" stroke-width="2.5"/>
+              <rect x="248" y="34" width="94" height="62" rx="12" fill="#FFE600" stroke="#18181B" stroke-width="2.5"/>
+              <text x="295" y="58" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">UDAN 10-YR</text>
+              <text x="295" y="74" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="800" font-size="9">100 Airports</text>
+              <text x="295" y="88" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="800" font-size="9">₹28,840 Cr</text>
+            </g>
+
+            <!-- 3 Travel Pills -->
+            <g class="svg-hotspot" onclick="jumpAndSearch('DURGA')">
+              <rect x="20" y="116" width="100" height="84" rx="12" fill="#FF6B9E" stroke="#18181B" stroke-width="2.5"/>
+              <text x="70" y="142" text-anchor="middle" font-size="20">🛺</text>
+              <text x="70" y="162" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="10">DURGA Pink</text>
+              <text x="70" y="176" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">1,300 E-Autos</text>
+              <text x="70" y="190" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">in Delhi</text>
+            </g>
+
+            <g class="svg-hotspot" onclick="jumpAndSearch('WEF')">
+              <rect x="130" y="116" width="100" height="84" rx="12" fill="#4ADE80" stroke="#18181B" stroke-width="2.5"/>
+              <text x="180" y="142" text-anchor="middle" font-size="20">🏔️</text>
+              <text x="180" y="162" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="10">WEF Rank 31</text>
+              <text x="180" y="176" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">Up from 39th!</text>
+              <text x="180" y="190" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">Kumik Heritage</text>
+            </g>
+
+            <g class="svg-hotspot" onclick="jumpAndSearch('Anak Krakatau')">
+              <rect x="240" y="116" width="100" height="84" rx="12" fill="#FB923C" stroke="#18181B" stroke-width="2.5"/>
+              <text x="290" y="142" text-anchor="middle" font-size="20">🌋</text>
+              <text x="290" y="162" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="10">Anak Krakatau</text>
+              <text x="290" y="176" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">50,000 ft Ash</text>
+              <text x="290" y="190" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">Sarawak Haze</text>
+            </g>
+          </svg>
+        `,
+        items: [
+          { text: "[Tourism • National] India Targets 10 Million Medical Value Tourists: Union Commerce & Industry Minister Piyush Goyal announced a target of attracting 10 million international medical value tourists annually at Sanjeevani 2026.", hot: true },
+          { text: "[Tourism • National] India Climbs to 31st in WEF Travel & Tourism Development Index 2026: Ranked 31st among 110 economies (up from 39th in 2024), while Japan topped the index.", hot: true },
+          { text: "[Tourism • National] Gujarat and the Darjeeling Himalayan Railway were featured in Lonely Planet's Best in Travel 2027.", hot: false },
+          { text: "[Tourism • National] India announced the launch of the National Destination Digital Knowledge Grid to provide comprehensive digital info about tourism destinations.", hot: false },
+          { text: "[Tourism • National] Kumik in Zanskar became Ladakh's first Heritage Village, while twin flower fields were inaugurated at Choglamsar and Stakna at 10,600 ft across 40 acres.", hot: true },
+          { text: "[Tourism • National] Delhi's Chandni Chowk Town Hall will be developed as a Global Heritage Centre.", hot: false },
+          { text: "[Tourism • International] UN Tourism World Tourism Barometer (24 Sept 2026): ~690 million international tourists travelled in Jan–June 2026 (+0.4%); Q1 +2%, Q2 -1%; Africa +4%, Europe +3%, Americas +2%; full-year forecast cut to 1–2%.", hot: false },
+          { text: "[Tourism • International] World Tourism Day 2026 (27 Sept) hosted in San Salvador & Surf City, El Salvador under theme \"Digital Agenda and Artificial Intelligence to Redesign Tourism.\"", hot: true },
+          { text: "[Tourism • International] Japan's foreign arrivals fell 9.6% YoY in August 2026 to 3,098,900; Chinese visitors plunged 59% (~418,000), while South Korea rose 28.7% to a record-for-August 850,500.", hot: false },
+          { text: "[Tourism • International] US Hotel Performance in August 2026 (CoStar): Occupancy 66.4% (+0.5%), ADR $161.78 (+1.5%), RevPAR $107.43 (+2.0%), led by San Francisco.", hot: false },
+          { text: "[Travel • National] Bharat Taxi expanded to 5 more cities (Lucknow, Gorakhpur, Varanasi, Kanpur, Prayagraj) on a \"Driver is Owner\" zero-commission model.", hot: false },
+          { text: "[Travel • National] Delhi's DURGA Scheme brings 1,300 pink electric autos in Phase 1 (1,170 for women and 130 for transgender persons) for green e-auto employment.", hot: true },
+          { text: "[Travel • National] Indian travellers can now make UPI payments in Uzbekistan by scanning interoperable UZQR codes (NIPL–NIPC pact).", hot: true },
+          { text: "[Travel • National] NHAI will upgrade its 1033 National Highway Helpline with AI, multilingual assistance, location tracking and smart emergency dispatch.", hot: false },
+          { text: "[Travel • National] The Bairabi–Sairang railway line in Mizoram completed one year of operations.", hot: false },
+          { text: "[Travel • International] EU biometric Entry/Exit System (EES) congestion flexibility expired on 6 Sept 2026; ETIAS travel authorisation is still not in operation.", hot: false },
+          { text: "[Travel • International] Indonesia's Mount Anak Krakatau ('Child of Krakatau', emerged 1927) erupted, sending ash to ~50,000 feet.", hot: true },
+          { text: "[Travel • International] Malaysia declared an emergency in Serian, Sarawak after the Air Pollution Index hit 519 amid cross-border haze.", hot: false },
+          { text: "[Aviation • National] Modified UDAN enters a new 10-year phase to develop 100 new airports and ~200 helipads with an outlay of ₹28,840 crore; VGF support for airlines extended from 3 to 5 years.", hot: true },
+          { text: "[Aviation • National] India's domestic air passenger traffic contracted 7.5% YoY in August 2026 (IATA).", hot: false },
+          { text: "[Aviation • International] Global air passenger demand (RPK) fell 0.8% YoY in August 2026 as Middle Eastern carriers dropped 14.6% (load factor 85.1%); global air cargo demand rose 4.4%.", hot: false },
+          { text: "[Aviation • International] Ryanair carried a record 22.2 million passengers in August 2026 (96% load factor) but cut FY27 forecast to 214M after 400+ flights cancelled due to Mount Etna eruptions.", hot: false },
+          { text: "[Aviation • International] Airbus delivered 57 aircraft in August 2026 (475 YTD) vs Boeing's 51 (418 YTD), and booked 67 gross orders vs Boeing's 15.", hot: false },
+          { text: "[Aviation • International] Air China resumed daily nonstop Guangzhou–New Delhi flights on 21 September 2026 (suspended since Feb 2020).", hot: true }
+        ]
+      }
+    ];
+
+    // =========================================================================
+    // ALL 39 RAPID-FIRE ONE-LINER QUESTIONS & ANSWERS (PAGES 27-30)
+    // Includes bonus facts from Q19 & Q20 (Lucknow Swachh Vayu & e-Shram 5 yrs)!
+    // =========================================================================
+    const qaList = [
+      { q: "Q1. Which BRICS Summit did India host on 12–13 September 2026, and at which venue?", a: "18th BRICS Summit; Bharat Mandapam, New Delhi" },
+      { q: "Q2. How many points does the New Delhi Declaration 2026 contain?", a: "140 points (45 pages)" },
+      { q: "Q3. Which country will chair BRICS and host the 19th BRICS Summit in 2027?", a: "China" },
+      { q: "Q4. Which country conferred the Oliy Darajali Do'stlik Order on PM Modi?", a: "Uzbekistan" },
+      { q: "Q5. Who were the three winners of the Ramon Magsaysay Award 2026?", a: "Tommy Koh, Runa Khan and Bo Kyi" },
+      { q: "Q6. Which Bengaluru institute's researchers won the 2026 Ig Nobel Prize in Chemistry?", a: "inStem (Institute for Stem Cell Science and Regenerative Medicine)" },
+      { q: "Q7. Which FTA is scheduled to take effect on 20 October 2026?", a: "India–New Zealand FTA" },
+      { q: "Q8. To what level did the Bank of Japan raise its benchmark interest rate?", a: "1.25% (highest since 1995)" },
+      { q: "Q9. To what range did the US Federal Reserve raise its benchmark rate?", a: "3.75%–4%" },
+      { q: "Q10. Who became Asia's richest person according to the Bloomberg Billionaires Index?", a: "Zhang Yiming (ByteDance, ~$105B)" },
+      { q: "Q11. Where was UNCCD COP17 held?", a: "Ulaanbaatar, Mongolia" },
+      { q: "Q12. What is the theme of the 81st UN General Assembly?", a: "Restoring Trust, Managing Transformation" },
+      { q: "Q13. Which Act replaces the 1891 law and takes effect on 1 October 2026?", a: "Bankers' Books Evidence Act, 2026" },
+      { q: "Q14. Which approach does the RBI's 2026 Market Risk Directions adopt?", a: "Simplified Standardised Approach (SSA)" },
+      { q: "Q15. What was India's real GDP growth in Q1 FY2026-27?", a: "7.8%" },
+      { q: "Q16. The EPFO wage ceiling was raised from ₹15,000 to what amount?", a: "₹25,000 per month" },
+      { q: "Q17. Which entity announced India's maiden blue bond of ₹600 crore?", a: "Sagarmala Finance Corporation" },
+      { q: "Q18. How many UPI transactions were processed in August 2026?", a: "24.51 billion, worth ₹29.82 trillion" },
+      { q: "Q19. Which city topped Category I (population above 10 lakh) in Swachh Vayu Sarvekshan 2026?", a: "Lucknow (score 198)" },
+      { q: "Q20. On what date did the e-Shram portal complete 5 years?", a: "26 August 2026 (launched 26 August 2021)" },
+      { q: "Q21. What is the official mascot of the 20th Asian Games, Aichi-Nagoya 2026?", a: "Honohon (meaning 'flame')" },
+      { q: "Q22. Who were India's flag bearers at the Asian Games 2026 opening ceremony?", a: "Manu Bhaker and Pawan Sehrawat" },
+      { q: "Q23. Which series won Best Drama and Best Comedy at the 2026 Emmys?", a: "The Pitt (Drama) and Widow's Bay (Comedy)" },
+      { q: "Q24. Which film was selected as India's entry for the 99th Academy Awards' Best International Feature Film?", a: "Gondhal" },
+      { q: "Q25. Which Theja Rio film won the Platform Prize at TIFF 2026?", a: "Angh" },
+      { q: "Q26. Who was selected for the National Lata Mangeshkar Award 2026?", a: "Shantanu Moitra" },
+      { q: "Q27. Who became the first woman officer to lead CRPF's COBRA force?", a: "Sanjukta Parashar" },
+      { q: "Q28. Veer Guardian 2026 is a bilateral air exercise between India and which country?", a: "Japan (at Jodhpur)" },
+      { q: "Q29. Which India-US exercise in 2026 saw the first Indian deployment of the MLIDS counter-drone system?", a: "Yudh Abhyas 2026 (22nd edition)" },
+      { q: "Q30. Who announced retirement from international football with 207 appearances and 125 goals?", a: "Lionel Messi" },
+      { q: "Q31. Who became the highest run-scorer in women's international cricket, surpassing Mithali Raj?", a: "Smriti Mandhana" },
+      { q: "Q32. Ishan Kishan scored a record 270 for East Zone in which final?", a: "Duleep Trophy final" },
+      { q: "Q33. What is the theme of World Tourism Day 2026, and which country hosted it?", a: "\"Digital Agenda and Artificial Intelligence to Redesign Tourism\"; El Salvador" },
+      { q: "Q34. What was the growth in international tourist arrivals in H1 2026, according to UN Tourism?", a: "0.4% (about 690 million tourists)" },
+      { q: "Q35. By what percentage did Japan's foreign arrivals fall in August 2026, and which market plunged 59%?", a: "9.6%; China" },
+      { q: "Q36. By how much did global air passenger demand change in August 2026, according to IATA?", a: "Fell 0.8% year on year (Middle East carriers down 14.6%)" },
+      { q: "Q37. Viability Gap Funding for airlines under the modified UDAN was extended from three years to how many?", a: "Five years" },
+      { q: "Q38. How many passengers did Ryanair carry in August 2026?", a: "A record 22.2 million (96% load factor)" },
+      { q: "Q39. Air China resumed daily nonstop flights between which two cities on 21 September 2026?", a: "Guangzhou and New Delhi" }
+    ];
+
+    // =========================================================================
+    // STATE & RENDERING ENGINE
+    // =========================================================================
+    // STATE, SOUND EFFECTS & INTERACTIVE ENGINE
+    // =========================================================================
+    let onlyHot = false;
+    let searchQuery = '';
+    let soundEnabled = true;
+    let masteredIds = new Set();
+    let pinnedIds = new Set();
+    let activeModalFactId = null;
+
+    // Arcade Quiz State
+    let arcadeScore = 0;
+    let arcadeTotal = 0;
+    let arcadeStreak = 0;
+    let currentArcadeQA = null;
+    let arcadeAnswered = false;
+
+    // Sound Synthesizer using Tone.js
+    function playTone(type) {
+      if (!soundEnabled || typeof Tone === 'undefined') return;
+      try {
+        if (Tone.context.state !== 'running') Tone.start();
+        const synth = new Tone.Synth({
+          oscillator: { type: 'triangle' },
+          envelope: { attack: 0.01, decay: 0.12, sustain: 0, release: 0.1 }
+        }).toDestination();
+        if (type === 'pop') synth.triggerAttackRelease('C5', '16n');
+        else if (type === 'pin') synth.triggerAttackRelease('G5', '16n');
+        else if (type === 'win') {
+          synth.triggerAttackRelease('C5', '16n');
+          setTimeout(() => synth.triggerAttackRelease('E5', '16n'), 80);
+          setTimeout(() => synth.triggerAttackRelease('G5', '8n'), 160);
+        } else if (type === 'oops') {
+          synth.triggerAttackRelease('E3', '8n');
+        }
+      } catch (e) { /* Ignore audio context restrictions */ }
+    }
+
+    // Highlight key numbers, names, and dates automatically for readability AND make them clickable!
+    function formatPointText(text) {
+      return text
+        .replace(/(₹[\d,.]+\s?(?:trillion|crore|lakh|thousand)?|\$[\d,.]+\s?(?:billion|million)?|€[\d,.]+\s?million|C\$[\d,.]+|\d+(?:\.\d+)?%)/g, '<span onclick="onHighlightClick(event, this.textContent)" title="Click to search related stats!" class="highlight-badge px-1.5 mx-0.5">$1</span>')
+        .replace(/\b(18th BRICS Summit|New Delhi Declaration 2026|Kavach 4\.0|Veer Guardian 2026|Nomadic Elephant|SLINEX-26|Yudh Abhyas 2026|VARUNA 2026|Samudra Laksamana|Zorawar|INS Nipun|Sanjukta Parashar|Ramon Magsaysay Award 2026|Oliy Darajali Do'stlik Order|Ig Nobel Prize|inStem|The Pitt|Widow's Bay|Angh|Shantanu Moitra|Anant Nag|Dadasaheb Phalke Award 2024|Gondhal|Honohon|Manu Bhaker|Pawan Sehrawat|Mirabai Chanu|Sawan Barwal|Elena Rybakina|Smriti Mandhana|Abhishek Sharma|Ishan Kishan|Vaibhav Sooryavanshi|Lionel Messi|Kimi Antonelli|Modified UDAN|DURGA Scheme|Bharat Taxi|Anak Krakatau|ISRO|DRDO|RBI|UPI|EPFO|BRICS|Uzbekistan)\b/g, '<strong onclick="onHighlightClick(event, this.textContent)" title="Click to filter all facts mentioning $1!" class="keyword-pill font-extrabold text-ink underline decoration-popPink decoration-2 underline-offset-2">$1</strong>');
+    }
+
+    function onHighlightClick(e, term) {
+      e.stopPropagation();
+      const cleanTerm = term.trim();
+      jumpAndSearch(cleanTerm);
+    }
+
+    function getAllFactsFlat() {
+      const list = [];
+      magazineSections.forEach(sec => {
+        sec.items.forEach((item, idx) => {
+          list.push({
+            uid: `${sec.id}-${idx}`,
+            secId: sec.id,
+            secTitle: sec.title,
+            secEmoji: sec.emoji,
+            pages: sec.pages,
+            text: item.text,
+            hot: item.hot
+          });
+        });
+      });
+      return list;
+    }
+
+    function updateMasteryBar() {
+      const total = getAllFactsFlat().length;
+      const done = masteredIds.size;
+      const pct = total ? Math.round((done / total) * 100) : 0;
+      document.getElementById('masteryProgressBar').style.width = `${pct}%`;
+      document.getElementById('masteryCounter').textContent = `${done} / ${total} Mastered (${pct}%)`;
+      document.getElementById('pinCountBadge').textContent = pinnedIds.size;
+    }
+
+    function toggleMastered(uid, e) {
+      if (e) e.stopPropagation();
+      if (masteredIds.has(uid)) {
+        masteredIds.delete(uid);
+        playTone('pop');
+      } else {
+        masteredIds.add(uid);
+        playTone('win');
+        if (masteredIds.size % 10 === 0) {
+          showToast(`Awesome! You've mastered ${masteredIds.size} facts!`, '🎉');
+        }
+      }
+      updateMasteryBar();
+      renderSections();
+      if (activeModalFactId === uid) syncModalButtons(uid);
+    }
+
+    function togglePin(uid, e) {
+      if (e) e.stopPropagation();
+      if (pinnedIds.has(uid)) {
+        pinnedIds.delete(uid);
+        playTone('pop');
+        showToast('Removed from Revision Pinboard', '🗑️');
+      } else {
+        pinnedIds.add(uid);
+        playTone('pin');
+        showToast('Pinned to your Revision Deck!', '📌');
+      }
+      updateMasteryBar();
+      renderSections();
+      renderPinboard();
+      if (activeModalFactId === uid) syncModalButtons(uid);
+    }
+
+    function renderCategoryNav() {
+      const nav = document.getElementById('categoryNav');
+      const pills = magazineSections.map(sec => `
+        <a href="#section-${sec.id}" onclick="playTone('pop')" class="shrink-0 bg-white hover:bg-popYellow border-2 border-ink rounded-full px-3 py-1 text-xs font-extrabold transition-colors flex items-center gap-1.5 shadow-brutal-sm">
+          <span>${sec.emoji}</span>
+          <span>${sec.title.split('&')[0].trim()}</span>
+        </a>
+      `).join('');
+      nav.innerHTML = pills + `
+        <a href="#section-quiz" onclick="playTone('pop')" class="shrink-0 bg-popPink hover:bg-pink-400 border-2 border-ink rounded-full px-3 py-1 text-xs font-extrabold transition-colors flex items-center gap-1.5 shadow-brutal-sm">
+          <span>🧠</span>
+          <span>39 Q&A Quiz</span>
+        </a>
+      `;
+    }
+
+    function renderSections() {
+      const container = document.getElementById('sectionsContainer');
+      const q = searchQuery.toLowerCase().trim();
+
+      container.innerHTML = magazineSections.map(sec => {
+        const filteredItems = sec.items.map((item, origIdx) => ({ ...item, uid: `${sec.id}-${origIdx}`, origIdx }))
+          .filter(item => {
+            if (onlyHot && !item.hot) return false;
+            if (q && !item.text.toLowerCase().includes(q) && !sec.title.toLowerCase().includes(q)) return false;
+            return true;
+          });
+
+        if (filteredItems.length === 0) return '';
+
+        const listHTML = filteredItems.map((item) => {
+          const isDone = masteredIds.has(item.uid);
+          const isPinned = pinnedIds.has(item.uid);
+          return `
+          <li onclick="openFactModal('${item.uid}')" 
+              class="group cursor-pointer flex items-start gap-3 p-3.5 rounded-2xl border-2 ${isDone ? 'bg-emerald-100/80 border-emerald-700' : item.hot ? 'bg-white border-ink shadow-brutal-sm' : 'bg-white/85 border-ink/25'} hover:border-ink hover:bg-yellow-50/70 transition-all">
+            <button onclick="toggleMastered('${item.uid}', event)" title="Click to mark as Mastered!" 
+              class="shrink-0 w-7 h-7 rounded-xl border-2 border-ink ${isDone ? 'bg-popMint text-ink' : item.hot ? 'bg-popYellow' : 'bg-gray-100'} font-display font-bold text-xs flex items-center justify-center mt-0.5 hover:scale-110 transition-transform">
+              ${isDone ? '✓' : item.hot ? '⭐' : item.origIdx + 1}
+            </button>
+            <div class="text-sm sm:text-base leading-relaxed font-medium text-ink flex-1 ${isDone ? 'line-through decoration-emerald-700/60 opacity-80' : ''}">
+              ${item.hot ? '<button onclick="event.stopPropagation(); filterByMode(\'hot\')" title="Click to toggle Must-Know Key Events filter!" class="cursor-pointer hover:scale-105 transition-transform inline-block bg-popCoral text-white text-[10px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-md border border-ink mr-1.5 align-middle">KEY EVENT</button>' : ''}
+              ${formatPointText(item.text)}
+            </div>
+            <div class="flex items-center gap-1.5 shrink-0 no-print">
+              <button onclick="togglePin('${item.uid}', event)" title="${isPinned ? 'Unpin fact' : 'Pin for revision'}"
+                class="w-7 h-7 rounded-lg border-2 ${isPinned ? 'bg-popCyan border-ink shadow-brutal-sm' : 'bg-white border-ink/30 opacity-70 group-hover:opacity-100'} text-xs flex items-center justify-center hover:scale-110 transition-all">
+                📌
+              </button>
+            </div>
+          </li>
+        `}).join('');
+
+        return `
+          <section id="section-${sec.id}" class="print-section scroll-mt-32">
+            <div class="comic-card ${sec.bgTint} rounded-3xl p-5 sm:p-8">
+              <!-- Section Header -->
+              <div class="flex flex-wrap items-center justify-between gap-3 pb-5 mb-6 border-b-3 border-ink">
+                <div class="flex items-center gap-3">
+                  <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl ${sec.bgHeader} border-3 border-ink shadow-brutal-sm flex items-center justify-center text-2xl sm:text-3xl">
+                    ${sec.emoji}
+                  </div>
+                  <div>
+                    <div class="flex items-center gap-2">
+                      <span class="text-xs font-extrabold uppercase px-2.5 py-0.5 rounded-full ${sec.badgeColor} border-2 border-ink">${sec.pages}</span>
+                      <span class="text-xs font-bold text-ink/70">${filteredItems.length} Points • Click any point to inspect</span>
+                    </div>
+                    <h2 class="font-display font-bold text-2xl sm:text-3xl text-ink mt-1">${sec.title}</h2>
+                  </div>
+                </div>
+                <button onclick="masterWholeSection('${sec.id}')" class="no-print comic-btn bg-white hover:bg-popMint px-3 py-1.5 rounded-xl font-display font-bold text-xs flex items-center gap-1">
+                  <span>✅</span> <span>Master Section</span>
+                </button>
+              </div>
+
+              <!-- Content + Cartoon Diagram Grid -->
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                <!-- Pointwise List -->
+                <div class="lg:col-span-7 xl:col-span-8">
+                  <ul class="space-y-3">
+                    ${listHTML}
+                  </ul>
+                </div>
+
+                <!-- Relatable Cartoon Diagram Card -->
+                <div class="lg:col-span-5 xl:col-span-4 lg:sticky lg:top-32">
+                  <div class="bg-white border-3 border-ink rounded-3xl p-4 shadow-brutal">
+                    <div class="flex items-center justify-between mb-2">
+                      <span class="bg-popYellow border-2 border-ink text-[11px] font-extrabold uppercase px-2.5 py-0.5 rounded-full">🎨 Interactive Doodle</span>
+                      <span class="text-lg">💡</span>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-ink mb-2">${sec.cartoonTitle}</h3>
+                    <div class="rounded-2xl overflow-hidden my-2">
+                      ${sec.svgDiagram}
+                    </div>
+                    <p class="text-xs font-bold text-ink/80 bg-cream border-2 border-ink rounded-xl p-2.5 mt-2">
+                      💬 ${sec.cartoonCaption}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        `;
+      }).join('');
+
+      if (!container.innerHTML.trim()) {
+        container.innerHTML = `
+          <div class="comic-card bg-white rounded-3xl p-10 text-center">
+            <div class="text-5xl mb-3">🕵️‍♂️</div>
+            <h3 class="font-display font-bold text-2xl mb-2">No matching facts found!</h3>
+            <p class="text-sm font-semibold text-gray-600 mb-4">Try clearing your search or turning off the "Must-Know Only" filter.</p>
+            <button onclick="resetFilters()" class="comic-btn bg-popYellow px-5 py-2 rounded-xl font-display font-bold">Reset Filters</button>
+          </div>
+        `;
+      }
+    }
+
+    function masterWholeSection(secId) {
+      const sec = magazineSections.find(s => s.id === secId);
+      if (!sec) return;
+      sec.items.forEach((_, idx) => masteredIds.add(`${sec.id}-${idx}`));
+      playTone('win');
+      updateMasteryBar();
+      renderSections();
+      showToast(`Completed all ${sec.items.length} points in ${sec.title}!`, '🏆');
+    }
+
+    // =========================================================================
+    // FACT SPOTLIGHT & DIAGRAM POP-UP MODAL
+    // =========================================================================
+    function openFactModal(uid) {
+      const fact = getAllFactsFlat().find(f => f.uid === uid);
+      if (!fact) return;
+      activeModalFactId = uid;
+      playTone('pop');
+
+      document.getElementById('modalBadge').textContent = fact.hot ? '⭐ KEY EXAM EVENT' : '📌 MAGAZINE FACT';
+      document.getElementById('modalCategory').textContent = `${fact.secEmoji} ${fact.secTitle} (${fact.pages})`;
+      document.getElementById('modalTitle').textContent = 'Fact Deep-Dive Spotlight';
+      document.getElementById('modalBody').innerHTML = formatPointText(fact.text);
+      document.getElementById('modalTip').textContent = fact.hot
+        ? '🔥 High-Probability Exam Alert: Highlighted numbers, venues & appointees here frequently appear in 1-liner MCQs!'
+        : '💡 Pro Tip: Pin this card to your Revision Pinboard or mark it Mastered to track your progress!';
+
+      document.getElementById('modalMarkReadBtn').classList.remove('hidden');
+      document.getElementById('modalBookmarkBtn').classList.remove('hidden');
+      syncModalButtons(uid);
+
+      document.getElementById('modalMarkReadBtn').onclick = () => toggleMastered(uid);
+      document.getElementById('modalBookmarkBtn').onclick = () => togglePin(uid);
+      document.getElementById('modalCopyBtn').onclick = () => copyTextFallback(fact.text);
+
+      document.getElementById('detailModal').classList.remove('hidden');
+    }
+
+    function openDiagramPop(title, body, tip) {
+      activeModalFactId = null;
+      playTone('win');
+      document.getElementById('modalBadge').textContent = '🎨 DOODLE HOTSPOT';
+      document.getElementById('modalCategory').textContent = 'Interactive Infographic';
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalBody').innerHTML = formatPointText(body);
+      document.getElementById('modalTip').textContent = `🧠 ${tip}`;
+      document.getElementById('modalMarkReadBtn').classList.add('hidden');
+      document.getElementById('modalBookmarkBtn').classList.add('hidden');
+      document.getElementById('modalCopyBtn').onclick = () => copyTextFallback(`${title}: ${body}`);
+      document.getElementById('detailModal').classList.remove('hidden');
+    }
+
+    function openRandomFactModal() {
+      const all = getAllFactsFlat();
+      const randomFact = all[Math.floor(Math.random() * all.length)];
+      openFactModal(randomFact.uid);
+    }
+
+    function syncModalButtons(uid) {
+      const isDone = masteredIds.has(uid);
+      const isPinned = pinnedIds.has(uid);
+      document.getElementById('modalMarkReadBtn').innerHTML = isDone ? '<span>✅</span> <span>Mastered!</span>' : '<span>☑️</span> <span>Mark Mastered</span>';
+      document.getElementById('modalBookmarkBtn').innerHTML = isPinned ? '<span>📌</span> <span>Pinned!</span>' : '<span>📌</span> <span>Pin Note</span>';
+    }
+
+    function closeModal() {
+      document.getElementById('detailModal').classList.add('hidden');
+    }
+
+    // =========================================================================
+    // REVISION PINBOARD DRAWER
+    // =========================================================================
+    function togglePinDrawer(open) {
+      playTone('pop');
+      const drawer = document.getElementById('pinDrawer');
+      if (open) {
+        renderPinboard();
+        drawer.classList.remove('hidden');
+      } else {
+        drawer.classList.add('hidden');
+      }
+    }
+
+    function renderPinboard() {
+      const container = document.getElementById('pinnedListContainer');
+      const all = getAllFactsFlat();
+      const pinnedFacts = all.filter(f => pinnedIds.has(f.uid));
+
+      if (pinnedFacts.length === 0) {
+        container.innerHTML = `
+          <div class="bg-white border-2 border-ink rounded-2xl p-6 text-center">
+            <div class="text-4xl mb-2">📭</div>
+            <div class="font-display font-bold text-lg">No pinned notes yet!</div>
+            <p class="text-xs font-semibold text-gray-600 mt-1">Click 📌 on any fact card while reading to save it here.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = pinnedFacts.map(f => `
+        <div class="bg-white border-2 border-ink rounded-2xl p-3.5 shadow-brutal-sm">
+          <div class="flex items-center justify-between text-[11px] font-extrabold text-ink/70 mb-1">
+            <span>${f.secEmoji} ${f.secTitle}</span>
+            <button onclick="togglePin('${f.uid}')" class="text-popCoral hover:underline">Remove ✕</button>
+          </div>
+          <div class="text-xs sm:text-sm font-semibold text-ink">${formatPointText(f.text)}</div>
+        </div>
+      `).join('');
+    }
+
+    function copyAllPinned() {
+      const all = getAllFactsFlat().filter(f => pinnedIds.has(f.uid));
+      if (!all.length) {
+        showToast('Pin some facts first to copy them!', '📌');
+        return;
+      }
+      const text = all.map((f, i) => `${i + 1}. [${f.secTitle}] ${f.text}`).join('\n');
+      copyTextFallback(text);
+    }
+
+    function clearAllPinned() {
+      pinnedIds.clear();
+      updateMasteryBar();
+      renderSections();
+      renderPinboard();
+      showToast('Revision Pinboard cleared!', '🧹');
+    }
+
+    // =========================================================================
+    // INTERACTIVE MCQ ARCADE CHALLENGE
+    // =========================================================================
+    function openArcade() {
+      playTone('win');
+      document.getElementById('arcadeModal').classList.remove('hidden');
+      nextArcadeQuestion();
+    }
+
+    function closeArcade() {
+      document.getElementById('arcadeModal').classList.add('hidden');
+    }
+
+    function nextArcadeQuestion() {
+      arcadeAnswered = false;
+      const idx = Math.floor(Math.random() * qaList.length);
+      currentArcadeQA = qaList[idx];
+
+      // Pick 3 random wrong answers from other Q&As
+      const distractors = [];
+      while (distractors.length < 3) {
+        const r = qaList[Math.floor(Math.random() * qaList.length)].a;
+        if (r !== currentArcadeQA.a && !distractors.includes(r)) {
+          distractors.push(r);
+        }
+      }
+      const options = [...distractors, currentArcadeQA.a].sort(() => Math.random() - 0.5);
+
+      document.getElementById('arcadeQuestion').textContent = currentArcadeQA.q;
+      document.getElementById('arcadeFeedback').textContent = 'Tap the correct answer!';
+      document.getElementById('arcadeOptions').innerHTML = options.map((opt, i) => `
+        <button onclick="submitArcadeAnswer(this, ${JSON.stringify(opt).replace(/"/g, '&quot;')})" 
+          class="comic-btn text-left bg-white hover:bg-yellow-50 px-4 py-3 rounded-2xl font-bold text-sm sm:text-base flex items-center gap-3">
+          <span class="w-7 h-7 rounded-lg bg-popYellow border-2 border-ink font-display font-bold text-xs flex items-center justify-center shrink-0">${['A','B','C','D'][i]}</span>
+          <span>${opt}</span>
+        </button>
+      `).join('');
+    }
+
+    function submitArcadeAnswer(btnEl, chosen) {
+      if (arcadeAnswered) return;
+      arcadeAnswered = true;
+      arcadeTotal++;
+
+      const isCorrect = chosen === currentArcadeQA.a;
+      if (isCorrect) {
+        arcadeScore++;
+        arcadeStreak++;
+        playTone('win');
+        btnEl.classList.remove('bg-white', 'hover:bg-yellow-50');
+        btnEl.classList.add('bg-popMint');
+        document.getElementById('arcadeFeedback').textContent = `🎉 Spot on! Streak: ${arcadeStreak}🔥`;
+      } else {
+        arcadeStreak = 0;
+        playTone('oops');
+        btnEl.classList.remove('bg-white', 'hover:bg-yellow-50');
+        btnEl.classList.add('bg-popCoral', 'text-white');
+        document.getElementById('arcadeFeedback').textContent = `❌ Correct: ${currentArcadeQA.a}`;
+      }
+      document.getElementById('arcadeScoreBadge').textContent = `Score: ${arcadeScore} / ${arcadeTotal} • Streak: ${arcadeStreak}🔥`;
+    }
+
+    // =========================================================================
+    // HELPERS: CLIPBOARD, JUMP SEARCH, Q&A CARDS & PDF PRINT
+    // =========================================================================
+    function copyTextFallback(text) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        playTone('pin');
+        showToast('Copied to clipboard!', '📋');
+      } catch (err) {
+        showToast('Unable to copy text.', '⚠️');
+      }
+      document.body.removeChild(textarea);
+    }
+
+    function jumpAndSearch(keyword) {
+      playTone('pop');
+      searchQuery = keyword;
+      document.getElementById('searchInput').value = keyword;
+      document.getElementById('clearSearch').classList.remove('hidden');
+      renderSections();
+      renderQA();
+      document.getElementById('sectionsContainer').scrollIntoView({ behavior: 'smooth' });
+      showToast(`Filtered by "${keyword}" — click ✕ in search bar to show all!`, '🔍');
+    }
+
+    function filterByMode(mode) {
+      playTone('pop');
+      onlyHot = mode === 'hot';
+      document.getElementById('starBtnText').textContent = onlyHot ? 'Showing ⭐ Must-Know' : 'Must-Know';
+      renderSections();
+      document.getElementById('sectionsContainer').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function renderQA() {
+      const qaGrid = document.getElementById('qaGrid');
+      const q = searchQuery.toLowerCase().trim();
+      const filteredQA = qaList.filter(item => !q || item.q.toLowerCase().includes(q) || item.a.toLowerCase().includes(q));
+
+      qaGrid.innerHTML = filteredQA.map((item) => `
+        <div onclick="playTone('pop'); this.querySelector('.qa-ans').classList.toggle('hidden')" 
+             class="cursor-pointer bg-white border-3 border-ink rounded-2xl p-4 shadow-brutal-sm hover:bg-yellow-50 transition-all flex flex-col justify-between">
+          <div class="font-bold text-sm text-ink mb-3">${item.q}</div>
+          <div class="qa-ans bg-popMint border-2 border-ink rounded-xl px-3 py-2 text-xs sm:text-sm font-extrabold text-ink">
+            ✅ ${item.a}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function toggleAllAnswers(show) {
+      playTone('pop');
+      document.querySelectorAll('.qa-ans').forEach(el => {
+        if (show) el.classList.remove('hidden');
+        else el.classList.add('hidden');
+      });
+    }
+
+    function showToast(msg, emoji = '🚀') {
+      const box = document.getElementById('toastBox');
+      document.getElementById('toastEmoji').textContent = emoji;
+      document.getElementById('toastMsg').textContent = msg;
+      box.classList.remove('hidden');
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => box.classList.add('hidden'), 3800);
+    }
+
+    function triggerPDFPrint() {
+      playTone('win');
+      toggleAllAnswers(true);
+      showToast('Preparing Print / Save as PDF — select "Save as PDF" as your destination!', '🖨️');
+      setTimeout(() => {
+        try {
+          window.focus();
+          window.print();
+        } catch (err) {
+          showToast('Press Ctrl+P (or Cmd+P) to save as PDF!', '📄');
+        }
+      }, 350);
+    }
+
+    function resetFilters() {
+      onlyHot = false;
+      searchQuery = '';
+      document.getElementById('searchInput').value = '';
+      document.getElementById('clearSearch').classList.add('hidden');
+      document.getElementById('starBtnText').textContent = 'Must-Know';
+      renderSections();
+      renderQA();
+    }
+
+    // Event Listeners
+    document.getElementById('toggleStarOnly').addEventListener('click', () => {
+      playTone('pop');
+      onlyHot = !onlyHot;
+      document.getElementById('starBtnText').textContent = onlyHot ? 'Showing ⭐ Must-Know' : 'Must-Know';
+      renderSections();
+    });
+
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      document.getElementById('clearSearch').classList.toggle('hidden', !searchQuery);
+      renderSections();
+      renderQA();
+    });
+
+    document.getElementById('clearSearch').addEventListener('click', () => {
+      playTone('pop');
+      searchQuery = '';
+      document.getElementById('searchInput').value = '';
+      document.getElementById('clearSearch').classList.add('hidden');
+      renderSections();
+      renderQA();
+    });
+
+    // Keyboard ESC to close modals
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeModal();
+        closeArcade();
+        togglePinDrawer(false);
+      }
+    });
+
+    // Initialize App
+    window.addEventListener('DOMContentLoaded', () => {
+      renderCategoryNav();
+      renderSections();
+      renderQA();
+      updateMasteryBar();
+    });
+  </script>
+</body>
+</html>
