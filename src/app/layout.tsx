@@ -30,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${fredoka.variable} ${sourceSerif.variable}`}>
-      <body className="antialiased min-h-screen bg-cream text-ink font-serif selection:bg-popYellow selection:text-ink">
+      <body className={`${sourceSerif.className} antialiased min-h-screen bg-cream text-ink selection:bg-popYellow selection:text-ink`}>
         <TooltipProvider delayDuration={200}>
           {children}
         </TooltipProvider>

@@ -10,8 +10,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        display: ["var(--font-fredoka)", "Fredoka", "sans-serif"],
-        serif: ["var(--font-serif)", "Source Serif 4", "Georgia", "serif"],
+        display: ["var(--font-fredoka)"],
+        serif: ["var(--font-serif)"],
         sans: ["system-ui", "-apple-system", "sans-serif"],
       },
       colors: {

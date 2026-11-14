@@ -4,7 +4,7 @@ export const magazineSections: MagazineSection[] = [
       {
         id: 'banking',
         title: 'Banking & Financial Awareness',
-        emoji: '💰',
+        emoji: '',
         pages: 'Pages 2–3',
         bgHeader: 'bg-popYellow',
         bgTint: 'bg-yellow-50/90',
@@ -77,7 +77,7 @@ export const magazineSections: MagazineSection[] = [
       {
         id: 'mous',
         title: 'MoUs & Strategic Partnerships Signed',
-        emoji: '🤝',
+        emoji: '',
         pages: 'Pages 4–5',
         bgHeader: 'bg-popCyan',
         bgTint: 'bg-sky-50/90',
@@ -92,32 +92,32 @@ export const magazineSections: MagazineSection[] = [
             <!-- Center Handshake Badge -->
             <g class="svg-hotspot" onclick="openDiagramPop('10 Mega MoUs & Partnerships', 'September 2026 featured 10 strategic agreements spanning Space (ISRO-ESA, Dhruva-Safran, Australia), Water & Energy (Kalpasar, Kishau Dam, Uzbekistan Uranium), and Quantum/AI!', 'Tap the 4 surrounding badges to inspect each deal!')">
               <circle cx="180" cy="110" r="44" fill="#FFE600" stroke="#18181B" stroke-width="3"/>
-              <text x="180" y="106" text-anchor="middle" font-size="26">🤝</text>
+              <circle cx="180" cy="100" r="16" fill="#38BDF8" stroke="#18181B" stroke-width="1.5"/><text x="180" y="104" text-anchor="middle" font-family="Fredoka" font-size="11" font-weight="700" fill="#18181B">MoU</text>
               <text x="180" y="128" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11" fill="#18181B">10 BIG DEALS</text>
             </g>
 
             <!-- Node 1: Space -->
             <g class="svg-hotspot" onclick="openDiagramPop('ISRO & ESA Extend Pact to 2032', 'ISRO and the European Space Agency (ESA) extended their Cooperative Agreement until 8 January 2032. Dhruva Space also signed €5M+ satellite contracts with France\\'s Safran Space.', 'Space-Based Surveillance Phase-III!')">
               <rect x="20" y="22" width="112" height="36" rx="10" fill="#FF6B9E" stroke="#18181B" stroke-width="2.5"/>
-              <text x="76" y="44" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11" fill="#18181B">🛰️ ISRO + ESA (2032)</text>
+              <text x="76" y="44" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11" fill="#18181B">ISRO + ESA (2032)</text>
             </g>
 
             <!-- Node 2: Uranium -->
             <g class="svg-hotspot" onclick="openDiagramPop('India–Uzbekistan Uranium & Strategic Pact', 'During PM Modi\\'s Tashkent visit, India and Uzbekistan elevated ties to a Comprehensive Strategic Partnership and agreed on long-term uranium supply to India.', 'Clean nuclear fuel boost!')">
               <rect x="224" y="22" width="118" height="36" rx="10" fill="#4ADE80" stroke="#18181B" stroke-width="2.5"/>
-              <text x="283" y="44" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11" fill="#18181B">☢️ UZB Uranium</text>
+              <text x="283" y="44" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11" fill="#18181B">UZB Uranium</text>
             </g>
 
             <!-- Node 3: Dam -->
             <g class="svg-hotspot" onclick="openDiagramPop('₹15,624-Crore Kishau Dam MoU', 'Six states signed an MoU with the Centre for the ₹15,624-crore Kishau Dam Project on the Tons River. India & Netherlands also signed MoUs for Gujarat\\'s Kalpasar Project.', 'Tons River = Tributary of Yamuna!')">
               <rect x="20" y="160" width="122" height="36" rx="10" fill="#FB923C" stroke="#18181B" stroke-width="2.5"/>
-              <text x="81" y="182" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11" fill="#18181B">💧 ₹15,624Cr Dam</text>
+              <text x="81" y="182" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11" fill="#18181B">₹15,624Cr Dam</text>
             </g>
 
             <!-- Node 4: Quantum & AI -->
             <g class="svg-hotspot" onclick="openDiagramPop('Quantum Tech & AI Education MoUs', 'IITM-C-DOT Samgya and QClairvoyance partnered on quantum technologies, while IIT Madras and UNESCO MGIEP teamed up on open-source AI & immersive learning.', 'Double tech boost from IIT Madras!')">
               <rect x="218" y="160" width="124" height="36" rx="10" fill="#C084FC" stroke="#18181B" stroke-width="2.5"/>
-              <text x="280" y="182" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11" fill="#18181B">⚛️ Quantum & AI</text>
+              <text x="280" y="182" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11" fill="#18181B">Quantum & AI</text>
             </g>
           </svg>
         `,
@@ -137,7 +137,7 @@ export const magazineSections: MagazineSection[] = [
       {
         id: 'days',
         title: 'Important Days & Themes (September)',
-        emoji: '📅',
+        emoji: '',
         pages: 'Pages 6–8',
         bgHeader: 'bg-popMint',
         bgTint: 'bg-emerald-50/90',
@@ -149,7 +149,7 @@ export const magazineSections: MagazineSection[] = [
             <rect x="6" y="6" width="348" height="208" rx="18" fill="#FFF" stroke="#18181B" stroke-width="3"/>
             <!-- Calendar Top Spiral Binding -->
             <rect x="22" y="18" width="316" height="32" rx="8" fill="#FF6B9E" stroke="#18181B" stroke-width="2.5"/>
-            <text x="180" y="39" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="14" fill="#18181B">🗓️ SEPTEMBER HIGHLIGHTS TIMELINE</text>
+            <text x="180" y="39" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="14" fill="#18181B">SEPTEMBER HIGHLIGHTS TIMELINE</text>
             
             <!-- Timeline Line -->
             <line x1="36" y1="115" x2="324" y2="115" stroke="#18181B" stroke-width="4" stroke-linecap="round"/>
@@ -158,35 +158,35 @@ export const magazineSections: MagazineSection[] = [
             <g class="svg-hotspot" onclick="openDiagramPop('5 September: Teachers\\' Day', 'Marks the birth anniversary of Dr Sarvepalli Radhakrishnan, India\\'s first Vice-President and second President.', 'Dahi Handi was also observed on 5 Sept 2026!')">
               <circle cx="55" cy="115" r="14" fill="#FFE600" stroke="#18181B" stroke-width="2.5"/>
               <text x="55" y="119" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="10">5</text>
-              <text x="55" y="86" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="10">👩‍🏫 Teachers'</text>
+              <text x="55" y="86" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="10">Teachers'</text>
             </g>
 
             <!-- Pin 2: 8 Sept -->
             <g class="svg-hotspot" onclick="openDiagramPop('8 September: International Literacy Day', 'Completed 60 years of global literacy action in 2026!', '60th Diamond Jubilee milestone!')">
               <circle cx="118" cy="115" r="14" fill="#38BDF8" stroke="#18181B" stroke-width="2.5"/>
               <text x="118" y="119" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="10">8</text>
-              <text x="118" y="148" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="10">📚 Literacy 60Y</text>
+              <text x="118" y="148" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="10">Literacy 60Y</text>
             </g>
 
             <!-- Pin 3: 15-16 Sept -->
             <g class="svg-hotspot" onclick="openDiagramPop('16 September: World Ozone Day', 'Observed with a focus on sustainable cooling and climate action. (15 Sept is National Engineers\\' Day — Sir M. Visvesvaraya).', 'Montreal Protocol milestone!')">
               <circle cx="180" cy="115" r="14" fill="#4ADE80" stroke="#18181B" stroke-width="2.5"/>
               <text x="180" y="119" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="10">16</text>
-              <text x="180" y="86" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="10">🌍 Ozone Day</text>
+              <text x="180" y="86" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="10">Ozone Day</text>
             </g>
 
             <!-- Pin 4: 21-22 Sept -->
             <g class="svg-hotspot" onclick="openDiagramPop('22 September: World Rhino Day', 'Observed under the theme \"Keep the Five Alive\" (protecting all 5 rhino species). 21 Sept is World Alzheimer\\'s Day & International Day of Peace.', 'Keep the Five Alive!')">
               <circle cx="242" cy="115" r="14" fill="#FB923C" stroke="#18181B" stroke-width="2.5"/>
               <text x="242" y="119" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="10">22</text>
-              <text x="242" y="148" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="10">🦏 Rhino Day</text>
+              <text x="242" y="148" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="10">Rhino Day</text>
             </g>
 
             <!-- Pin 5: 27 Sept -->
             <g class="svg-hotspot" onclick="openDiagramPop('27 September: World Tourism Day', 'Theme: \"Digital Agenda and Artificial Intelligence to Redesign Tourism\" — hosted by El Salvador!', 'Host Country: El Salvador!')">
               <circle cx="305" cy="115" r="14" fill="#C084FC" stroke="#18181B" stroke-width="2.5"/>
               <text x="305" y="119" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="10">27</text>
-              <text x="305" y="86" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="10">✈️ Tourism AI</text>
+              <text x="305" y="86" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="10">Tourism AI</text>
             </g>
 
             <rect x="40" y="172" width="280" height="26" rx="8" fill="#FFFDF5" stroke="#18181B" stroke-width="2"/>
@@ -220,7 +220,7 @@ export const magazineSections: MagazineSection[] = [
       {
         id: 'appointments',
         title: 'Key Appointments & Leadership',
-        emoji: '👔',
+        emoji: '',
         pages: 'Page 9',
         bgHeader: 'bg-popPurple',
         bgTint: 'bg-purple-50/90',
@@ -279,7 +279,7 @@ export const magazineSections: MagazineSection[] = [
       {
         id: 'national',
         title: 'National News & Governance',
-        emoji: '🇮🇳',
+        emoji: '',
         pages: 'Pages 10–11',
         bgHeader: 'bg-popOrange',
         bgTint: 'bg-orange-50/90',
@@ -299,7 +299,7 @@ export const magazineSections: MagazineSection[] = [
               <circle cx="56" cy="94" r="10" fill="#18181B"/>
               <circle cx="120" cy="94" r="10" fill="#18181B"/>
               <circle cx="215" cy="94" r="10" fill="#18181B"/>
-              <text x="122" y="83" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11" fill="#18181B">🚄 KAVACH 4.0 (108 KM)</text>
+              <text x="122" y="83" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11" fill="#18181B">KAVACH 4.0 (108 KM)</text>
               <path d="M298 30 L332 42 L332 72 Q332 95 298 106 Q264 95 264 72 L264 42 Z" fill="#4ADE80" stroke="#18181B" stroke-width="3"/>
               <text x="298" y="73" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="12">SAFE!</text>
             </g>
@@ -307,14 +307,14 @@ export const magazineSections: MagazineSection[] = [
             <!-- Bottom Badges -->
             <g class="svg-hotspot" onclick="jumpAndSearch('mega ports')">
               <rect x="24" y="126" width="150" height="70" rx="12" fill="#FF6B9E" stroke="#18181B" stroke-width="2.5"/>
-              <text x="99" y="152" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="13">⚓ 4 MEGA PORTS</text>
+              <text x="99" y="152" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="13">4 MEGA PORTS</text>
               <text x="99" y="170" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">Deendayal • JNPA</text>
               <text x="99" y="183" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">Paradip • Mundra</text>
             </g>
 
             <g class="svg-hotspot" onclick="jumpAndSearch('Make in India')">
               <rect x="186" y="126" width="150" height="70" rx="12" fill="#FFE600" stroke="#18181B" stroke-width="2.5"/>
-              <text x="261" y="152" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="13">🦁 MAKE IN INDIA</text>
+              <text x="261" y="152" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="13">MAKE IN INDIA</text>
               <text x="261" y="170" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="800" font-size="10">12 Years Completed!</text>
               <text x="261" y="184" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">₹1.78L Cr Defence Prod.</text>
             </g>
@@ -336,7 +336,7 @@ export const magazineSections: MagazineSection[] = [
       {
         id: 'international',
         title: 'International News & Summits',
-        emoji: '🌍',
+        emoji: '',
         pages: 'Pages 12–13',
         bgHeader: 'bg-popPink',
         bgTint: 'bg-pink-50/90',
@@ -349,14 +349,14 @@ export const magazineSections: MagazineSection[] = [
             <!-- BRICS Crown Box -->
             <g class="svg-hotspot" onclick="jumpAndSearch('BRICS')">
               <rect x="20" y="18" width="320" height="62" rx="14" fill="#FFE600" stroke="#18181B" stroke-width="3"/>
-              <text x="180" y="42" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="15">🏛️ 18th BRICS SUMMIT • NEW DELHI</text>
+              <text x="180" y="42" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="15">18th BRICS SUMMIT • NEW DELHI</text>
               <text x="180" y="63" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="10">140-Point New Delhi Declaration • 2027 Host: CHINA</text>
             </g>
 
             <!-- 3 Mini Cards -->
             <g class="svg-hotspot" onclick="jumpAndSearch('New Zealand')">
               <rect x="20" y="94" width="100" height="104" rx="12" fill="#4ADE80" stroke="#18181B" stroke-width="2.5"/>
-              <text x="70" y="122" text-anchor="middle" font-size="22">🥝</text>
+              <circle cx="70" cy="116" r="14" fill="#FFE600" stroke="#18181B" stroke-width="1.5"/><text x="70" y="120" text-anchor="middle" font-family="Fredoka" font-size="10" font-weight="700">NZ</text>
               <text x="70" y="144" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">INDIA–NZ FTA</text>
               <text x="70" y="160" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">100% Duty-Free</text>
               <text x="70" y="174" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">20 Oct 2026</text>
@@ -364,7 +364,7 @@ export const magazineSections: MagazineSection[] = [
 
             <g class="svg-hotspot" onclick="jumpAndSearch('Bank of Japan')">
               <rect x="130" y="94" width="100" height="104" rx="12" fill="#38BDF8" stroke="#18181B" stroke-width="2.5"/>
-              <text x="180" y="122" text-anchor="middle" font-size="22">💹</text>
+              <circle cx="180" cy="116" r="14" fill="#38BDF8" stroke="#18181B" stroke-width="1.5"/><text x="180" y="120" text-anchor="middle" font-family="Fredoka" font-size="10" font-weight="700">FX</text>
               <text x="180" y="144" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">BoJ Rate 1.25%</text>
               <text x="180" y="160" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">Highest since</text>
               <text x="180" y="174" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">1995!</text>
@@ -372,7 +372,7 @@ export const magazineSections: MagazineSection[] = [
 
             <g class="svg-hotspot" onclick="jumpAndSearch('Zhang Yiming')">
               <rect x="240" y="94" width="100" height="104" rx="12" fill="#C084FC" stroke="#18181B" stroke-width="2.5"/>
-              <text x="290" y="122" text-anchor="middle" font-size="22">🤑</text>
+              <circle cx="290" cy="116" r="14" fill="#4ADE80" stroke="#18181B" stroke-width="1.5"/><text x="290" y="120" text-anchor="middle" font-family="Fredoka" font-size="10" font-weight="700">IMF</text>
               <text x="290" y="144" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">Zhang Yiming</text>
               <text x="290" y="160" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">Asia's Richest</text>
               <text x="290" y="174" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">~$105 Billion</text>
@@ -397,7 +397,7 @@ export const magazineSections: MagazineSection[] = [
       {
         id: 'defence',
         title: 'Defence Exercises & Military Tech',
-        emoji: '🛡️',
+        emoji: '',
         pages: 'Pages 14–15',
         bgHeader: 'bg-popMint',
         bgTint: 'bg-lime-50/90',
@@ -408,37 +408,37 @@ export const magazineSections: MagazineSection[] = [
           <svg viewBox="0 0 360 220" class="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
             <rect x="6" y="6" width="348" height="208" rx="18" fill="#FFF" stroke="#18181B" stroke-width="3"/>
             <rect x="20" y="16" width="320" height="28" rx="8" fill="#4ADE80" stroke="#18181B" stroke-width="2.5"/>
-            <text x="180" y="35" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="13">⚔️ EXERCISE MATCH-UP BOARD</text>
+            <text x="180" y="35" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="13">EXERCISE MATCH-UP BOARD</text>
 
             <!-- Grid of Exercises -->
             <g class="svg-hotspot" onclick="jumpAndSearch('Veer Guardian')">
               <rect x="20" y="54" width="154" height="44" rx="10" fill="#FFE600" stroke="#18181B" stroke-width="2"/>
-              <text x="97" y="73" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">✈️ Veer Guardian</text>
+              <text x="97" y="73" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">Veer Guardian</text>
               <text x="97" y="89" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">India + Japan (Jodhpur)</text>
             </g>
 
             <g class="svg-hotspot" onclick="jumpAndSearch('Nomadic Elephant')">
               <rect x="186" y="54" width="154" height="44" rx="10" fill="#38BDF8" stroke="#18181B" stroke-width="2"/>
-              <text x="263" y="73" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">🐘 Nomadic Elephant</text>
+              <text x="263" y="73" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">Nomadic Elephant</text>
               <text x="263" y="89" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">India + Mongolia (18th)</text>
             </g>
 
             <g class="svg-hotspot" onclick="jumpAndSearch('SLINEX')">
               <rect x="20" y="106" width="154" height="44" rx="10" fill="#FF6B9E" stroke="#18181B" stroke-width="2"/>
-              <text x="97" y="125" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">🚢 SLINEX-26 & VARUNA</text>
+              <text x="97" y="125" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">SLINEX-26 & VARUNA</text>
               <text x="97" y="141" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">Sri Lanka & France</text>
             </g>
 
             <g class="svg-hotspot" onclick="jumpAndSearch('Yudh Abhyas')">
               <rect x="186" y="106" width="154" height="44" rx="10" fill="#C084FC" stroke="#18181B" stroke-width="2"/>
-              <text x="263" y="125" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">🦅 Yudh Abhyas 2026</text>
+              <text x="263" y="125" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">Yudh Abhyas 2026</text>
               <text x="263" y="141" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">India + US (MLIDS Drone)</text>
             </g>
 
             <!-- Laser & Zorawar Strip -->
             <g class="svg-hotspot" onclick="jumpAndSearch('Zorawar')">
               <rect x="20" y="160" width="320" height="40" rx="10" fill="#FB923C" stroke="#18181B" stroke-width="2.5"/>
-              <text x="180" y="184" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="12">🔦 30-kW Laser Weapon • 🚜 ₹20K Cr Zorawar Tank (Tata)</text>
+              <text x="180" y="184" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="12">30-kW Laser Weapon •  ₹20K Cr Zorawar Tank (Tata)</text>
             </g>
           </svg>
         `,
@@ -460,7 +460,7 @@ export const magazineSections: MagazineSection[] = [
       {
         id: 'awards',
         title: 'Honours, Awards & Cinema',
-        emoji: '🏆',
+        emoji: '',
         pages: 'Pages 16–17',
         bgHeader: 'bg-popYellow',
         bgTint: 'bg-amber-50/90',
@@ -476,29 +476,29 @@ export const magazineSections: MagazineSection[] = [
             <path d="M115 55 Q135 55 132 75 Q128 88 110 85" fill="none" stroke="#18181B" stroke-width="3"/>
             <rect x="78" y="102" width="14" height="26" fill="#FB923C" stroke="#18181B" stroke-width="2.5"/>
             <rect x="58" y="128" width="54" height="16" rx="5" fill="#18181B"/>
-            <text x="85" y="76" text-anchor="middle" font-size="22">⭐</text>
+            <circle cx="85" cy="72" r="14" fill="#FFE600" stroke="#18181B" stroke-width="1.5"/><text x="85" y="76" text-anchor="middle" font-family="Fredoka" font-size="11" font-weight="700">1st</text>
             <text x="85" y="164" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">HALL OF FAME</text>
             <text x="85" y="180" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">Sept 2026 Winners</text>
 
             <!-- Award Pills -->
             <g class="svg-hotspot" onclick="jumpAndSearch('Gondhal')">
               <rect x="148" y="20" width="194" height="36" rx="9" fill="#FF6B9E" stroke="#18181B" stroke-width="2"/>
-              <text x="245" y="42" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">🎬 Oscar Entry: Gondhal</text>
+              <text x="245" y="42" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">Oscar Entry: Gondhal</text>
             </g>
 
             <g class="svg-hotspot" onclick="jumpAndSearch('Ig Nobel')">
               <rect x="148" y="64" width="194" height="36" rx="9" fill="#4ADE80" stroke="#18181B" stroke-width="2"/>
-              <text x="245" y="86" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">🪳 Ig Nobel: inStem (Blr)</text>
+              <text x="245" y="86" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">Ig Nobel: inStem (Blr)</text>
             </g>
 
             <g class="svg-hotspot" onclick="jumpAndSearch('Anant Nag')">
               <rect x="148" y="108" width="194" height="36" rx="9" fill="#38BDF8" stroke="#18181B" stroke-width="2"/>
-              <text x="245" y="130" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">🎥 Phalke Award: Anant Nag</text>
+              <text x="245" y="130" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">Phalke Award: Anant Nag</text>
             </g>
 
             <g class="svg-hotspot" onclick="jumpAndSearch('Miss World')">
               <rect x="148" y="152" width="194" height="36" rx="9" fill="#C084FC" stroke="#18181B" stroke-width="2"/>
-              <text x="245" y="174" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">👑 Miss World: Joheirry Mola</text>
+              <text x="245" y="174" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">Miss World: Joheirry Mola</text>
             </g>
           </svg>
         `,
@@ -520,7 +520,7 @@ export const magazineSections: MagazineSection[] = [
       {
         id: 'books',
         title: 'Books & Authors Corner',
-        emoji: '📚',
+        emoji: '',
         pages: 'Pages 18–19',
         bgHeader: 'bg-popCyan',
         bgTint: 'bg-cyan-50/90',
@@ -553,7 +553,7 @@ export const magazineSections: MagazineSection[] = [
 
             <!-- Right Callout -->
             <rect x="182" y="34" width="154" height="142" rx="14" fill="#FFFDF5" stroke="#18181B" stroke-width="2.5"/>
-            <text x="259" y="62" text-anchor="middle" font-size="24">📖</text>
+            <circle cx="259" cy="56" r="14" fill="#38BDF8" stroke="#18181B" stroke-width="1.5"/><text x="259" y="60" text-anchor="middle" font-family="Fredoka" font-size="10" font-weight="700">BOOK</text>
             <text x="259" y="88" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="13">9 BOOK LAUNCHES</text>
             <text x="259" y="110" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="10">• VP C.P. Radhakrishnan</text>
             <text x="259" y="126" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="10">• Dr. Tamilisai</text>
@@ -576,7 +576,7 @@ export const magazineSections: MagazineSection[] = [
       {
         id: 'sports',
         title: 'Sports Spectacular',
-        emoji: '🏅',
+        emoji: '',
         pages: 'Pages 20–21',
         bgHeader: 'bg-popPink',
         bgTint: 'bg-rose-50/90',
@@ -596,26 +596,26 @@ export const magazineSections: MagazineSection[] = [
             <!-- Medal Trio -->
             <g class="svg-hotspot" onclick="jumpAndSearch('kabaddi')">
               <circle cx="75" cy="112" r="34" fill="#FFE600" stroke="#18181B" stroke-width="3"/>
-              <text x="75" y="108" text-anchor="middle" font-size="18">🥇</text>
+              <circle cx="75" cy="102" r="12" fill="#FFE600" stroke="#18181B" stroke-width="1.5"/><text x="75" y="106" text-anchor="middle" font-family="Fredoka" font-size="10" font-weight="700">Gold</text>
               <text x="75" y="125" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="9">Kabaddi 37-33</text>
             </g>
 
             <g class="svg-hotspot" onclick="jumpAndSearch('Mirabai')">
               <circle cx="180" cy="112" r="34" fill="#E2E8F0" stroke="#18181B" stroke-width="3"/>
-              <text x="180" y="108" text-anchor="middle" font-size="18">🥈</text>
+              <circle cx="180" cy="102" r="12" fill="#E2E8F0" stroke="#18181B" stroke-width="1.5"/><text x="180" y="106" text-anchor="middle" font-family="Fredoka" font-size="10" font-weight="700">Silv</text>
               <text x="180" y="125" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="9">Mirabai 198kg</text>
             </g>
 
             <g class="svg-hotspot" onclick="jumpAndSearch('Sawan Barwal')">
               <circle cx="285" cy="112" r="34" fill="#38BDF8" stroke="#18181B" stroke-width="3"/>
-              <text x="285" y="108" text-anchor="middle" font-size="18">🥈</text>
+              <circle cx="285" cy="102" r="12" fill="#FED7AA" stroke="#18181B" stroke-width="1.5"/><text x="285" y="106" text-anchor="middle" font-family="Fredoka" font-size="10" font-weight="700">Bron</text>
               <text x="285" y="125" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="9">Marathon 44Y!</text>
             </g>
 
             <!-- Bottom Cricket & Football Strip -->
             <g class="svg-hotspot" onclick="jumpAndSearch('Messi')">
               <rect x="20" y="160" width="320" height="40" rx="10" fill="#4ADE80" stroke="#18181B" stroke-width="2.5"/>
-              <text x="180" y="184" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11">🏏 Smriti #1 • Abhishek 30-ball 100 • ⚽ Messi Retires (125 Goals)</text>
+              <text x="180" y="184" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="11"> Smriti #1 • Abhishek 30-ball 100 •  Messi Retires (125 Goals)</text>
             </g>
           </svg>
         `,
@@ -639,7 +639,7 @@ export const magazineSections: MagazineSection[] = [
       {
         id: 'travel',
         title: 'Hotel, Travel & Aviation',
-        emoji: '✈️',
+        emoji: '',
         pages: 'Pages 22–26',
         bgHeader: 'bg-popPurple',
         bgTint: 'bg-violet-50/90',
@@ -661,7 +661,7 @@ export const magazineSections: MagazineSection[] = [
             <!-- 3 Travel Pills -->
             <g class="svg-hotspot" onclick="jumpAndSearch('DURGA')">
               <rect x="20" y="116" width="100" height="84" rx="12" fill="#FF6B9E" stroke="#18181B" stroke-width="2.5"/>
-              <text x="70" y="142" text-anchor="middle" font-size="20">🛺</text>
+              <circle cx="70" cy="136" r="12" fill="#FFE600" stroke="#18181B" stroke-width="1.5"/><text x="70" y="140" text-anchor="middle" font-family="Fredoka" font-size="10" font-weight="700">UP</text>
               <text x="70" y="162" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="10">DURGA Pink</text>
               <text x="70" y="176" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">1,300 E-Autos</text>
               <text x="70" y="190" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">in Delhi</text>
@@ -669,7 +669,7 @@ export const magazineSections: MagazineSection[] = [
 
             <g class="svg-hotspot" onclick="jumpAndSearch('WEF')">
               <rect x="130" y="116" width="100" height="84" rx="12" fill="#4ADE80" stroke="#18181B" stroke-width="2.5"/>
-              <text x="180" y="142" text-anchor="middle" font-size="20">🏔️</text>
+              <circle cx="180" cy="136" r="12" fill="#38BDF8" stroke="#18181B" stroke-width="1.5"/><text x="180" y="140" text-anchor="middle" font-family="Fredoka" font-size="10" font-weight="700">UK</text>
               <text x="180" y="162" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="10">WEF Rank 31</text>
               <text x="180" y="176" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">Up from 39th!</text>
               <text x="180" y="190" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">Kumik Heritage</text>
@@ -677,7 +677,7 @@ export const magazineSections: MagazineSection[] = [
 
             <g class="svg-hotspot" onclick="jumpAndSearch('Anak Krakatau')">
               <rect x="240" y="116" width="100" height="84" rx="12" fill="#FB923C" stroke="#18181B" stroke-width="2.5"/>
-              <text x="290" y="142" text-anchor="middle" font-size="20">🌋</text>
+              <circle cx="290" cy="136" r="12" fill="#FB923C" stroke="#18181B" stroke-width="1.5"/><text x="290" y="140" text-anchor="middle" font-family="Fredoka" font-size="10" font-weight="700">KL</text>
               <text x="290" y="162" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="10">Anak Krakatau</text>
               <text x="290" y="176" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">50,000 ft Ash</text>
               <text x="290" y="190" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="700" font-size="9">Sarawak Haze</text>

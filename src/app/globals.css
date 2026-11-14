@@ -6,7 +6,7 @@ body {
   background-color: #FFFDF5;
   color: #18181B;
   overflow-x: hidden;
-  font-family: var(--font-serif), Georgia, serif;
+  font-family: var(--font-serif);
   font-size: 16px;
   line-height: 1.6;
 }
