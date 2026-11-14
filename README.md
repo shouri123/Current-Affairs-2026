@@ -196,6 +196,16 @@ npx vercel
 
 ---
 
+## 🔎 Content accuracy & source verification
+
+The September 2026 content is undergoing a claim-by-claim accuracy and source review. The prioritized remediation checklist separates confirmed errors from stale wording, source gaps, and claims awaiting verification:
+
+- [Open the prioritized audit checklist](docs/AUDIT_CHECKLIST.md)
+
+A claim should only be presented as verified when its supporting source is linked and has been reviewed.
+
+---
+
 ## 📜 License
 
 Created for educational and competitive examination revision purposes.
