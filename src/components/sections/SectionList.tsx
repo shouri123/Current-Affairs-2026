@@ -5,13 +5,14 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { magazineSections } from "@/data/magazineSections";
 import { SectionCard } from "./SectionCard";
-import { FactItem } from "@/types";
+import { FactItem, MagazineSection } from "@/types";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
 interface SectionListProps {
+  sections?: MagazineSection[];
   searchQuery: string;
   onlyHot: boolean;
   activeCategory: string | null;
@@ -28,6 +29,7 @@ interface SectionListProps {
 }
 
 export function SectionList({
+  sections = magazineSections,
   searchQuery,
   onlyHot,
   activeCategory,
@@ -47,11 +49,11 @@ export function SectionList({
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    const sections = containerRef.current?.querySelectorAll(".print-section");
-    if (!sections || sections.length === 0) return;
+    const domSections = containerRef.current?.querySelectorAll(".print-section");
+    if (!domSections || domSections.length === 0) return;
 
     const ctx = gsap.context(() => {
-      sections.forEach((sec) => {
+      domSections.forEach((sec) => {
         gsap.fromTo(
           sec,
           { opacity: 0, y: 25 },
@@ -71,11 +73,11 @@ export function SectionList({
     }, containerRef);
 
     return () => ctx.revert();
-  }, [activeCategory, onlyHot, searchQuery, importanceFilter, contentTypeFilter, verificationFilter]);
+  }, [sections, activeCategory, onlyHot, searchQuery, importanceFilter, contentTypeFilter, verificationFilter]);
 
   const displayedSections = activeCategory
-    ? magazineSections.filter((s) => s.id === activeCategory)
-    : magazineSections;
+    ? sections.filter((s) => s.id === activeCategory)
+    : sections;
 
   return (
     <div ref={containerRef} className="space-y-6 sm:space-y-8">

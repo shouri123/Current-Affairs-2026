@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
-import { qaList } from "@/data/qaList";
+import React, { useState, useMemo, useEffect } from "react";
+import { qaList as defaultQaList } from "@/data/qaList";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { QAItem } from "@/types";
@@ -16,12 +16,14 @@ import {
 } from "lucide-react";
 
 interface FlashcardGridProps {
+  qaList?: QAItem[];
   searchQuery: string;
   onFlipSound?: () => void;
   onChimeSound?: () => void;
 }
 
 export function FlashcardGrid({
+  qaList = defaultQaList,
   searchQuery,
   onFlipSound,
   onChimeSound,
@@ -30,6 +32,13 @@ export function FlashcardGrid({
   const [flippedCards, setFlippedCards] = useState<Record<number, boolean>>({});
   const [reviewedCards, setReviewedCards] = useState<Record<number, boolean>>({});
   const [allFlipped, setAllFlipped] = useState(false);
+
+  useEffect(() => {
+    setDeck(qaList);
+    setFlippedCards({});
+    setReviewedCards({});
+    setAllFlipped(false);
+  }, [qaList]);
 
   const toggleFlip = (index: number) => {
     if (onFlipSound) onFlipSound();

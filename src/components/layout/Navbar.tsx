@@ -19,11 +19,15 @@ import {
   BookOpenCheck,
 } from "lucide-react";
 import { magazineSections } from "@/data/magazineSections";
-import { ImportanceLevel, VerificationStatus } from "@/types";
+import { ImportanceLevel, VerificationStatus, MonthId, MagazineSection } from "@/types";
+import { availableMonths } from "@/data/monthlyIssues";
 import { motion, AnimatePresence } from "framer-motion";
 import { sectionIconMap, defaultSectionIcon } from "@/lib/sectionIcons";
 
 interface NavbarProps {
+  selectedMonth: MonthId;
+  onSelectMonth: (id: MonthId) => void;
+  sections?: MagazineSection[];
   searchQuery: string;
   onSearchChange: (q: string) => void;
   onlyHot: boolean;
@@ -64,6 +68,9 @@ const sectionShortTitleMap: Record<string, string> = {
 };
 
 export function Navbar({
+  selectedMonth,
+  onSelectMonth,
+  sections = magazineSections,
   searchQuery,
   onSearchChange,
   onlyHot,
@@ -100,6 +107,9 @@ export function Navbar({
     }
   };
 
+  const currentMonthInfo =
+    availableMonths.find((m) => m.id === selectedMonth) || availableMonths[2];
+
   const hasActiveFilters =
     Boolean(searchQuery.trim()) ||
     onlyHot ||
@@ -111,10 +121,10 @@ export function Navbar({
   return (
     <nav className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b-2 sm:border-b-4 border-ink px-3 sm:px-6 py-2 sm:py-3 no-print shadow-sm">
       <div className="max-w-[1536px] w-full mx-auto space-y-2">
-        {/* ROW 1: Brand Logo, Global Search & Action Controls */}
+        {/* ROW 1: Brand Logo, Month Tabs, Global Search & Action Controls */}
         <div className="flex flex-wrap items-center justify-between gap-2.5 sm:gap-3">
-          {/* Editorial brand mark with a consistent symbol system */}
-          <div className="flex items-center gap-2 shrink-0">
+          {/* Brand Logo & Quick Month Switcher Tabs */}
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0 flex-wrap">
             <motion.a
               href="#"
               whileHover={{ scale: 1.05 }}
@@ -133,10 +143,31 @@ export function Navbar({
                   Current Affairs
                 </span>
                 <span className="bg-popPink text-white text-[10px] font-black uppercase px-2 py-0.5 rounded-md border-2 border-ink shadow-brutal-sm">
-                  Sept 2026
+                  {currentMonthInfo.badge}
                 </span>
               </div>
             </motion.a>
+
+            {/* Quick Month Switcher Tabs */}
+            <div className="flex items-center gap-1 bg-cream border-2 border-ink rounded-xl p-0.5 shadow-brutal-sm">
+              {availableMonths.map((m) => {
+                const isActive = selectedMonth === m.id;
+                return (
+                  <button
+                    key={m.id}
+                    onClick={() => onSelectMonth(m.id)}
+                    title={`Switch to ${m.name}`}
+                    className={`px-2 py-0.5 rounded-lg text-xs font-display font-black transition-all ${
+                      isActive
+                        ? "bg-popYellow text-ink border-2 border-ink shadow-brutal-sm"
+                        : "text-ink/70 hover:text-ink hover:bg-white"
+                    }`}
+                  >
+                    {m.short}
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
           {/* Search Bar */}
@@ -327,7 +358,7 @@ export function Navbar({
             </motion.button>
 
             {/* Section Category Pills */}
-            {magazineSections.map((sec) => {
+            {sections.map((sec) => {
               const SectionIcon = sectionIconMap[sec.id] || defaultSectionIcon;
               const shortTitle =
                 sectionShortTitleMap[sec.id] || sec.title.split("&")[0].trim();

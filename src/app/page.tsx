@@ -15,11 +15,19 @@ import { PinDrawer } from "@/components/interactive/PinDrawer";
 import { Footer } from "@/components/layout/Footer";
 import { magazineSections } from "@/data/magazineSections";
 import { qaList } from "@/data/qaList";
+import { monthlyIssues, DEFAULT_MONTH_ID } from "@/data/monthlyIssues";
 import { useSoundEffects } from "@/hooks/useSoundEffects";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
-import { FactItem, ImportanceLevel, VerificationStatus, QuizAttemptRecord } from "@/types";
+import { FactItem, ImportanceLevel, VerificationStatus, QuizAttemptRecord, MonthId } from "@/types";
 
 export default function Home() {
+  // Monthly Issue State
+  const [selectedMonth, setSelectedMonth] = useState<MonthId>(DEFAULT_MONTH_ID);
+
+  const currentMonth = useMemo(() => {
+    return monthlyIssues[selectedMonth] || monthlyIssues[DEFAULT_MONTH_ID];
+  }, [selectedMonth]);
+
   // Discovery & Smart Filter State
   const [searchQuery, setSearchQuery] = useState("");
   const [onlyHot, setOnlyHot] = useState(false);
@@ -83,7 +91,7 @@ export default function Home() {
   // Flatten all facts for counting, random selection, and pinned drawer
   const allFacts = useMemo(() => {
     const list: FactItem[] = [];
-    magazineSections.forEach((sec) => {
+    currentMonth.sections.forEach((sec) => {
       sec.items.forEach((item, idx) => {
         list.push({
           id: item.id || `${sec.id}-${idx}`,
@@ -113,13 +121,13 @@ export default function Home() {
           ],
           verification: item.verification || {
             status: "verified",
-            lastVerifiedAt: "2026-11-14",
+            lastVerifiedAt: "2026-11-15",
           },
         });
       });
     });
     return list;
-  }, []);
+  }, [currentMonth.sections]);
 
   // Filtered facts count
   const matchingFactsCount = useMemo(() => {
@@ -153,9 +161,36 @@ export default function Home() {
     return allFacts.filter((f) => f.hot).length;
   }, [allFacts]);
 
+  // Collect all facts across all months for multi-month pinned study drawer
+  const allMonthsFacts = useMemo(() => {
+    const list: FactItem[] = [];
+    Object.values(monthlyIssues).forEach((issue) => {
+      issue.sections.forEach((sec) => {
+        sec.items.forEach((item, idx) => {
+          list.push({
+            id: item.id || `${sec.id}-${idx}`,
+            text: item.text,
+            hot: item.hot,
+            category: `${sec.title} (${issue.shortMonth})`,
+            sectionId: sec.id,
+            pages: sec.pages,
+            title: item.title,
+            summary: item.summary,
+            explanation: item.explanation,
+            importance: item.importance || (item.hot ? "must-know" : "important"),
+            contentType: item.contentType || "national",
+            sources: item.sources,
+            verification: item.verification,
+          });
+        });
+      });
+    });
+    return list;
+  }, []);
+
   const pinnedFactsList = useMemo(() => {
-    return allFacts.filter((f) => pinnedIds.includes(f.id));
-  }, [allFacts, pinnedIds]);
+    return allMonthsFacts.filter((f) => pinnedIds.includes(f.id));
+  }, [allMonthsFacts, pinnedIds]);
 
   // Incorrect question IDs from quiz history
   const allIncorrectQuestionIds = useMemo(() => {
@@ -193,10 +228,10 @@ export default function Home() {
   };
 
   const handleMasterSection = (sectionId: string) => {
-    const section = magazineSections.find((s) => s.id === sectionId);
+    const section = currentMonth.sections.find((s) => s.id === sectionId);
     if (!section) return;
 
-    const idsToAdd = section.items.map((_, idx) => `${sectionId}-${idx}`);
+    const idsToAdd = section.items.map((item, idx) => item.id || `${sectionId}-${idx}`);
     playFanfare();
     setMasteredIds((prev) => {
       const newSet = new Set([...prev, ...idsToAdd]);
@@ -289,6 +324,13 @@ export default function Home() {
     <div className="min-h-screen">
       {/* Sticky Main Navigation */}
       <Navbar
+        selectedMonth={selectedMonth}
+        onSelectMonth={(m) => {
+          playPop();
+          setSelectedMonth(m);
+          setActiveCategory(null);
+        }}
+        sections={currentMonth.sections}
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
         onlyHot={onlyHot}
@@ -334,8 +376,15 @@ export default function Home() {
 
       {/* Main Container - Full width up to 1536px */}
       <main className="max-w-[1536px] w-full mx-auto px-3 sm:px-6 py-6 sm:py-8">
-        {/* Hero Header */}
+        {/* Hero Header with Month Switcher */}
         <Hero
+          currentMonth={currentMonth}
+          selectedMonth={selectedMonth}
+          onSelectMonth={(m) => {
+            playPop();
+            setSelectedMonth(m);
+            setActiveCategory(null);
+          }}
           onOpenArcade={() => {
             playPop();
             setIsArcadeOpen(true);
@@ -347,7 +396,7 @@ export default function Home() {
 
         {/* Secondary Navigation: Topic Navigation Panel */}
         <TopicNavigationPanel
-          sections={magazineSections}
+          sections={currentMonth.sections}
           activeCategory={activeCategory}
           onSelectCategory={(id) => {
             playPop();
@@ -359,6 +408,7 @@ export default function Home() {
 
         {/* 11 Editorial Magazine Sections */}
         <SectionList
+          sections={currentMonth.sections}
           searchQuery={searchQuery}
           onlyHot={onlyHot}
           activeCategory={activeCategory}
@@ -374,8 +424,9 @@ export default function Home() {
           onDiagramClick={handleDiagramClick}
         />
 
-        {/* 3D Flashcard Interactive Revision Deck (39 Questions) */}
+        {/* 3D Flashcard Interactive Revision Deck */}
         <FlashcardGrid
+          qaList={currentMonth.qaList}
           searchQuery={searchQuery}
           onFlipSound={playFlip}
           onChimeSound={playChime}
@@ -389,6 +440,7 @@ export default function Home() {
       <ArcadeQuizModal
         isOpen={isArcadeOpen}
         onClose={() => setIsArcadeOpen(false)}
+        qaList={currentMonth.qaList}
         onCorrectSound={playCorrect}
         onWrongSound={playWrong}
         onFanfareSound={playFanfare}
@@ -401,7 +453,7 @@ export default function Home() {
         isOpen={isDailyOpen}
         onClose={() => setIsDailyOpen(false)}
         allFacts={allFacts}
-        qaList={qaList}
+        qaList={currentMonth.qaList}
         masteredIds={masteredIds}
         onToggleMastered={handleToggleMastered}
         onCorrectSound={playCorrect}
@@ -413,7 +465,7 @@ export default function Home() {
       <ProgressDashboardModal
         isOpen={isProgressOpen}
         onClose={() => setIsProgressOpen(false)}
-        sections={magazineSections}
+        sections={currentMonth.sections}
         masteredIds={masteredIds}
         pinnedIds={pinnedIds}
         quizAttempts={quizAttempts}
@@ -461,7 +513,7 @@ export default function Home() {
         isOpen={isRandomFactOpen}
         onClose={() => setIsRandomFactOpen(false)}
         allFacts={allFacts}
-        sections={magazineSections}
+        sections={currentMonth.sections}
         masteredIds={masteredIds}
         pinnedIds={pinnedIds}
         onToggleMastered={handleToggleMastered}

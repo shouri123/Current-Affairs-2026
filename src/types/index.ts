@@ -152,3 +152,22 @@ export interface UserProgressV1 {
   incorrectQuestionIds: string[];
   lastStudiedAt: string;
 }
+
+export type MonthId = "july-2026" | "august-2026" | "september-2026";
+
+export interface MacroIndicator {
+  label: string;
+  value: string;
+  subtext: string;
+}
+
+export interface MonthlyIssue {
+  id: MonthId;
+  monthName: string;
+  shortMonth: string;
+  issueNo: string;
+  summary: string;
+  macroIndicators: MacroIndicator[];
+  sections: MagazineSection[];
+  qaList: QAItem[];
+}

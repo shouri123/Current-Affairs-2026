@@ -2,16 +2,17 @@
 
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import confetti from "canvas-confetti";
-import { qaList } from "@/data/qaList";
+import { qaList as defaultQaList } from "@/data/qaList";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { QuizMode, QuizQuestion, QuizAttemptRecord } from "@/types";
+import { QuizMode, QuizQuestion, QuizAttemptRecord, QAItem } from "@/types";
 import { Award, RotateCcw, CheckCircle2, XCircle, BookOpen, Layers } from "lucide-react";
 
 interface ArcadeQuizModalProps {
   isOpen: boolean;
   onClose: () => void;
+  qaList?: QAItem[];
   onCorrectSound?: () => void;
   onWrongSound?: () => void;
   onFanfareSound?: () => void;
@@ -22,6 +23,7 @@ interface ArcadeQuizModalProps {
 export function ArcadeQuizModal({
   isOpen,
   onClose,
+  qaList = defaultQaList,
   onCorrectSound,
   onWrongSound,
   onFanfareSound,
@@ -32,7 +34,7 @@ export function ArcadeQuizModal({
   const [selectedSubject, setSelectedSubject] = useState<string>("All");
   const [isQuizActive, setIsQuizActive] = useState(false);
 
-  const [questionList, setQuestionList] = useState<typeof qaList>([]);
+  const [questionList, setQuestionList] = useState<QAItem[]>([]);
   const [currentIdx, setCurrentIdx] = useState(0);
   const [score, setScore] = useState(0);
   const [streak, setStreak] = useState(0);

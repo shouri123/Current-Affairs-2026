@@ -26,8 +26,8 @@ export function TopicNavigationPanel({
 
   const getSectionStats = (sec: MagazineSection) => {
     const total = sec.items.length;
-    const mastered = sec.items.filter((_, idx) =>
-      masteredIds.includes(`${sec.id}-${idx}`)
+    const mastered = sec.items.filter((item, idx) =>
+      masteredIds.includes(item.id || `${sec.id}-${idx}`)
     ).length;
     const mustKnow = sec.items.filter((i) => i.hot).length;
     const pct = total > 0 ? Math.round((mastered / total) * 100) : 0;

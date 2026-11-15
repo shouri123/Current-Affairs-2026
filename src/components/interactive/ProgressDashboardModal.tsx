@@ -48,7 +48,14 @@ export function ProgressDashboardModal({
 
   // Compute metrics
   const totalEntries = sections.reduce((acc, s) => acc + s.items.length, 0);
-  const totalMastered = masteredIds.length;
+  const totalMastered = sections.reduce(
+    (acc, s) =>
+      acc +
+      s.items.filter((item, idx) =>
+        masteredIds.includes(item.id || `${s.id}-${idx}`)
+      ).length,
+    0
+  );
   const entriesRemaining = Math.max(0, totalEntries - totalMastered);
   const completionPercentage =
     totalEntries > 0 ? Math.round((totalMastered / totalEntries) * 100) : 0;
@@ -65,8 +72,8 @@ export function ProgressDashboardModal({
   // Subject breakdowns
   const subjectBreakdown = sections.map((sec) => {
     const total = sec.items.length;
-    const mastered = sec.items.filter((_, idx) =>
-      masteredIds.includes(`${sec.id}-${idx}`)
+    const mastered = sec.items.filter((item, idx) =>
+      masteredIds.includes(item.id || `${sec.id}-${idx}`)
     ).length;
     const pct = total > 0 ? Math.round((mastered / total) * 100) : 0;
     return { id: sec.id, title: sec.title, total, mastered, pct };
