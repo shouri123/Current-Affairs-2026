@@ -427,6 +427,7 @@ export default function Home() {
         {/* 3D Flashcard Interactive Revision Deck */}
         <FlashcardGrid
           qaList={currentMonth.qaList}
+          monthName={currentMonth.monthName}
           searchQuery={searchQuery}
           onFlipSound={playFlip}
           onChimeSound={playChime}

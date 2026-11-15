@@ -17,6 +17,7 @@ import {
 
 interface FlashcardGridProps {
   qaList?: QAItem[];
+  monthName?: string;
   searchQuery: string;
   onFlipSound?: () => void;
   onChimeSound?: () => void;
@@ -24,6 +25,7 @@ interface FlashcardGridProps {
 
 export function FlashcardGrid({
   qaList = defaultQaList,
+  monthName,
   searchQuery,
   onFlipSound,
   onChimeSound,
@@ -102,14 +104,14 @@ export function FlashcardGrid({
             <div className="flex items-center gap-2">
               <BookOpen className="h-5 w-5 text-brand" />
               <h2 className="font-display font-bold text-xl sm:text-2xl text-ink">
-                39-Question Interactive Revision Deck
+                {deck.length}-Question Interactive Revision Deck
               </h2>
               <span className="text-xs font-semibold px-2 py-0.5 rounded bg-zinc-100 text-muted border border-ink/15">
                 {filteredQA.length} Cards
               </span>
             </div>
             <p className="text-xs text-muted mt-1">
-              Active-recall cards derived directly from official September 2026 notifications. Tap card to flip.
+              Active-recall cards derived directly from official {monthName ? `${monthName} ` : ""}notifications. Tap card to flip.
             </p>
           </div>
 

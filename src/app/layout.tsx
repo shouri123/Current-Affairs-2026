@@ -18,9 +18,9 @@ const sourceSerif = Source_Serif_4({
 });
 
 export const metadata: Metadata = {
-  title: "September 2026 Current Affairs Gazette — IAS Academia of Success",
+  title: "Current Affairs Gazette (July – September 2026) — IAS Academia of Success",
   description:
-    "Official monthly documentation of September 2026 national accounts, regulatory mandates, foreign policy, and defence updates for competitive examination candidates.",
+    "Official monthly documentation of July, August, and September 2026 national accounts, regulatory mandates, foreign policy, and defence updates for competitive examination candidates.",
 };
 
 export default function RootLayout({
