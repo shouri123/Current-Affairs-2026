@@ -254,7 +254,7 @@ export function ArcadeQuizModal({
                 }`}
               >
                 <span className="font-bold text-sm block">Full Comprehensive Test</span>
-                <span className="text-muted block mt-0.5">All 39 questions in randomized sequence</span>
+                <span className="text-muted block mt-0.5">All {qaList.length} questions in randomized sequence</span>
               </button>
             </div>
 
