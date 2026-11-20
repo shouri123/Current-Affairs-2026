@@ -5580,7 +5580,7 @@ export const august2026QAList: QAItem[] = [
   {
     "id": "august-q-35",
     "q": "National Sports Day on 29 August honours which hockey legend?",
-    "a": "Major Dhyan Chand xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "a": "Major Dhyan Chand",
     "subject": "Current Affairs Review",
     "options": [
       "Major Dhyan Chand xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
