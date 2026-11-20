@@ -4938,9 +4938,9 @@ export const august2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Lebanon",
-      "France",
-      "Seychelles",
-      "Japan"
+      "Jordan",
+      "Tunisia",
+      "Algeria"
     ],
     "explanation": "Verified in August 2026 Official Gazette: Which country's Parliament abolished the death penalty on 11 August 2026, a first for the Middle East? Answer: Lebanon.",
     "source": {
@@ -4957,9 +4957,9 @@ export const august2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Mirza Fakhrul Islam Alamgir",
-      "Statutory Notification",
-      "Regulatory Framework",
-      "Cabinet Directive"
+      "Muhammad Yunus",
+      "Mohammed Shahabuddin",
+      "Abdul Hamid"
     ],
     "explanation": "Verified in August 2026 Official Gazette: Who was elected Bangladesh's 23rd President in August 2026? Answer: Mirza Fakhrul Islam Alamgir.",
     "source": {
@@ -4976,9 +4976,9 @@ export const august2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Syria",
-      "France",
-      "Seychelles",
-      "Japan"
+      "Sudan",
+      "Cuba",
+      "North Korea"
     ],
     "explanation": "Verified in August 2026 Official Gazette: Which country was removed from the US State Sponsors of Terrorism list on 24 August 2026? Answer: Syria.",
     "source": {
@@ -4995,9 +4995,9 @@ export const august2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Tomoko Akane",
-      "Droupadi Murmu",
-      "Narendra Modi",
-      "S. Jaishankar"
+      "Piotr Hofmański",
+      "Chile Eboe-Osuji",
+      "Karim Khan"
     ],
     "explanation": "Verified in August 2026 Official Gazette: Which ICC President was sanctioned by the United States on 18 August 2026? Answer: Tomoko Akane.",
     "source": {
@@ -5014,9 +5014,9 @@ export const august2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Hakainde Hichilema",
-      "Droupadi Murmu",
-      "Narendra Modi",
-      "S. Jaishankar"
+      "Edgar Lungu",
+      "Rupiah Banda",
+      "Levy Mwanawasa"
     ],
     "explanation": "Verified in August 2026 Official Gazette: Who was re-elected President of Zambia for a second term? Answer: Hakainde Hichilema.",
     "source": {
@@ -5033,9 +5033,9 @@ export const august2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "$729.3 billion",
-      "\u20b91,500 crore",
-      "\u20b92,500 crore",
-      "\u20b95,000 crore"
+      "$725.6 billion",
+      "$732.1 billion",
+      "$719.8 billion"
     ],
     "explanation": "Verified in August 2026 Official Gazette: India's forex reserves hit a record of how much in the week ended 21 August 2026? Answer: $729.3 billion.",
     "source": {
@@ -5052,9 +5052,9 @@ export const august2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "16 August 2026",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "1 August 2026",
+      "15 August 2026",
+      "1 September 2026"
     ],
     "explanation": "Verified in August 2026 Official Gazette: On which date did the FAST-DS disclosure scheme come into force? Answer: 16 August 2026.",
     "source": {
@@ -5071,9 +5071,9 @@ export const august2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Taxation and Other Laws (Amendment) Bill, 2026",
-      "Statutory Notification",
-      "Regulatory Framework",
-      "Cabinet Directive"
+      "Payment and Settlement Systems (Amendment) Bill, 2026",
+      "Finance Bill, 2026",
+      "Digital India Bill, 2026"
     ],
     "explanation": "Verified in August 2026 Official Gazette: Which Bill creates a framework for MDR charges on selected UPI transactions? Answer: Taxation and Other Laws (Amendment) Bill, 2026.",
     "source": {
@@ -5090,9 +5090,9 @@ export const august2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Jio Platforms",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "Tata Capital",
+      "NSE India",
+      "Reliance Retail"
     ],
     "explanation": "Verified in August 2026 Official Gazette: Whose proposed IPO received SEBI observations and may exceed \u20b937,000 crore? Answer: Jio Platforms.",
     "source": {
@@ -5109,9 +5109,9 @@ export const august2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Eluru, Andhra Pradesh",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "Kakinada, Andhra Pradesh",
+      "Paradip, Odisha",
+      "Bellary, Karnataka"
     ],
     "explanation": "Verified in August 2026 Official Gazette: Where did Reliance propose India's first integrated Underground Coal Gasification complex? Answer: Eluru, Andhra Pradesh.",
     "source": {
@@ -5128,9 +5128,9 @@ export const august2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Tewolde Gebremariam",
-      "Droupadi Murmu",
-      "Narendra Modi",
-      "S. Jaishankar"
+      "Campbell Wilson",
+      "Pieter Elbers",
+      "Willie Walsh"
     ],
     "explanation": "Verified in August 2026 Official Gazette: Who was appointed the new CEO of Air India? Answer: Tewolde Gebremariam.",
     "source": {
@@ -5147,9 +5147,9 @@ export const august2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Monisha Chakraborty",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "Shaktikanta Das",
+      "Michael Patra",
+      "Rajeshwar Rao"
     ],
     "explanation": "Verified in August 2026 Official Gazette: Who became RBI Executive Director with effect from 3 August 2026? Answer: Monisha Chakraborty.",
     "source": {
@@ -5166,9 +5166,9 @@ export const august2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "17",
+      "15",
       "16",
-      "18",
-      "22"
+      "20"
     ],
     "explanation": "Verified in August 2026 Official Gazette: How many entities are in the RBI's Upper Layer NBFC list for FY27? Answer: 17.",
     "source": {
@@ -5185,9 +5185,9 @@ export const august2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Keralam",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "Kerala Nadu",
+      "Malayala Nadu",
+      "Keralam State"
     ],
     "explanation": "Verified in August 2026 Official Gazette: Parliament passed a Bill paving the way for Kerala to be officially renamed what? Answer: Keralam.",
     "source": {
@@ -5204,9 +5204,9 @@ export const august2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Tribunals Reforms Bill, 2026",
-      "Statutory Notification",
-      "Regulatory Framework",
-      "Cabinet Directive"
+      "National Tribunals Commission Bill, 2026",
+      "Administrative Tribunals (Amendment) Bill, 2026",
+      "Judicial Appointments Commission Bill, 2026"
     ],
     "explanation": "Verified in August 2026 Official Gazette: Which Bill establishes a National Tribunals Commission? Answer: Tribunals Reforms Bill, 2026.",
     "source": {
@@ -5223,9 +5223,9 @@ export const august2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "13 August 2026",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "12 August 2026",
+      "14 August 2026",
+      "17 August 2026"
     ],
     "explanation": "Verified in August 2026 Official Gazette: On which date did the Monsoon Session of Parliament conclude in 2026? Answer: 13 August 2026.",
     "source": {
@@ -5242,9 +5242,9 @@ export const august2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Ladakh",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "Jammu and Kashmir",
+      "Himachal Pradesh",
+      "Chandigarh"
     ],
     "explanation": "Verified in August 2026 Official Gazette: A J&K High Court bench was approved for which Union Territory? Answer: Ladakh.",
     "source": {
@@ -5261,9 +5261,9 @@ export const august2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Agni-4",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "Agni-5",
+      "Agni-Prime",
+      "Prithvi-II"
     ],
     "explanation": "Verified in August 2026 Official Gazette: Which missile was test-launched from Chandipur on 6 August 2026? Answer: Agni-4.",
     "source": {
@@ -5280,9 +5280,9 @@ export const august2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "General Atomics Aeronautical Systems Inc. (GA-ASI)",
-      "Statutory Notification",
-      "Regulatory Framework",
-      "Cabinet Directive"
+      "Lockheed Martin",
+      "Boeing Defense",
+      "Northrop Grumman"
     ],
     "explanation": "Verified in August 2026 Official Gazette: Which US firm signed a \u20b91,943 crore deal to lease two MQ-9B drones to the Indian Navy? Answer: General Atomics Aeronautical Systems Inc. (GA-ASI).",
     "source": {
@@ -5299,9 +5299,9 @@ export const august2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Samarthak",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "Samudra Pratap",
+      "Nistar",
+      "Dhruv"
     ],
     "explanation": "Verified in August 2026 Official Gazette: What is the name of the Indian Navy's first indigenous Multi- Purpose Vessel? Answer: Samarthak.",
     "source": {
@@ -5318,9 +5318,9 @@ export const august2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Sher",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "Asmi",
+      "Ugram",
+      "Trichy Assault Rifle"
     ],
     "explanation": "Verified in August 2026 Official Gazette: What is the name of the first fully indigenous AK-203 rifle? Answer: Sher.",
     "source": {
@@ -5337,9 +5337,9 @@ export const august2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Malaysia (Royal Malaysian Air Force)",
-      "Statutory Notification",
-      "Regulatory Framework",
-      "Cabinet Directive"
+      "Singapore",
+      "Indonesia",
+      "Thailand"
     ],
     "explanation": "Verified in August 2026 Official Gazette: Udara Shakti 2026 is a bilateral exercise between the IAF and which country's air force? Answer: Malaysia (Royal Malaysian Air Force).",
     "source": {
@@ -5356,9 +5356,9 @@ export const august2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Squadron Leader Bhawana Kanth",
-      "Statutory Notification",
-      "Regulatory Framework",
-      "Cabinet Directive"
+      "Avani Chaturvedi",
+      "Mohana Singh",
+      "Shivangi Singh"
     ],
     "explanation": "Verified in August 2026 Official Gazette: Who became the first woman IAF fighter pilot to complete the Fighter Combat Leader course? Answer: Squadron Leader Bhawana Kanth.",
     "source": {
@@ -5374,10 +5374,10 @@ export const august2026QAList: QAItem[] = [
     "a": "Saudi Arabia, T\u00fcrkiye and Pakistan",
     "subject": "Current Affairs Review",
     "options": [
-      "Saudi Arabia, T\u00fcrkiye and Pakistan",
-      "Statutory Notification",
-      "Regulatory Framework",
-      "Cabinet Directive"
+      "Saudi Arabia, Türkiye and Pakistan",
+      "Saudi Arabia, Qatar and Pakistan",
+      "Türkiye, Pakistan and Azerbaijan",
+      "Saudi Arabia, Jordan and Egypt"
     ],
     "explanation": "Verified in August 2026 Official Gazette: Which three countries signed the Makkah Joint Defence Agreement? Answer: Saudi Arabia, T\u00fcrkiye and Pakistan.",
     "source": {
@@ -5394,9 +5394,9 @@ export const august2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Indian Oil Corporation (IOC)",
-      "Statutory Notification",
-      "Regulatory Framework",
-      "Cabinet Directive"
+      "Bharat Petroleum Corporation Limited (BPCL)",
+      "Hindustan Petroleum Corporation Limited (HPCL)",
+      "Nayara Energy"
     ],
     "explanation": "Verified in August 2026 Official Gazette: Which Indian company will supply Mauritius' petrol, diesel and ATF under a five-year agreement? Answer: Indian Oil Corporation (IOC).",
     "source": {
@@ -5413,9 +5413,9 @@ export const august2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Dr. Annapurni Subramaniam",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "K. Sivan",
+      "S. Somanath",
+      "A. S. Kiran Kumar"
     ],
     "explanation": "Verified in August 2026 Official Gazette: Who received the COSPAR Vikram Sarabhai Medal 2026? Answer: Dr. Annapurni Subramaniam.",
     "source": {
@@ -5432,9 +5432,9 @@ export const august2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Deepak Dhar",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "Ashoke Sen",
+      "Thanu Padmanabhan",
+      "Abhay Ashtekar"
     ],
     "explanation": "Verified in August 2026 Official Gazette: Which Indian physicist was awarded the 2026 Dirac Medal? Answer: Deepak Dhar.",
     "source": {
@@ -5451,9 +5451,9 @@ export const august2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Ashutosh Parida",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "Pratibha Satpathy",
+      "Ramakanta Rath",
+      "Jagannath Prasad Das"
     ],
     "explanation": "Verified in August 2026 Official Gazette: Who was selected for the Sarala Puraskar 2026? Answer: Ashutosh Parida.",
     "source": {
@@ -5470,9 +5470,9 @@ export const august2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Fourth, with 39 medals",
-      "Statutory Notification",
-      "Regulatory Framework",
-      "Cabinet Directive"
+      "Third, with 42 medals",
+      "Fifth, with 34 medals",
+      "Sixth, with 31 medals"
     ],
     "explanation": "Verified in August 2026 Official Gazette: What was India's rank and medal count at the Commonwealth Games 2026? Answer: Fourth, with 39 medals.",
     "source": {
@@ -5489,9 +5489,9 @@ export const august2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "R. Praggnanandhaa",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "D. Gukesh",
+      "Vidit Gujrathi",
+      "Arjun Erigaisi"
     ],
     "explanation": "Verified in August 2026 Official Gazette: Who became the first Indian to win the Grand Chess Tour? Answer: R. Praggnanandhaa.",
     "source": {
@@ -5508,9 +5508,9 @@ export const august2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Jos Buttler",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "Chris Gayle",
+      "Virat Kohli",
+      "Rohit Sharma"
     ],
     "explanation": "Verified in August 2026 Official Gazette: Who became the highest run-scorer in T20 cricket history? Answer: Jos Buttler.",
     "source": {
@@ -5527,9 +5527,9 @@ export const august2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "New Delhi",
-      "Kochi",
-      "Mumbai",
-      "Standard Assessment 4"
+      "Hyderabad",
+      "Chennai",
+      "Guwahati"
     ],
     "explanation": "Verified in August 2026 Official Gazette: Which city hosted the BWF World Championships 2026 where Treesa Jolly and Gayatri Gopichand won a medal? Answer: New Delhi.",
     "source": {
@@ -5546,9 +5546,9 @@ export const august2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Table Tennis Federation of India (TTFI)",
-      "Statutory Notification",
-      "Regulatory Framework",
-      "Cabinet Directive"
+      "Hockey India",
+      "Wrestling Federation of India",
+      "Archery Association of India"
     ],
     "explanation": "Verified in August 2026 Official Gazette: Whose recognition did the Sports Ministry suspend on 12 August 2026? Answer: Table Tennis Federation of India (TTFI).",
     "source": {
@@ -5565,9 +5565,9 @@ export const august2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Eighth",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "Sixth",
+      "Seventh",
+      "Ninth"
     ],
     "explanation": "Verified in August 2026 Official Gazette: Where did India finish in the FIH Men's Hockey World Cup 2026? Answer: Eighth.",
     "source": {
@@ -5584,9 +5584,9 @@ export const august2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Major Dhyan Chand xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-      "Statutory Notification",
-      "Regulatory Framework",
-      "Cabinet Directive"
+      "Balbir Singh Sr.",
+      "Dhanraj Pillay",
+      "Roop Singh"
     ],
     "explanation": "Verified in August 2026 Official Gazette: National Sports Day on 29 August honours which hockey legend? Answer: Major Dhyan Chand xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.",
     "source": {
