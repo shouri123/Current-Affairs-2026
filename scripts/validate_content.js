@@ -101,6 +101,6 @@ if (errors.length > 0) {
   errors.forEach(e => console.error(' - ' + e));
   process.exit(1);
 } else {
-  console.log('\nALL 6 CONTENT VALIDATION AUDIT CHECKS PASSED SUCCESSFULLY!\n');
+  console.log('\nALL 7 CONTENT VALIDATION AUDIT CHECKS PASSED SUCCESSFULLY!\n');
 }
 
