@@ -5583,12 +5583,12 @@ export const august2026QAList: QAItem[] = [
     "a": "Major Dhyan Chand",
     "subject": "Current Affairs Review",
     "options": [
-      "Major Dhyan Chand xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "Major Dhyan Chand",
       "Balbir Singh Sr.",
       "Dhanraj Pillay",
       "Roop Singh"
     ],
-    "explanation": "Verified in August 2026 Official Gazette: National Sports Day on 29 August honours which hockey legend? Answer: Major Dhyan Chand xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.",
+    "explanation": "Verified in August 2026 Official Gazette: National Sports Day on 29 August honours which hockey legend? Answer: Major Dhyan Chand.",
     "source": {
       "title": "August 2026 Gazette Question #35",
       "publisher": "Official Sports Regulatory Federation / Board",
