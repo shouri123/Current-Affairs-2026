@@ -266,6 +266,9 @@ export function DailyRevisionModal({
                       disabled={selectedOption !== null}
                       className={`w-full text-left p-2.5 rounded-lg border text-xs font-sans transition-all ${btnStyle}`}
                     >
+                      <span className="inline-flex min-w-5 mr-2 font-bold text-muted">
+                        {String.fromCharCode(65 + optIdx)}.
+                      </span>
                       {opt}
                     </button>
                   );
