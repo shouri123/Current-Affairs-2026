@@ -14,6 +14,10 @@ import { FactDetailModal } from "@/components/interactive/FactDetailModal";
 import { PinDrawer } from "@/components/interactive/PinDrawer";
 import { StudyCockpit } from "@/components/layout/StudyCockpit";
 import { PYQRadarModal } from "@/components/interactive/PYQRadarModal";
+import { DailyNewsroom } from "@/components/newsroom/DailyNewsroom";
+import { KnowledgeAtlas } from "@/components/interactive/KnowledgeAtlas";
+import { MainsAnswerLabModal } from "@/components/interactive/MainsAnswerLabModal";
+import { AskGazetteModal } from "@/components/interactive/AskGazetteModal";
 import { ExamProfileId } from "@/types/examProfiles";
 import { getSRSStats, SRSStats } from "@/lib/spacedRepetition";
 import { Footer } from "@/components/layout/Footer";
@@ -60,6 +64,8 @@ export default function Home() {
     "upsc"
   );
   const [isPYQRadarOpen, setIsPYQRadarOpen] = useState(false);
+  const [isMainsLabOpen, setIsMainsLabOpen] = useState(false);
+  const [isAskGazetteOpen, setIsAskGazetteOpen] = useState(false);
 
   // Modals Visibility
   const [isArcadeOpen, setIsArcadeOpen] = useState(false);
@@ -383,6 +389,14 @@ export default function Home() {
           playPop();
           setIsPYQRadarOpen(true);
         }}
+        onOpenMainsLab={() => {
+          playPop();
+          setIsMainsLabOpen(true);
+        }}
+        onOpenAskGazette={() => {
+          playPop();
+          setIsAskGazetteOpen(true);
+        }}
         onOpenProgressDashboard={() => {
           playPop();
           setIsProgressOpen(true);
@@ -431,9 +445,20 @@ export default function Home() {
             playPop();
             setIsDailyOpen(true);
           }}
+          onOpenMainsLab={() => {
+            playPop();
+            setIsMainsLabOpen(true);
+          }}
+          onOpenAskGazette={() => {
+            playPop();
+            setIsAskGazetteOpen(true);
+          }}
           totalFactsCount={allFacts.length}
           masteredCount={masteredIds.length}
         />
+
+        {/* Continuous Daily Gazette Newsroom */}
+        <DailyNewsroom />
 
         {/* Secondary Navigation: Topic Navigation Panel */}
         <TopicNavigationPanel
@@ -463,6 +488,14 @@ export default function Home() {
           onMasterSection={handleMasterSection}
           onFactClick={handleFactClick}
           onDiagramClick={handleDiagramClick}
+        />
+
+        {/* Interactive Knowledge Atlas & Event Timelines */}
+        <KnowledgeAtlas
+          onOpenPYQModal={() => {
+            playPop();
+            setIsPYQRadarOpen(true);
+          }}
         />
 
         {/* 3D Flashcard Interactive Revision Deck */}
@@ -567,6 +600,18 @@ export default function Home() {
       <PYQRadarModal
         isOpen={isPYQRadarOpen}
         onClose={() => setIsPYQRadarOpen(false)}
+      />
+
+      {/* Mains Answer Lab Descriptive Evaluation Modal */}
+      <MainsAnswerLabModal
+        isOpen={isMainsLabOpen}
+        onClose={() => setIsMainsLabOpen(false)}
+      />
+
+      {/* Ask Gazette AI Study Assistant Modal */}
+      <AskGazetteModal
+        isOpen={isAskGazetteOpen}
+        onClose={() => setIsAskGazetteOpen(false)}
       />
     </div>
   );

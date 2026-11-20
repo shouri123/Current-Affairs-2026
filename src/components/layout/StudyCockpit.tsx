@@ -14,6 +14,8 @@ import {
   ChevronRight,
   TrendingUp,
   Target,
+  Bot,
+  FileText,
 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -24,6 +26,8 @@ interface StudyCockpitProps {
   onOpenDueCards: () => void;
   onOpenPYQRadar: () => void;
   onOpenDaily: () => void;
+  onOpenMainsLab?: () => void;
+  onOpenAskGazette?: () => void;
   totalFactsCount: number;
   masteredCount: number;
 }
@@ -35,6 +39,8 @@ export function StudyCockpit({
   onOpenDueCards,
   onOpenPYQRadar,
   onOpenDaily,
+  onOpenMainsLab,
+  onOpenAskGazette,
   totalFactsCount,
   masteredCount,
 }: StudyCockpitProps) {
@@ -194,14 +200,36 @@ export function StudyCockpit({
             {currentProfile.description}
           </span>
         </div>
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-1.5 flex-wrap">
+          {onOpenMainsLab && (
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={onOpenMainsLab}
+              className="h-7 text-xs font-bold border-2 border-ink bg-pink-50 hover:bg-pink-100 text-pink-950 shadow-xs"
+            >
+              <FileText className="h-3.5 w-3.5 mr-1 text-pink-700" />
+              Mains Lab
+            </Button>
+          )}
+          {onOpenAskGazette && (
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={onOpenAskGazette}
+              className="h-7 text-xs font-bold border-2 border-ink bg-emerald-50 hover:bg-emerald-100 text-emerald-950 shadow-xs"
+            >
+              <Bot className="h-3.5 w-3.5 mr-1 text-emerald-700" />
+              Ask AI
+            </Button>
+          )}
           <Button
             variant="outline"
             size="sm"
             onClick={onOpenPYQRadar}
             className="h-7 text-xs font-bold border-2 border-ink bg-cream hover:bg-white shadow-xs"
           >
-            <Radar className="h-3.5 w-3.5 mr-1" />
+            <Radar className="h-3.5 w-3.5 mr-1 text-purple-700" />
             Explore PYQs
           </Button>
           <Button

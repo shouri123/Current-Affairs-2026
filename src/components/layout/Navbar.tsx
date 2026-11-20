@@ -18,6 +18,9 @@ import {
   Newspaper,
   BookOpenCheck,
   Radar,
+  Bot,
+  FileText,
+  Network,
 } from "lucide-react";
 import { magazineSections } from "@/data/magazineSections";
 import { ImportanceLevel, VerificationStatus, MonthId, MagazineSection } from "@/types";
@@ -47,6 +50,9 @@ interface NavbarProps {
   onOpenArcade: () => void;
   onOpenDailyRevision: () => void;
   onOpenPYQRadar?: () => void;
+  onOpenMainsLab?: () => void;
+  onOpenAskGazette?: () => void;
+  onOpenKnowledgeAtlas?: () => void;
   onOpenProgressDashboard: () => void;
   masteredCount: number;
   totalFactsCount: number;
@@ -91,6 +97,9 @@ export function Navbar({
   onOpenArcade,
   onOpenDailyRevision,
   onOpenPYQRadar,
+  onOpenMainsLab,
+  onOpenAskGazette,
+  onOpenKnowledgeAtlas,
   onOpenProgressDashboard,
   masteredCount,
   totalFactsCount,
@@ -289,6 +298,34 @@ export function Navbar({
               <Calendar className="h-3.5 w-3.5 text-brand" />
               <span>Daily</span>
             </motion.button>
+
+            {/* Mains Answer Lab Button */}
+            {onOpenMainsLab && (
+              <motion.button
+                whileHover={{ scale: 1.05, y: -1 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={onOpenMainsLab}
+                title="Mains Answer Lab: Descriptive Evaluation"
+                className="px-2.5 py-1.5 rounded-xl border-2 border-ink bg-pink-100 text-pink-950 hover:bg-pink-200 font-display font-extrabold text-xs hidden lg:flex items-center gap-1 shadow-brutal-sm transition-colors"
+              >
+                <FileText className="h-3.5 w-3.5 text-pink-700" />
+                <span>Mains</span>
+              </motion.button>
+            )}
+
+            {/* Ask Gazette AI Assistant Button */}
+            {onOpenAskGazette && (
+              <motion.button
+                whileHover={{ scale: 1.05, y: -1 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={onOpenAskGazette}
+                title="Ask Gazette: AI Study Assistant"
+                className="px-2.5 py-1.5 rounded-xl border-2 border-ink bg-emerald-100 text-emerald-950 hover:bg-emerald-200 font-display font-extrabold text-xs hidden lg:flex items-center gap-1 shadow-brutal-sm transition-colors"
+              >
+                <Bot className="h-3.5 w-3.5 text-emerald-700" />
+                <span>Ask AI</span>
+              </motion.button>
+            )}
 
             {/* Progress Dashboard Button */}
             <motion.button
