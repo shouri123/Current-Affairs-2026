@@ -95,7 +95,8 @@ placeholderOptions.forEach((placeholder) => {
 if (!placeholderOptions.some((placeholder) => olderQuizContent.includes(placeholder))) {
   console.log('PASS: No known generic placeholder distractors remain in July/August question banks.');
 }
-\nif (errors.length > 0) {
+
+if (errors.length > 0) {
   console.error('\nValidation encountered errors:');
   errors.forEach(e => console.error(' - ' + e));
   process.exit(1);
