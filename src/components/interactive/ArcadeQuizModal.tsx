@@ -5,9 +5,9 @@ import confetti from "canvas-confetti";
 import { qaList as defaultQaList } from "@/data/qaList";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { QuizMode, QuizQuestion, QuizAttemptRecord, QAItem } from "@/types";
-import { Award, RotateCcw, CheckCircle2, XCircle, BookOpen, Layers } from "lucide-react";
+import { QuizMode, QuizAttemptRecord, QAItem } from "@/types";
+import { createQuizSession, QuizSessionQuestion } from "@/lib/quizEngine";
+import { Award, CheckCircle2, XCircle, BookOpen } from "lucide-react";
 
 interface ArcadeQuizModalProps {
   isOpen: boolean;
@@ -33,8 +33,7 @@ export function ArcadeQuizModal({
   const [selectedMode, setSelectedMode] = useState<QuizMode>("quick");
   const [selectedSubject, setSelectedSubject] = useState<string>("All");
   const [isQuizActive, setIsQuizActive] = useState(false);
-
-  const [questionList, setQuestionList] = useState<QAItem[]>([]);
+  const [questionList, setQuestionList] = useState<QuizSessionQuestion[]>([]);
   const [currentIdx, setCurrentIdx] = useState(0);
   const [score, setScore] = useState(0);
   const [streak, setStreak] = useState(0);
@@ -44,42 +43,34 @@ export function ArcadeQuizModal({
   >([]);
   const [isFinished, setIsFinished] = useState(false);
 
-  // Available subjects
   const allSubjects = useMemo(() => {
-    const set = new Set<string>();
-    qaList.forEach((q) => {
-      if (q.subject) set.add(q.subject);
+    const subjects = new Set<string>();
+    qaList.forEach((question) => {
+      if (question.subject) subjects.add(question.subject);
     });
-    return ["All", ...Array.from(set)];
-  }, []);
+    return ["All", ...Array.from(subjects)];
+  }, [qaList]);
 
-  // Filter questions based on selected mode
   const prepareQuestions = useCallback(() => {
     let pool = [...qaList];
+    let limit: number | undefined;
 
     if (selectedMode === "quick") {
-      pool = [...pool].sort(() => 0.5 - Math.random()).slice(0, 5);
+      limit = 5;
     } else if (selectedMode === "must-know") {
-      // Must-know questions (Q1 to Q20)
-      pool = pool.slice(0, 15).sort(() => 0.5 - Math.random());
+      // The first 15 records are the edition's curated priority set.
+      pool = pool.slice(0, 15);
     } else if (selectedMode === "subject") {
       if (selectedSubject !== "All") {
-        pool = pool.filter((q) => q.subject === selectedSubject);
+        pool = pool.filter((question) => question.subject === selectedSubject);
       }
-      if (pool.length === 0) pool = qaList.slice(0, 10);
-      pool = [...pool].sort(() => 0.5 - Math.random()).slice(0, 10);
+      limit = 10;
     } else if (selectedMode === "incorrect") {
-      if (incorrectQuestionIds.length > 0) {
-        pool = pool.filter((q) => incorrectQuestionIds.includes(q.id || ""));
-      }
-      if (pool.length === 0) {
-        pool = qaList.slice(0, 5);
-      }
-    } else if (selectedMode === "full") {
-      pool = [...pool].sort(() => 0.5 - Math.random());
+      pool = pool.filter((question) => incorrectQuestionIds.includes(question.id || ""));
     }
 
-    setQuestionList(pool);
+    const session = createQuizSession(pool, Math.random, limit);
+    setQuestionList(session);
     setCurrentIdx(0);
     setScore(0);
     setStreak(0);
@@ -87,9 +78,8 @@ export function ArcadeQuizModal({
     setUserAnswers([]);
     setIsFinished(false);
     setIsQuizActive(true);
-  }, [selectedMode, selectedSubject, incorrectQuestionIds]);
+  }, [qaList, selectedMode, selectedSubject, incorrectQuestionIds]);
 
-  // Reset when modal opens
   useEffect(() => {
     if (isOpen) {
       setIsQuizActive(false);
@@ -100,69 +90,73 @@ export function ArcadeQuizModal({
 
   const currentQuestion = questionList[currentIdx];
 
-  const handleSelectOption = (optIdx: number) => {
+  const handleSelectOption = (optionIndex: number) => {
     if (selectedOption !== null || !currentQuestion) return;
 
-    setSelectedOption(optIdx);
-    const correctIdx = currentQuestion.correctAnswerIndex ?? 0;
-    const isCorrect = optIdx === correctIdx;
+    setSelectedOption(optionIndex);
+    const correctIndex = currentQuestion.correctAnswerIndex;
+    const isCorrect = optionIndex === correctIndex;
 
-    const newAnswer = {
-      questionId: currentQuestion.id || `q-${currentIdx}`,
-      selected: optIdx,
-      correct: correctIdx,
-      isCorrect,
-    };
-    setUserAnswers((prev) => [...prev, newAnswer]);
+    setUserAnswers((previous) => [
+      ...previous,
+      {
+        questionId: currentQuestion.id || `q-${currentIdx}`,
+        selected: optionIndex,
+        correct: correctIndex,
+        isCorrect,
+      },
+    ]);
 
     if (isCorrect) {
-      setScore((prev) => prev + 1);
-      setStreak((prev) => prev + 1);
-      if (onCorrectSound) onCorrectSound();
+      setScore((previous) => previous + 1);
+      setStreak((previous) => previous + 1);
+      onCorrectSound?.();
+
       if ((streak + 1) % 5 === 0) {
-        if (onFanfareSound) onFanfareSound();
+        onFanfareSound?.();
         try {
           confetti({ particleCount: 40, spread: 50 });
-        } catch {}
+        } catch {
+          // Confetti is decorative and should never interrupt a quiz.
+        }
       }
     } else {
       setStreak(0);
-      if (onWrongSound) onWrongSound();
+      onWrongSound?.();
     }
   };
 
   const handleNextQuestion = () => {
     if (currentIdx + 1 < questionList.length) {
-      setCurrentIdx((prev) => prev + 1);
+      setCurrentIdx((previous) => previous + 1);
       setSelectedOption(null);
-    } else {
-      // Completed quiz
-      setIsFinished(true);
-      if (onFanfareSound) onFanfareSound();
-      try {
-        confetti({ particleCount: 70, spread: 70, origin: { y: 0.6 } });
-      } catch {}
-
-      // Save record
-      if (onSaveQuizAttempt) {
-        const finalScore = score + (selectedOption === (currentQuestion.correctAnswerIndex ?? 0) ? 0 : 0);
-        const accuracy = Math.round((score / questionList.length) * 100);
-        const missed = userAnswers
-          .filter((a) => !a.isCorrect)
-          .map((a) => a.questionId);
-
-        onSaveQuizAttempt({
-          id: `quiz-${Date.now()}`,
-          date: new Date().toISOString(),
-          mode: selectedMode,
-          subject: selectedMode === "subject" ? selectedSubject : undefined,
-          score,
-          totalQuestions: questionList.length,
-          accuracy,
-          incorrectQuestionIds: missed,
-        });
-      }
+      return;
     }
+
+    setIsFinished(true);
+    onFanfareSound?.();
+    try {
+      confetti({ particleCount: 70, spread: 70, origin: { y: 0.6 } });
+    } catch {
+      // Confetti is decorative and should never interrupt a quiz.
+    }
+
+    const missed = userAnswers
+      .filter((answer) => !answer.isCorrect)
+      .map((answer) => answer.questionId);
+
+    onSaveQuizAttempt?.({
+      id: `quiz-${Date.now()}`,
+      date: new Date().toISOString(),
+      mode: selectedMode,
+      subject: selectedMode === "subject" ? selectedSubject : undefined,
+      score,
+      totalQuestions: questionList.length,
+      accuracy: questionList.length > 0
+        ? Math.round((score / questionList.length) * 100)
+        : 0,
+      incorrectQuestionIds: missed,
+    });
   };
 
   return (
@@ -176,7 +170,7 @@ export function ArcadeQuizModal({
                 Current Affairs Revision Quiz
               </DialogTitle>
             </div>
-            {isQuizActive && !isFinished && (
+            {isQuizActive && !isFinished && questionList.length > 0 && (
               <span className="text-xs font-semibold px-2 py-0.5 rounded bg-zinc-100 text-muted border border-ink/15">
                 Q {currentIdx + 1} of {questionList.length}
               </span>
@@ -187,7 +181,6 @@ export function ArcadeQuizModal({
           </p>
         </DialogHeader>
 
-        {/* MODE SELECTION SCREEN */}
         {!isQuizActive && (
           <div className="my-4 space-y-4">
             <h3 className="font-display font-bold text-sm text-ink uppercase tracking-wider">
@@ -204,7 +197,7 @@ export function ArcadeQuizModal({
                 }`}
               >
                 <span className="font-bold text-sm block">Quick Revision</span>
-                <span className="text-muted block mt-0.5">5 fast questions across random subjects</span>
+                <span className="text-muted block mt-0.5">5 randomly selected questions</span>
               </button>
 
               <button
@@ -216,7 +209,7 @@ export function ArcadeQuizModal({
                 }`}
               >
                 <span className="font-bold text-sm block">Must-Know Test</span>
-                <span className="text-muted block mt-0.5">15 critical examination-tested facts</span>
+                <span className="text-muted block mt-0.5">15 priority questions in a fresh order</span>
               </button>
 
               <button
@@ -228,7 +221,7 @@ export function ArcadeQuizModal({
                 }`}
               >
                 <span className="font-bold text-sm block">Subject-Specific Test</span>
-                <span className="text-muted block mt-0.5">Deep-dive into one category</span>
+                <span className="text-muted block mt-0.5">A random selection from one category</span>
               </button>
 
               <button
@@ -254,7 +247,7 @@ export function ArcadeQuizModal({
                 }`}
               >
                 <span className="font-bold text-sm block">Full Comprehensive Test</span>
-                <span className="text-muted block mt-0.5">All {qaList.length} questions in randomized sequence</span>
+                <span className="text-muted block mt-0.5">All ${qaList.length} edition questions in random order</span>
               </button>
             </div>
 
@@ -265,12 +258,12 @@ export function ArcadeQuizModal({
                 </label>
                 <select
                   value={selectedSubject}
-                  onChange={(e) => setSelectedSubject(e.target.value)}
+                  onChange={(event) => setSelectedSubject(event.target.value)}
                   className="w-full bg-cream border border-ink/20 rounded-md p-2 text-xs font-sans text-ink focus:outline-none focus:border-brand"
                 >
-                  {allSubjects.map((sub) => (
-                    <option key={sub} value={sub}>
-                      {sub}
+                  {allSubjects.map((subject) => (
+                    <option key={subject} value={subject}>
+                      {subject}
                     </option>
                   ))}
                 </select>
@@ -285,7 +278,6 @@ export function ArcadeQuizModal({
           </div>
         )}
 
-        {/* ACTIVE QUESTION SCREEN */}
         {isQuizActive && !isFinished && currentQuestion && (
           <div className="my-4 space-y-4">
             <div className="flex items-center justify-between text-xs text-muted">
@@ -301,33 +293,30 @@ export function ArcadeQuizModal({
               </h4>
 
               <div className="space-y-2">
-                {(currentQuestion.options || [
-                  currentQuestion.a,
-                  "Alternative option A",
-                  "Alternative option B",
-                  "Alternative option C",
-                ]).map((opt, optIdx) => {
-                  const isSelected = selectedOption === optIdx;
-                  const isCorrect =
-                    optIdx === (currentQuestion.correctAnswerIndex ?? 0);
+                {currentQuestion.options.map((option, optionIndex) => {
+                  const isSelected = selectedOption === optionIndex;
+                  const isCorrect = optionIndex === currentQuestion.correctAnswerIndex;
 
-                  let btnStyle = "border-ink/20 bg-white hover:bg-cream text-ink";
+                  let buttonStyle = "border-ink/20 bg-white hover:bg-cream text-ink";
                   if (selectedOption !== null) {
                     if (isCorrect) {
-                      btnStyle = "border-emerald-600 bg-emerald-50 text-emerald-900 font-semibold";
+                      buttonStyle = "border-emerald-600 bg-emerald-50 text-emerald-900 font-semibold";
                     } else if (isSelected) {
-                      btnStyle = "border-rose-500 bg-rose-50 text-rose-900 line-through";
+                      buttonStyle = "border-rose-500 bg-rose-50 text-rose-900 line-through";
                     }
                   }
 
                   return (
                     <button
-                      key={optIdx}
-                      onClick={() => handleSelectOption(optIdx)}
+                      key={optionIndex}
+                      onClick={() => handleSelectOption(optionIndex)}
                       disabled={selectedOption !== null}
-                      className={`w-full text-left p-3 rounded-lg border text-xs font-sans transition-all ${btnStyle}`}
+                      className={`w-full text-left p-3 rounded-lg border text-xs font-sans transition-all ${buttonStyle}`}
                     >
-                      {opt}
+                      <span className="inline-flex min-w-5 mr-2 font-bold text-muted">
+                        {String.fromCharCode(65 + optionIndex)}.
+                      </span>
+                      {option}
                     </button>
                   );
                 })}
@@ -353,16 +342,19 @@ export function ArcadeQuizModal({
           </div>
         )}
 
-        {/* RESULTS & REVIEW SCREEN */}
+        {isQuizActive && !isFinished && !currentQuestion && (
+          <div className="my-5 rounded-lg border border-amber-300 bg-amber-50 p-4 text-sm text-amber-950">
+            No valid questions are available in this selection yet. Each question needs four distinct options and exactly one option matching its answer.
+          </div>
+        )}
+
         {isQuizActive && isFinished && (
           <div className="my-5 text-center space-y-4">
             <div className="inline-flex p-3 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300">
               <Award className="h-8 w-8" />
             </div>
 
-            <h3 className="font-display font-bold text-2xl text-ink">
-              Quiz Completed!
-            </h3>
+            <h3 className="font-display font-bold text-2xl text-ink">Quiz Completed!</h3>
 
             <div className="p-3 bg-cream/70 rounded-lg border border-ink/15 max-w-sm mx-auto text-xs font-sans space-y-1">
               <p className="text-muted">
@@ -373,30 +365,36 @@ export function ArcadeQuizModal({
               </p>
             </div>
 
-            {/* Answers Review */}
             <div className="text-left mt-4 border-t border-ink/15 pt-3">
               <h4 className="font-display font-bold text-xs uppercase tracking-wider text-ink mb-2">
                 Detailed Review ({questionList.length} questions)
               </h4>
               <div className="space-y-2 max-h-48 overflow-y-auto pr-1">
-                {questionList.map((q, idx) => {
-                  const ans = userAnswers[idx];
-                  const isCorrect = ans ? ans.isCorrect : false;
+                {questionList.map((question, index) => {
+                  const answer = userAnswers[index];
+                  const selectedLabel = answer
+                    ? question.options[answer.selected]
+                    : "Not answered";
+                  const correctLabel = question.options[question.correctAnswerIndex];
+
                   return (
                     <div
-                      key={idx}
+                      key={question.id || index}
                       className="p-2 rounded border border-ink/10 bg-white text-xs font-serif"
                     >
                       <div className="flex items-start gap-1.5">
-                        {isCorrect ? (
+                        {answer?.isCorrect ? (
                           <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600 shrink-0 mt-0.5" />
                         ) : (
                           <XCircle className="h-3.5 w-3.5 text-rose-600 shrink-0 mt-0.5" />
                         )}
                         <div>
-                          <p className="font-semibold text-ink">{q.q}</p>
+                          <p className="font-semibold text-ink">{question.q}</p>
+                          <p className="text-muted font-sans text-[11px] mt-0.5">
+                            Your answer: {selectedLabel}
+                          </p>
                           <p className="text-emerald-700 font-sans text-[11px] mt-0.5">
-                            Answer: {q.a}
+                            Correct answer: {correctLabel}
                           </p>
                         </div>
                       </div>
@@ -410,9 +408,7 @@ export function ArcadeQuizModal({
               <Button
                 variant="outline"
                 size="sm"
-                onClick={() => {
-                  setIsQuizActive(false);
-                }}
+                onClick={() => setIsQuizActive(false)}
                 className="text-xs"
               >
                 Try Another Mode
