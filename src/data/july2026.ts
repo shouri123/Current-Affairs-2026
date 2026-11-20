@@ -5798,12 +5798,12 @@ export const july2026QAList: QAItem[] = [
     "a": "Alluri Sitarama Raju International Airport, Bhogapuram",
     "subject": "Current Affairs Review",
     "options": [
-      "Alluri Sitarama Raju International Airport, Bhogapuram xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "Alluri Sitarama Raju International Airport, Bhogapuram",
       "Donyi Polo International Airport, Itanagar",
       "Manohar International Airport, Mopa",
       "Kushinagar International Airport, Kushinagar"
     ],
-    "explanation": "Verified in July 2026 Official Gazette: Which airport in Andhra Pradesh was inaugurated by PM Modi on 1 August 2026? Answer: Alluri Sitarama Raju International Airport, Bhogapuram xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.",
+    "explanation": "Verified in July 2026 Official Gazette: Which airport in Andhra Pradesh was inaugurated by PM Modi on 1 August 2026? Answer: Alluri Sitarama Raju International Airport, Bhogapuram.",
     "source": {
       "title": "July 2026 Gazette Question #35",
       "publisher": "Press Information Bureau (PIB)",
