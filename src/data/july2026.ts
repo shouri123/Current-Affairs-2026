@@ -5795,7 +5795,7 @@ export const july2026QAList: QAItem[] = [
   {
     "id": "july-q-35",
     "q": "Which airport in Andhra Pradesh was inaugurated by PM Modi on 1 August 2026?",
-    "a": "Alluri Sitarama Raju International Airport, Bhogapuram xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "a": "Alluri Sitarama Raju International Airport, Bhogapuram",
     "subject": "Current Affairs Review",
     "options": [
       "Alluri Sitarama Raju International Airport, Bhogapuram xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
