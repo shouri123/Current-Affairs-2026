@@ -107,4 +107,36 @@ for (let length = 1; length <= 100; length += 1) {
 
 console.log("PASS: Quiz questions and answer positions are randomised and balanced.");
 console.log("PASS: Invalid and placeholder question options are rejected.");
+
+function loadTypeScriptModule(filePath) {
+  const tsSource = fs.readFileSync(filePath, "utf8");
+  const jsSource = ts.transpile(tsSource, {
+    module: ts.ModuleKind.CommonJS,
+    target: ts.ScriptTarget.ES2020,
+  });
+  const loadedModule = { exports: {} };
+  new Function("module", "exports", jsSource)(loadedModule, loadedModule.exports);
+  return loadedModule.exports;
+}
+
+const septemberBank = loadTypeScriptModule("src/data/qaList.ts").qaList;
+const julyBank = loadTypeScriptModule("src/data/july2026.ts").july2026QAList;
+const augustBank = loadTypeScriptModule("src/data/august2026.ts").august2026QAList;
+const realQuestionBank = [...julyBank, ...augustBank, ...septemberBank];
+
+assert.strictEqual(realQuestionBank.length, 109, "All July, August and September questions should load.");
+const realSession = createQuizSession(realQuestionBank, createSeededRandom("real-bank-audit"));
+assert.strictEqual(
+  realSession.length,
+  realQuestionBank.length,
+  "Every published question must have four distinct non-placeholder options and one exact answer."
+);
+realSession.forEach((question) => {
+  assert.strictEqual(question.options[question.correctAnswerIndex], question.a);
+  assert.strictEqual(new Set(question.options.map((option) => option.trim().toLowerCase())).size, 4);
+});
+
+console.log("PASS: All 109 real monthly questions have four distinct, valid answer choices.");
+
 console.log("PASS: Seeded daily quiz sessions are reproducible.");
+
