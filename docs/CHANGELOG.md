@@ -4,6 +4,20 @@ All notable changes to the Current Affairs Gazette platform will be documented i
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Fixed
+- Replaced biased `sort(() => Math.random() - 0.5)` question ordering with Fisher–Yates shuffling.
+- Randomised the three distractors and balanced correct-answer positions across A/B/C/D for each quiz session; consecutive questions avoid repeating the same correct-answer position.
+- Derived the answer key from the exact answer text so older editions do not depend on hard-coded option A.
+- Replaced generic placeholder distractors in the July and August 2026 question banks with topic-relevant alternatives and corrected two corrupted answer strings.
+- Updated Daily Revision to use a reproducible daily quiz selection with shuffled questions and answer choices.
+- Removed fake fallback options; malformed questions are excluded rather than displayed with invented choices.
+
+### Tests
+- Added regression coverage for answer-position balance, consecutive-position repetition, deterministic daily sessions, invalid options, and all 109 July–September questions.
+- Added the quiz regression suite to `npm test`.
+
 ---
 
 ## [2.0.0] - 2026-11-14

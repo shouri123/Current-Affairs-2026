@@ -5153,9 +5153,9 @@ export const july2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Seychelles",
-      "Droupadi Murmu",
-      "Narendra Modi",
-      "S. Jaishankar"
+      "Maldives",
+      "Mauritius",
+      "Fiji"
     ],
     "explanation": "Verified in July 2026 Official Gazette: Which country's President, Dr. Patrick Herminie, conferred the \"Guardian of the Blue Horizon\" distinction on PM Modi? Answer: Seychelles.",
     "source": {
@@ -5172,9 +5172,9 @@ export const july2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Ferran Torres",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "Lamine Yamal",
+      "Dani Olmo",
+      "Álvaro Morata"
     ],
     "explanation": "Verified in July 2026 Official Gazette: Who scored the winning goal as Spain defeated Argentina 1-0 in the FIFA World Cup 2026 final? Answer: Ferran Torres.",
     "source": {
@@ -5191,9 +5191,9 @@ export const july2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Rodri",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "Pedri",
+      "Lamine Yamal",
+      "Jude Bellingham"
     ],
     "explanation": "Verified in July 2026 Official Gazette: Which Spanish footballer won the adidas Golden Ball at the 2026 FIFA World Cup? Answer: Rodri.",
     "source": {
@@ -5209,10 +5209,10 @@ export const july2026QAList: QAItem[] = [
     "a": "Kylian Mbapp\u00e9",
     "subject": "Current Affairs Review",
     "options": [
-      "Kylian Mbapp\u00e9",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "Kylian Mbappé",
+      "Cristiano Ronaldo",
+      "Lionel Messi",
+      "Harry Kane"
     ],
     "explanation": "Verified in July 2026 Official Gazette: Who surpassed Lionel Messi's record to become the highest goal- scorer in FIFA World Cup history with 22 goals? Answer: Kylian Mbapp\u00e9.",
     "source": {
@@ -5229,9 +5229,9 @@ export const july2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Andy Burnham",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "Keir Starmer",
+      "Rishi Sunak",
+      "Yvette Cooper"
     ],
     "explanation": "Verified in July 2026 Official Gazette: Who became the Prime Minister of the United Kingdom on 20 July 2026? Answer: Andy Burnham.",
     "source": {
@@ -5248,9 +5248,9 @@ export const july2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Khalil al-Hayya",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "Khaled Mashal",
+      "Mohammed Deif",
+      "Ismail Haniyeh"
     ],
     "explanation": "Verified in July 2026 Official Gazette: Who was elected the new overall leader of Hamas, succeeding Yahya Sinwar? Answer: Khalil al-Hayya.",
     "source": {
@@ -5267,9 +5267,9 @@ export const july2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Republic of Naoero",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "Republic of Nauru",
+      "Naoero Republic",
+      "Republic of Oceania"
     ],
     "explanation": "Verified in July 2026 Official Gazette: Nauru officially changed its name to which new name? Answer: Republic of Naoero.",
     "source": {
@@ -5286,9 +5286,9 @@ export const july2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "France",
-      "Seychelles",
-      "Japan",
-      "Standard Assessment 4"
+      "Spain",
+      "Italy",
+      "Germany"
     ],
     "explanation": "Verified in July 2026 Official Gazette: Which European country approved a law banning social media for children under 15? Answer: France.",
     "source": {
@@ -5305,9 +5305,9 @@ export const july2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "President Droupadi Murmu",
-      "Droupadi Murmu",
-      "Narendra Modi",
-      "S. Jaishankar"
+      "President Ram Nath Kovind",
+      "President Pratibha Patil",
+      "Vice-President Jagdeep Dhankhar"
     ],
     "explanation": "Verified in July 2026 Official Gazette: Which Indian dignitary began the first-ever State Visit by an Indian President to Moldova? Answer: President Droupadi Murmu.",
     "source": {
@@ -5324,9 +5324,9 @@ export const july2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Serhii Koretskyi",
-      "Droupadi Murmu",
-      "Narendra Modi",
-      "S. Jaishankar"
+      "Denys Shmyhal",
+      "Yulia Svyrydenko",
+      "Oleksiy Honcharuk"
     ],
     "explanation": "Verified in July 2026 Official Gazette: Who was appointed the Prime Minister of Ukraine after a government reshuffle? Answer: Serhii Koretskyi.",
     "source": {
@@ -5343,9 +5343,9 @@ export const july2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Semicon 2.0",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "India Semiconductor Mission 2.0",
+      "Semicon India Programme",
+      "Design-Linked Incentive Scheme"
     ],
     "explanation": "Verified in July 2026 Official Gazette: Which scheme was approved by the Union Cabinet with an outlay of \u20b91,27,500 crore for semiconductors? Answer: Semicon 2.0.",
     "source": {
@@ -5362,9 +5362,9 @@ export const july2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "5,000 MW",
-      "New Delhi",
-      "Kochi",
-      "Mumbai"
+      "3,000 MW",
+      "4,000 MW",
+      "6,000 MW"
     ],
     "explanation": "Verified in July 2026 Official Gazette: The PM Surya Sarovar Yojana targets how much floating solar capacity? Answer: 5,000 MW.",
     "source": {
@@ -5381,9 +5381,9 @@ export const july2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Nandan Nilekani",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "N. R. Narayana Murthy",
+      "Sam Pitroda",
+      "Kris Gopalakrishnan"
     ],
     "explanation": "Verified in July 2026 Official Gazette: Who chairs the Exam Reform Task Force constituted by the Government of India? Answer: Nandan Nilekani.",
     "source": {
@@ -5400,9 +5400,9 @@ export const july2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Jind-Sonipat",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "Ambala–Chandigarh",
+      "Bhiwani–Rohtak",
+      "Delhi–Panipat"
     ],
     "explanation": "Verified in July 2026 Official Gazette: On which route will India's first Hydrogen Fuel Cell Train run? Answer: Jind-Sonipat.",
     "source": {
@@ -5419,9 +5419,9 @@ export const july2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "General Dhiraj Seth",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "General Upendra Dwivedi",
+      "General Manoj Pande",
+      "General Anil Chauhan"
     ],
     "explanation": "Verified in July 2026 Official Gazette: Who is the 31st Chief of the Army Staff of India? Answer: General Dhiraj Seth.",
     "source": {
@@ -5438,9 +5438,9 @@ export const july2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "XVII Corps (Mountain Strike Corps), Panagarh",
-      "Statutory Notification",
-      "Regulatory Framework",
-      "Cabinet Directive"
+      "I Corps (Strike Corps), Mathura",
+      "XXI Corps (Strike Corps), Bhopal",
+      "IX Corps, Yol"
     ],
     "explanation": "Verified in July 2026 Official Gazette: Under which corps were the Army's first Integrated Battle Groups operationalised on 1 July 2026? Answer: XVII Corps (Mountain Strike Corps), Panagarh.",
     "source": {
@@ -5457,9 +5457,9 @@ export const july2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Kusha Long-Range Surface-to-Air Missile (LR-SAM)",
-      "Statutory Notification",
-      "Regulatory Framework",
-      "Cabinet Directive"
+      "Akash-NG",
+      "Medium-Range Surface-to-Air Missile (MRSAM)",
+      "Quick Reaction Surface-to-Air Missile (QRSAM)"
     ],
     "explanation": "Verified in July 2026 Official Gazette: Which missile was flight-tested for the first time from Dr. APJ Abdul Kalam Island on 23 July 2026? Answer: Kusha Long-Range Surface-to-Air Missile (LR-SAM).",
     "source": {
@@ -5476,9 +5476,9 @@ export const july2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "IASV Triveni",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "IASV Tarini",
+      "INSV Mhadei",
+      "INSV Kaundinya"
     ],
     "explanation": "Verified in July 2026 Official Gazette: Which indigenous vessel was used for Samudra Pradakshina, India's first tri-service all-women circumnavigation? Answer: IASV Triveni.",
     "source": {
@@ -5495,9 +5495,9 @@ export const july2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Kochi",
-      "New Delhi",
+      "Goa",
       "Mumbai",
-      "Standard Assessment 4"
+      "Visakhapatnam"
     ],
     "explanation": "Verified in July 2026 Official Gazette: Which city hosted Operation Southern Readiness 26-2, the first time it was held in India? Answer: Kochi.",
     "source": {
@@ -5514,9 +5514,9 @@ export const july2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "2022-23",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "2011–12",
+      "2017–18",
+      "2021–22"
     ],
     "explanation": "Verified in July 2026 Official Gazette: Which new base year was introduced for the Index of Industrial Production (IIP) in 2026? Answer: 2022-23.",
     "source": {
@@ -5533,9 +5533,9 @@ export const july2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "2024-25",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "2022–23",
+      "2023–24",
+      "2025–26"
     ],
     "explanation": "Verified in July 2026 Official Gazette: India's first Index of Services Production (ISP) uses which base year? Answer: 2024-25.",
     "source": {
@@ -5552,9 +5552,9 @@ export const july2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Paytm Payments Bank",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "Fino Payments Bank",
+      "Airtel Payments Bank",
+      "India Post Payments Bank"
     ],
     "explanation": "Verified in July 2026 Official Gazette: Which payments bank is being wound up by the RBI, with Girikumar Nair as Official Liquidator? Answer: Paytm Payments Bank.",
     "source": {
@@ -5571,9 +5571,9 @@ export const july2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Electronic Gold Receipts (EGRs)",
-      "Statutory Notification",
-      "Regulatory Framework",
-      "Cabinet Directive"
+      "Sovereign Gold Bonds",
+      "Gold Exchange-Traded Funds",
+      "Gold Monetisation Certificates"
     ],
     "explanation": "Verified in July 2026 Official Gazette: Which gold-related instrument did the NSE launch in July 2026? Answer: Electronic Gold Receipts (EGRs).",
     "source": {
@@ -5590,9 +5590,9 @@ export const july2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Maldives",
-      "France",
-      "Seychelles",
-      "Japan"
+      "Nepal",
+      "Bhutan",
+      "Sri Lanka"
     ],
     "explanation": "Verified in July 2026 Official Gazette: Which country launched the Favara-UPI cross-border payment corridor with India on 30 July 2026? Answer: Maldives.",
     "source": {
@@ -5609,9 +5609,9 @@ export const july2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Ashiss Dash",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "Salil Parekh",
+      "Mohit Joshi",
+      "Sandeep Dadlani"
     ],
     "explanation": "Verified in July 2026 Official Gazette: Who will become the CEO and MD of Infosys from 1 April 2027? Answer: Ashiss Dash.",
     "source": {
@@ -5628,9 +5628,9 @@ export const july2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Varsha Ashok Aglawe",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "K. M. Natrajan",
+      "A. K. Singh",
+      "R. S. Goyal"
     ],
     "explanation": "Verified in July 2026 Official Gazette: Who became the first woman Director General of the Geological Survey of India? Answer: Varsha Ashok Aglawe.",
     "source": {
@@ -5647,9 +5647,9 @@ export const july2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "R. Vairamuthu",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "Gulzar",
+      "Damodar Mauzo",
+      "Amitav Ghosh"
     ],
     "explanation": "Verified in July 2026 Official Gazette: Who received the 60th Jnanpith Award (2025)? Answer: R. Vairamuthu.",
     "source": {
@@ -5666,9 +5666,9 @@ export const july2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Hong Wang",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "Maryna Viazovska",
+      "James Maynard",
+      "June Huh"
     ],
     "explanation": "Verified in July 2026 Official Gazette: Which Fields Medal 2026 winner was honoured for work in harmonic analysis and geometric measure theory? Answer: Hong Wang.",
     "source": {
@@ -5685,9 +5685,9 @@ export const july2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Linda Noskova",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "Iga Świątek",
+      "Coco Gauff",
+      "Aryna Sabalenka"
     ],
     "explanation": "Verified in July 2026 Official Gazette: Who won the Wimbledon 2026 women's singles title for her maiden Grand Slam? Answer: Linda Noskova.",
     "source": {
@@ -5704,9 +5704,9 @@ export const july2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Kranti Goud",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "Renuka Singh Thakur",
+      "Deepti Sharma",
+      "Jhulan Goswami"
     ],
     "explanation": "Verified in July 2026 Official Gazette: Which Indian bowler became the first woman to feature on the Lord's Honours Board? Answer: Kranti Goud.",
     "source": {
@@ -5723,9 +5723,9 @@ export const july2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Mirabai Chanu",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "Bindyarani Devi",
+      "Karnam Malleswari",
+      "Sanjita Chanu"
     ],
     "explanation": "Verified in July 2026 Official Gazette: Who won the women's 48 kg weightlifting gold at the Commonwealth Games 2026? Answer: Mirabai Chanu.",
     "source": {
@@ -5742,9 +5742,9 @@ export const july2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "PV Sindhu",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "Lakshya Sen",
+      "Saina Nehwal",
+      "Kidambi Srikanth"
     ],
     "explanation": "Verified in July 2026 Official Gazette: Who became the first Indian to win the BWF Japan Open (Super 750) in 2026? Answer: PV Sindhu.",
     "source": {
@@ -5761,9 +5761,9 @@ export const july2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Asmita Dey",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "Tulika Maan",
+      "Sushila Devi",
+      "Avtar Singh"
     ],
     "explanation": "Verified in July 2026 Official Gazette: Who became the first Indian athlete to win a Commonwealth Games gold medal in judo? Answer: Asmita Dey.",
     "source": {
@@ -5780,9 +5780,9 @@ export const july2026QAList: QAItem[] = [
     "subject": "Current Affairs Review",
     "options": [
       "Sir Garfield Sobers",
-      "State Directive",
-      "Union Council",
-      "Apex Authority"
+      "Clive Lloyd",
+      "Rohan Kanhai",
+      "Lance Gibbs"
     ],
     "explanation": "Verified in July 2026 Official Gazette: Which West Indies cricket legend passed away at the age of 89? Answer: Sir Garfield Sobers.",
     "source": {
@@ -5795,15 +5795,15 @@ export const july2026QAList: QAItem[] = [
   {
     "id": "july-q-35",
     "q": "Which airport in Andhra Pradesh was inaugurated by PM Modi on 1 August 2026?",
-    "a": "Alluri Sitarama Raju International Airport, Bhogapuram xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "a": "Alluri Sitarama Raju International Airport, Bhogapuram",
     "subject": "Current Affairs Review",
     "options": [
-      "Alluri Sitarama Raju International Airport, Bhogapuram xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-      "Statutory Notification",
-      "Regulatory Framework",
-      "Cabinet Directive"
+      "Alluri Sitarama Raju International Airport, Bhogapuram",
+      "Donyi Polo International Airport, Itanagar",
+      "Manohar International Airport, Mopa",
+      "Kushinagar International Airport, Kushinagar"
     ],
-    "explanation": "Verified in July 2026 Official Gazette: Which airport in Andhra Pradesh was inaugurated by PM Modi on 1 August 2026? Answer: Alluri Sitarama Raju International Airport, Bhogapuram xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.",
+    "explanation": "Verified in July 2026 Official Gazette: Which airport in Andhra Pradesh was inaugurated by PM Modi on 1 August 2026? Answer: Alluri Sitarama Raju International Airport, Bhogapuram.",
     "source": {
       "title": "July 2026 Gazette Question #35",
       "publisher": "Press Information Bureau (PIB)",
