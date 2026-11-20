@@ -70,7 +70,32 @@ if (qaCount !== 39) {
   errors.push(`FAIL: Expected 39 questions, found ${qaCount}`);
 }
 
-if (errors.length > 0) {
+
+// Check 7: Quiz banks must not contain generic placeholder distractors.
+const olderQuizContent = [
+  fs.readFileSync('src/data/july2026.ts', 'utf8'),
+  fs.readFileSync('src/data/august2026.ts', 'utf8')
+].join('\n');
+const placeholderOptions = [
+  'State Directive',
+  'Union Council',
+  'Apex Authority',
+  'Statutory Notification',
+  'Regulatory Framework',
+  'Cabinet Directive',
+  'Standard Assessment 4',
+  'Alternative option A',
+  'xxxxxxxxxxxxxxxx'
+];
+placeholderOptions.forEach((placeholder) => {
+  if (olderQuizContent.includes(placeholder)) {
+    errors.push(`FAIL: Quiz bank still contains placeholder option/text: ${placeholder}`);
+  }
+});
+if (!placeholderOptions.some((placeholder) => olderQuizContent.includes(placeholder))) {
+  console.log('PASS: No known generic placeholder distractors remain in July/August question banks.');
+}
+\nif (errors.length > 0) {
   console.error('\nValidation encountered errors:');
   errors.forEach(e => console.error(' - ' + e));
   process.exit(1);
