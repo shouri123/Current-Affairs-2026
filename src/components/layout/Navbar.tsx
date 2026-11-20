@@ -17,6 +17,7 @@ import {
   SlidersHorizontal,
   Newspaper,
   BookOpenCheck,
+  Radar,
 } from "lucide-react";
 import { magazineSections } from "@/data/magazineSections";
 import { ImportanceLevel, VerificationStatus, MonthId, MagazineSection } from "@/types";
@@ -45,6 +46,7 @@ interface NavbarProps {
   onOpenPinDrawer: () => void;
   onOpenArcade: () => void;
   onOpenDailyRevision: () => void;
+  onOpenPYQRadar?: () => void;
   onOpenProgressDashboard: () => void;
   masteredCount: number;
   totalFactsCount: number;
@@ -88,6 +90,7 @@ export function Navbar({
   onOpenPinDrawer,
   onOpenArcade,
   onOpenDailyRevision,
+  onOpenPYQRadar,
   onOpenProgressDashboard,
   masteredCount,
   totalFactsCount,
@@ -260,6 +263,20 @@ export function Navbar({
                 {pinCount}
               </span>
             </motion.button>
+
+            {/* PYQ Radar Button */}
+            {onOpenPYQRadar && (
+              <motion.button
+                whileHover={{ scale: 1.05, y: -1 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={onOpenPYQRadar}
+                title="PYQ Radar: Past Examination Questions"
+                className="px-2.5 py-1.5 rounded-xl border-2 border-ink bg-purple-100 text-purple-950 hover:bg-purple-200 font-display font-extrabold text-xs hidden sm:flex items-center gap-1 shadow-brutal-sm transition-colors"
+              >
+                <Radar className="h-3.5 w-3.5 text-purple-700" />
+                <span>PYQ</span>
+              </motion.button>
+            )}
 
             {/* Daily Revision Button */}
             <motion.button

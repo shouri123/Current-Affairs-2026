@@ -10,8 +10,9 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { VerificationBadge } from "./VerificationBadge";
-import { Bookmark, Check, ExternalLink, Lightbulb, Share2 } from "lucide-react";
+import { Bookmark, Check, ExternalLink, Lightbulb, Share2, Radar } from "lucide-react";
 import { SourceReference, VerificationStatus } from "@/types";
+import { findMatchingPYQs } from "@/data/pyqDatabase";
 
 interface FactDetailModalProps {
   isOpen: boolean;
@@ -46,7 +47,11 @@ export function FactDetailModal({
   onToggleMastered,
   onTogglePin,
 }: FactDetailModalProps) {
-  const primarySource = sources[0];
+  const primarySource = sources && sources.length > 0 ? sources[0] : undefined;
+
+  const matchingPYQs = React.useMemo(() => {
+    return findMatchingPYQs(title + " " + body, category, 1);
+  }, [title, body, category]);
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(window.location.href);
@@ -106,6 +111,30 @@ export function FactDetailModal({
                     View Official Document <ExternalLink className="h-3 w-3" />
                   </a>
                 )}
+              </div>
+            </div>
+          )}
+
+          {/* PYQ Radar Connection */}
+          {matchingPYQs.length > 0 && (
+            <div className="p-3.5 bg-purple-50/80 border-2 border-purple-200 rounded-xl text-xs font-sans">
+              <div className="flex items-center justify-between text-[10px] font-black text-purple-900 uppercase tracking-wider mb-1.5">
+                <span className="flex items-center gap-1.5">
+                  <Radar className="h-3.5 w-3.5 text-purple-700 animate-pulse" />
+                  PYQ Radar: Connected Past Exam Question
+                </span>
+                <span className="px-1.5 py-0.5 rounded bg-purple-200 text-purple-900 font-extrabold">
+                  {matchingPYQs[0].exam} ({matchingPYQs[0].year})
+                </span>
+              </div>
+              <p className="font-bold text-ink/90 font-serif leading-relaxed line-clamp-2">
+                {matchingPYQs[0].question}
+              </p>
+              <div className="mt-2 pt-2 border-t border-purple-200/60 flex items-center justify-between text-[11px] text-purple-900 font-bold">
+                <span>Concept: {matchingPYQs[0].concept}</span>
+                <span className="text-emerald-700 font-black">
+                  Ans: {matchingPYQs[0].correctAnswer}
+                </span>
               </div>
             </div>
           )}

@@ -12,6 +12,10 @@ import { ProgressDashboardModal } from "@/components/interactive/ProgressDashboa
 import { RandomFactModal } from "@/components/interactive/RandomFactModal";
 import { FactDetailModal } from "@/components/interactive/FactDetailModal";
 import { PinDrawer } from "@/components/interactive/PinDrawer";
+import { StudyCockpit } from "@/components/layout/StudyCockpit";
+import { PYQRadarModal } from "@/components/interactive/PYQRadarModal";
+import { ExamProfileId } from "@/types/examProfiles";
+import { getSRSStats, SRSStats } from "@/lib/spacedRepetition";
 import { Footer } from "@/components/layout/Footer";
 import { magazineSections } from "@/data/magazineSections";
 import { qaList } from "@/data/qaList";
@@ -49,6 +53,13 @@ export default function Home() {
     "ca_quiz_attempts_v1",
     []
   );
+
+  // Exam Profile & Spaced Repetition State
+  const [selectedExam, setSelectedExam] = useLocalStorage<ExamProfileId>(
+    "ca_selected_exam_v1",
+    "upsc"
+  );
+  const [isPYQRadarOpen, setIsPYQRadarOpen] = useState(false);
 
   // Modals Visibility
   const [isArcadeOpen, setIsArcadeOpen] = useState(false);
@@ -111,18 +122,17 @@ export default function Home() {
             item.text.toLowerCase().includes("world")
               ? "international"
               : "national"),
-          sources: item.sources || [
-            {
-              title: `${item.text.slice(0, 45)}... (Official Record)`,
-              publisher: "Press Information Bureau (PIB) / Government of India",
-              url: "https://www.pib.gov.in",
-              sourceType: "primary",
-            },
-          ],
-          verification: item.verification || {
-            status: "verified",
-            lastVerifiedAt: "2026-11-15",
-          },
+          sources: item.sources || [],
+          verification: item.verification || (item.sources && item.sources.length > 0
+            ? {
+                status: "verified",
+                lastVerifiedAt: "2026-11-15",
+              }
+            : {
+                status: "missing-source",
+                lastVerifiedAt: "2026-11-15",
+                verificationNotes: "Primary notification document link pending verification.",
+              }),
         });
       });
     });
@@ -200,6 +210,15 @@ export default function Home() {
     });
     return Array.from(set);
   }, [quizAttempts]);
+
+  const srsStats: SRSStats = useMemo(() => {
+    return getSRSStats(allFacts.map((f) => f.id));
+  }, [allFacts, masteredIds]);
+
+  const handleOpenDueCards = () => {
+    const el = document.getElementById("section-quiz");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
 
   const handleToggleMastered = (id: string) => {
     setMasteredIds((prev) => {
@@ -360,6 +379,10 @@ export default function Home() {
           playPop();
           setIsDailyOpen(true);
         }}
+        onOpenPYQRadar={() => {
+          playPop();
+          setIsPYQRadarOpen(true);
+        }}
         onOpenProgressDashboard={() => {
           playPop();
           setIsProgressOpen(true);
@@ -392,6 +415,24 @@ export default function Home() {
           onOpenRandomFact={handleOpenRandomFact}
           totalFacts={allFacts.length}
           mustKnowCount={mustKnowCount}
+        />
+
+        {/* Personalized Study Cockpit (FSRS Spaced Repetition & Exam Alignment) */}
+        <StudyCockpit
+          selectedExam={selectedExam}
+          onSelectExam={setSelectedExam}
+          srsStats={srsStats}
+          onOpenDueCards={handleOpenDueCards}
+          onOpenPYQRadar={() => {
+            playPop();
+            setIsPYQRadarOpen(true);
+          }}
+          onOpenDaily={() => {
+            playPop();
+            setIsDailyOpen(true);
+          }}
+          totalFactsCount={allFacts.length}
+          masteredCount={masteredIds.length}
         />
 
         {/* Secondary Navigation: Topic Navigation Panel */}
@@ -520,6 +561,12 @@ export default function Home() {
         onToggleMastered={handleToggleMastered}
         onTogglePin={handleTogglePin}
         onScrollToSection={handleScrollToSection}
+      />
+
+      {/* Previous Year Questions (PYQ) Radar Modal */}
+      <PYQRadarModal
+        isOpen={isPYQRadarOpen}
+        onClose={() => setIsPYQRadarOpen(false)}
       />
     </div>
   );

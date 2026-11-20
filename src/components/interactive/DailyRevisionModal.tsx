@@ -87,15 +87,76 @@ export function DailyRevisionModal({
     return picked.slice(0, 7);
   }, [allFacts, todayStr, sessionSeedOffset]);
 
-  // Pick 5 relevant quiz questions
-  const dailyQuestions = useMemo(
-    () => createQuizSession(
-      qaList,
+  // Pick 5 relevant quiz questions paired with the daily reviewed facts, formatted with distractor randomization
+  const dailyQuestions = useMemo(() => {
+    let candidatePool = qaList;
+
+    if (dailyMustKnowFacts.length > 0 && qaList.length > 5) {
+      // Extract significant keywords from daily reviewed facts
+      const extractKeywords = (text: string) => {
+        return text
+          .toLowerCase()
+          .replace(/[^a-z0-9\s]/g, " ")
+          .split(/\s+/)
+          .filter(
+            (w) =>
+              w.length >= 4 &&
+              ![
+                "india",
+                "indian",
+                "national",
+                "state",
+                "under",
+                "which",
+                "first",
+                "total",
+                "crore",
+                "lakh",
+                "government",
+                "minister",
+                "ministry",
+              ].includes(w)
+          );
+      };
+
+      const factKeywords = dailyMustKnowFacts.flatMap((f) => [
+        ...extractKeywords(f.text),
+        ...(f.title ? extractKeywords(f.title) : []),
+      ]);
+      const factSubjects = new Set(dailyMustKnowFacts.map((f) => f.sectionId.toLowerCase()));
+
+      // Score questions based on topical and keyword overlap with daily facts
+      const scoredQuestions = qaList.map((q) => {
+        let score = 0;
+        const qText = (q.q + " " + q.a + " " + (q.explanation || "")).toLowerCase();
+        const qSub = (q.subject || "").toLowerCase();
+
+        // Subject match bonus
+        if (factSubjects.has(qSub)) score += 3;
+
+        // Keyword matches
+        for (const kw of factKeywords) {
+          if (qText.includes(kw)) {
+            score += 2;
+          }
+        }
+
+        return { q, score };
+      });
+
+      scoredQuestions.sort((a, b) => b.score - a.score);
+      const topPaired = scoredQuestions.slice(0, 10).map((sq) => sq.q);
+      if (topPaired.length >= 5) {
+        candidatePool = topPaired;
+      }
+    }
+
+    return createQuizSession(
+      candidatePool,
       createSeededRandom(`${todayStr}:${sessionSeedOffset}`),
       5
-    ),
-    [qaList, todayStr, sessionSeedOffset]
-  );
+    );
+  }, [qaList, dailyMustKnowFacts, todayStr, sessionSeedOffset]);
 
   const handleStartQuiz = () => {
     setActiveStep("quiz");
