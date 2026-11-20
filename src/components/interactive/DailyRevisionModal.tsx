@@ -10,6 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { FactItem, MagazineSection, QAItem } from "@/types";
+import { createQuizSession, createSeededRandom } from "@/lib/quizEngine";
 import {
   Calendar,
   CheckCircle,
@@ -87,9 +88,14 @@ export function DailyRevisionModal({
   }, [allFacts, todayStr, sessionSeedOffset]);
 
   // Pick 5 relevant quiz questions
-  const dailyQuestions = useMemo(() => {
-    return qaList.slice(0, 5);
-  }, [qaList]);
+  const dailyQuestions = useMemo(
+    () => createQuizSession(
+      qaList,
+      createSeededRandom(`${todayStr}:${sessionSeedOffset}`),
+      5
+    ),
+    [qaList, todayStr, sessionSeedOffset]
+  );
 
   const handleStartQuiz = () => {
     setActiveStep("quiz");
@@ -239,12 +245,7 @@ export function DailyRevisionModal({
               </h4>
 
               <div className="space-y-2">
-                {(dailyQuestions[currentQuizIdx].options || [
-                  dailyQuestions[currentQuizIdx].a,
-                  "Alternative option A",
-                  "Alternative option B",
-                  "Alternative option C",
-                ]).map((opt, optIdx) => {
+                {dailyQuestions[currentQuizIdx].options.map((opt, optIdx) => {
                   const isSelected = selectedOption === optIdx;
                   const isCorrect =
                     optIdx === (dailyQuestions[currentQuizIdx].correctAnswerIndex ?? 0);
